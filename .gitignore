@@ -1,0 +1,12 @@
+.DS_Store
+
+# Build output
+.build/
+DerivedData/
+
+# Xcode per-user state
+xcuserdata/
+*.xcuserstate
+
+# Swift Package Manager
+Packages/CleanerCore/.swiftpm/

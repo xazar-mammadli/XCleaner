@@ -1,0 +1,1105 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ available of %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ boşdur, cəmi %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ available of %2$@"
+          }
+        }
+      }
+    },
+    "A record of every removal is kept on this Mac." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hər silinmənin qeydi bu Mac-da saxlanılır."
+          }
+        }
+      }
+    },
+    "Allow Full Disk Access" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam Disk Girişinə icazə verin"
+          }
+        }
+      }
+    },
+    "An interactive map of what fills your disk." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diskinizi nəyin doldurduğunu göstərən interaktiv xəritə."
+          }
+        }
+      }
+    },
+    "App Permissions" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram icazələri"
+          }
+        }
+      }
+    },
+    "Applications" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramlar"
+          }
+        }
+      }
+    },
+    "Apps that use the most memory and processor time." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ən çox yaddaş və prosessor vaxtı işlədən proqramlar."
+          }
+        }
+      }
+    },
+    "Background Item Check" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fon elementlərinin yoxlanışı"
+          }
+        }
+      }
+    },
+    "Biggest & Old Files" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Böyük və köhnə fayllar"
+          }
+        }
+      }
+    },
+    "Browser Data" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brauzer məlumatları"
+          }
+        }
+      }
+    },
+    "Caches and logs in system folders, removed through a secure helper." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem qovluqlarındakı keş və loglar — təhlükəsiz köməkçi vasitəsilə silinir."
+          }
+        }
+      }
+    },
+    "Check Again" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yenidən yoxla"
+          }
+        }
+      }
+    },
+    "Cleanup" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təmizlik"
+          }
+        }
+      }
+    },
+    "Cleanup History" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təmizləmə tarixçəsi"
+          }
+        }
+      }
+    },
+    "Clear browsing traces and check which apps can reach your data." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brauzer izlərini təmizləyin və hansı proqramların məlumatlarınıza çıxışı olduğunu yoxlayın."
+          }
+        }
+      }
+    },
+    "Click Open System Settings." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“System Settings-i aç” düyməsini basın."
+          }
+        }
+      }
+    },
+    "Coming to this section" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu bölməyə gələcək"
+          }
+        }
+      }
+    },
+    "Copies of attachments saved by the Mail app." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail proqramının saxladığı qoşma nüsxələri."
+          }
+        }
+      }
+    },
+    "Couldn't check Full Disk Access" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam Disk Girişini yoxlamaq alınmadı"
+          }
+        }
+      }
+    },
+    "Delete immediately" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dərhal sil"
+          }
+        }
+      }
+    },
+    "Disk Map" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disk xəritəsi"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırdır"
+          }
+        }
+      }
+    },
+    "Duplicates" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dublikatlar"
+          }
+        }
+      }
+    },
+    "Each tool shows you exactly what it found before anything is removed." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hər alət heç nə silməzdən əvvəl nə tapdığını sizə dəqiq göstərir."
+          }
+        }
+      }
+    },
+    "Every action is recorded in the cleanup history." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hər əməliyyat təmizləmə tarixçəsinə yazılır."
+          }
+        }
+      }
+    },
+    "Everything XCleaner removed, and when." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner-in nəyi, nə vaxt sildiyinin tam siyahısı."
+          }
+        }
+      }
+    },
+    "Extensions" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genişlənmələr"
+          }
+        }
+      }
+    },
+    "Files" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fayllar"
+          }
+        }
+      }
+    },
+    "Files left behind by apps that were already deleted." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artıq silinmiş proqramlardan qalan fayllar."
+          }
+        }
+      }
+    },
+    "Files you pick yourself, such as large files and duplicates, always go to the Trash." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özünüz seçdiyiniz fayllar (məsələn, böyük fayllar və dublikatlar) həmişə Zibil qutusuna gedir."
+          }
+        }
+      }
+    },
+    "Find out what takes up space: big files, duplicates and a map of your disk." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeri nəyin tutduğunu öyrənin: böyük fayllar, dublikatlar və diskinizin xəritəsi."
+          }
+        }
+      }
+    },
+    "Finds caches, logs and other junk that is safe to remove. You review everything before anything is removed." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silinməsi təhlükəsiz olan keşləri, logları və digər zibili tapır. Heç nə silinməzdən əvvəl hər şeyi özünüz nəzərdən keçirirsiniz."
+          }
+        }
+      }
+    },
+    "Flags unsigned or suspicious items that start automatically." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avtomatik işə düşən imzasız və ya şübhəli elementləri göstərir."
+          }
+        }
+      }
+    },
+    "Free" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boş"
+          }
+        }
+      }
+    },
+    "Full Disk Access is off" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam Disk Girişi bağlıdır"
+          }
+        }
+      }
+    },
+    "Full Disk Access is on" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam Disk Girişi aktivdir"
+          }
+        }
+      }
+    },
+    "General" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ümumi"
+          }
+        }
+      }
+    },
+    "Handy extras: a menu bar monitor, hidden files and your cleanup history." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faydalı əlavələr: menyu zolağı monitoru, gizli fayllar və təmizləmə tarixçəsi."
+          }
+        }
+      }
+    },
+    "Heavy Apps" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ağır proqramlar"
+          }
+        }
+      }
+    },
+    "Hidden Files" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizli fayllar"
+          }
+        }
+      }
+    },
+    "History, cookies and caches of Safari, Chrome, Firefox, Edge and Brave." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari, Chrome, Firefox, Edge və Brave-in tarixçəsi, cookie-ləri və keşi."
+          }
+        }
+      }
+    },
+    "How XCleaner keeps you safe" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner sizi necə qoruyur"
+          }
+        }
+      }
+    },
+    "Identical files and folders, with Smart Select and folder merging." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eyni fayl və qovluqlar — ağıllı seçim və qovluqların birləşdirilməsi ilə."
+          }
+        }
+      }
+    },
+    "If macOS asks, choose Quit & Reopen." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS soruşarsa, “Quit & Reopen” seçin."
+          }
+        }
+      }
+    },
+    "Installers & Downloads" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quraşdırıcılar və yükləmələr"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dil"
+          }
+        }
+      }
+    },
+    "Large files you haven't opened in a long time, filtered by type." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çoxdan açmadığınız böyük fayllar, növünə görə filtrlənmiş."
+          }
+        }
+      }
+    },
+    "Login items, launch agents and background services." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Girişdə açılan proqramlar, launch agent-lər və fon xidmətləri."
+          }
+        }
+      }
+    },
+    "Mail Attachments" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail qoşmaları"
+          }
+        }
+      }
+    },
+    "Maintenance" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texniki xidmət"
+          }
+        }
+      }
+    },
+    "Menu Bar Monitor" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menyu zolağı monitoru"
+          }
+        }
+      }
+    },
+    "Move to Trash (recommended)" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zibil qutusuna köçür (tövsiyə olunur)"
+          }
+        }
+      }
+    },
+    "Near-identical shots, so you can keep the best one." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demək olar ki, eyni olan şəkillər — ən yaxşısını saxlayın."
+          }
+        }
+      }
+    },
+    "Not Now" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İndi yox"
+          }
+        }
+      }
+    },
+    "Nothing is removed" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heç nə silinmir"
+          }
+        }
+      }
+    },
+    "Nothing is removed until you review it." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siz baxmayınca heç nə silinmir."
+          }
+        }
+      }
+    },
+    "Old .dmg and .pkg installers, unneeded archives and old screenshots." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Köhnə .dmg və .pkg quraşdırıcıları, lazımsız arxivlər və köhnə ekran şəkilləri."
+          }
+        }
+      }
+    },
+    "Open System Settings" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Settings-i aç"
+          }
+        }
+      }
+    },
+    "Overview" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ümumi baxış"
+          }
+        }
+      }
+    },
+    "Performance" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performans"
+          }
+        }
+      }
+    },
+    "Phase %lld" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mərhələ %lld"
+          }
+        }
+      }
+    },
+    "Preference panes, plug-ins and browser extensions." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parametr panelləri, plaginlər və brauzer genişlənmələri."
+          }
+        }
+      }
+    },
+    "Privacy" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Məxfilik"
+          }
+        }
+      }
+    },
+    "Processor, memory, disk, battery and network at a glance." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prosessor, yaddaş, disk, batareya və şəbəkə bir baxışda."
+          }
+        }
+      }
+    },
+    "Purgeable" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boşaldıla bilən"
+          }
+        }
+      }
+    },
+    "Quick Cleanup" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürətli təmizlik"
+          }
+        }
+      }
+    },
+    "Reindex Spotlight and Mail, flush the DNS cache and thin local snapshots." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotlight və Mail indeksini yeniləyin, DNS keşini təmizləyin, lokal snapshot-ları azaldın."
+          }
+        }
+      }
+    },
+    "Remaining Files" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qalıq fayllar"
+          }
+        }
+      }
+    },
+    "Remove an app together with all of its support files." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramı bütün köməkçi faylları ilə birlikdə silin."
+          }
+        }
+      }
+    },
+    "Remove junk your Mac doesn't need: caches, logs, leftovers and old installers." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac-ın ehtiyacı olmayan zibili silin: keşlər, loglar, qalıqlar və köhnə quraşdırıcılar."
+          }
+        }
+      }
+    },
+    "Removed items" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silinən elementlər"
+          }
+        }
+      }
+    },
+    "Removed items go to the Trash, so you can put them back." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silinənlər Zibil qutusuna gedir, onları geri qaytara bilərsiniz."
+          }
+        }
+      }
+    },
+    "Reset Apps" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramları sıfırlama"
+          }
+        }
+      }
+    },
+    "Restart Now" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İndi yenidən başlat"
+          }
+        }
+      }
+    },
+    "Restart XCleaner to use the new language." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni dil XCleaner yenidən başladıqdan sonra tətbiq olunacaq."
+          }
+        }
+      }
+    },
+    "Return an app to its first-launch state without reinstalling it." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramı yenidən quraşdırmadan ilk açılış vəziyyətinə qaytarın."
+          }
+        }
+      }
+    },
+    "Safety" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təhlükəsizlik"
+          }
+        }
+      }
+    },
+    "Scan and review as usual, but nothing is removed." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skan və baxış həmişəki kimi işləyir, amma heç nə silinmir."
+          }
+        }
+      }
+    },
+    "See what starts with your Mac and what slows it down." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac ilə birlikdə nəyin işə düşdüyünü və onu nəyin yavaşlatdığını görün."
+          }
+        }
+      }
+    },
+    "Set Up Access…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İcazəni qur…"
+          }
+        }
+      }
+    },
+    "Show in Finder" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finder-də göstər"
+          }
+        }
+      }
+    },
+    "Show, find and manage hidden files." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizli faylları göstərin, tapın və idarə edin."
+          }
+        }
+      }
+    },
+    "Similar Photos" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oxşar şəkillər"
+          }
+        }
+      }
+    },
+    "Space macOS frees on its own when it needs it, such as local snapshots and optimized iCloud copies." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-un lazım olanda özü boşaltdığı yer: lokal snapshot-lar, optimallaşdırılmış iCloud nüsxələri və s."
+          }
+        }
+      }
+    },
+    "Startup Items" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlanğıc elementləri"
+          }
+        }
+      }
+    },
+    "System Default (%@)" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem dili (%@)"
+          }
+        }
+      }
+    },
+    "System Junk" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem zibili"
+          }
+        }
+      }
+    },
+    "System files and personal data are protected." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem faylları və şəxsi məlumatlar qorunur."
+          }
+        }
+      }
+    },
+    "System-Level Junk" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem səviyyəli zibil"
+          }
+        }
+      }
+    },
+    "Test Mode" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınaq rejimi"
+          }
+        }
+      }
+    },
+    "Test Mode is on. Turn it off when you are ready to remove items." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınaq rejimi aktivdir. Elementləri silməyə hazır olanda onu söndürün."
+          }
+        }
+      }
+    },
+    "The Trash on your Mac and on connected drives." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac-ınızdakı və qoşulmuş disklərdəki Zibil qutuları."
+          }
+        }
+      }
+    },
+    "Trash Bins" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zibil qutuları"
+          }
+        }
+      }
+    },
+    "Turn on XCleaner in the list. If it isn't there, click + and choose XCleaner." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siyahıda XCleaner-i aktiv edin. Siyahıda yoxdursa, + düyməsini basıb XCleaner-i seçin."
+          }
+        }
+      }
+    },
+    "Uninstall apps completely, find what deleted apps left behind and keep apps up to date." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramları tam silin, silinmiş proqramlardan qalanları tapın və proqramları ən son versiyada saxlayın."
+          }
+        }
+      }
+    },
+    "Uninstaller" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram silici"
+          }
+        }
+      }
+    },
+    "Updater" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniləmələr"
+          }
+        }
+      }
+    },
+    "Updates from developers, the App Store and Homebrew in one list." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developerlərdən, App Store-dan və Homebrew-dan gələn yeniləmələr bir siyahıda."
+          }
+        }
+      }
+    },
+    "Used" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstifadə olunub"
+          }
+        }
+      }
+    },
+    "User caches, logs and developer junk such as Xcode build data." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstifadəçi keşləri, loglar və Xcode build məlumatları kimi developer zibili."
+          }
+        }
+      }
+    },
+    "Utilities" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alətlər"
+          }
+        }
+      }
+    },
+    "Which apps can use your camera, microphone, screen and files." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera, mikrofon, ekran və fayllarınıza çıxışı olan proqramlar."
+          }
+        }
+      }
+    },
+    "Without it, XCleaner can't see some caches, logs and app leftovers." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu icazə olmadan XCleaner bəzi keşləri, logları və proqram qalıqlarını görə bilmir."
+          }
+        }
+      }
+    },
+    "XCleaner" : {
+      "shouldTranslate" : false
+    },
+    "XCleaner can check every location it cleans." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner təmizlədiyi bütün yerləri yoxlaya bilir."
+          }
+        }
+      }
+    },
+    "XCleaner can now check every location it cleans." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner artıq təmizlədiyi bütün yerləri yoxlaya bilir."
+          }
+        }
+      }
+    },
+    "XCleaner needs Full Disk Access to look inside protected folders, where caches, logs and app leftovers are kept." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner keşlərin, logların və proqram qalıqlarının saxlandığı qorunan qovluqlara baxmaq üçün Tam Disk Girişinə (Full Disk Access) ehtiyac duyur."
+          }
+        }
+      }
+    },
+    "Your Mac at a glance." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac-ınız bir baxışda."
+          }
+        }
+      }
+    },
+    "Your files never leave this Mac. XCleaner collects no data." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fayllarınız bu Mac-dan heç vaxt çıxmır. XCleaner heç bir məlumat toplamır."
+          }
+        }
+      }
+    },
+    "Your personal files always go to the Trash first." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şəxsi fayllarınız həmişə əvvəlcə Zibil qutusuna gedir."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
