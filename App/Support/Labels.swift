@@ -23,6 +23,27 @@ extension CleanupCategory {
         case .screenshots: "Old screenshot"
         case .oldDownloads: "Not opened in months"
         case .largeFiles: "Large file"
+        case .application: "Application"
+        case .appData: "App data"
+        }
+    }
+}
+
+extension LibraryLocation {
+    var label: LocalizedStringResource {
+        switch self {
+        case .applicationSupport: "Application Support"
+        case .caches: "Cache"
+        case .preferences: "Preferences"
+        case .containers: "Container"
+        case .groupContainers: "Shared container"
+        case .applicationScripts: "Scripts"
+        case .savedState: "Saved window state"
+        case .logs: "Logs"
+        case .webKit: "Web data"
+        case .httpStorages: "Network data"
+        case .cookies: "Cookies"
+        case .launchAgents: "Launch agent"
         }
     }
 }
@@ -46,6 +67,7 @@ extension ItemNote {
         switch self {
         case .appIsRunning(let app): "Quit \(app) first"
         case .alreadyExtracted(let folder): "Already unpacked into “\(folder)”"
+        case .sameDeveloperInstalled(let app): "“\(app)” from the same developer is still installed"
         }
     }
 }
@@ -117,6 +139,14 @@ enum FileIcons {
         } else {
             image = workspace.icon(forFile: key as String)
         }
+        cache.setObject(image, forKey: key)
+        return image
+    }
+
+    static func icon(forFile url: URL) -> NSImage {
+        let key = url.path(percentEncoded: false) as NSString
+        if let cached = cache.object(forKey: key) { return cached }
+        let image = NSWorkspace.shared.icon(forFile: key as String)
         cache.setObject(image, forKey: key)
         return image
     }

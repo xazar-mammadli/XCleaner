@@ -4,7 +4,7 @@ import Foundation
 /// one file per day. It backs the cleanup history, so the user can always see exactly what happened.
 public actor AuditLog {
     public struct Entry: Codable, Sendable, Equatable {
-        public enum Action: String, Codable, Sendable {
+        public enum Action: String, Codable, Sendable, CaseIterable {
             case movedToTrash, deleted, dryRun, blocked, failed
         }
 
@@ -69,11 +69,23 @@ public actor AuditLog {
 
     /// Every recorded action, newest first.
     public func allEntries() -> [Entry] {
+        historyFiles().flatMap { entries(in: $0).reversed() }
+    }
+
+    /// Deletes the whole history when the user asks for it. Only the daily files this log wrote go; cleanups never
+    /// reach them at all, since `SafetyPolicy` keeps XCleaner's own logs out of bounds for `Cleaner`.
+    public func clear() throws {
+        for file in historyFiles() {
+            try FileManager.default.removeItem(at: file)
+        }
+    }
+
+    /// The daily files, newest first.
+    private func historyFiles() -> [URL] {
         let files = (try? FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)) ?? []
         return files
             .filter { $0.lastPathComponent.hasPrefix("cleanup-") && $0.pathExtension == "jsonl" }
             .sorted { $0.lastPathComponent > $1.lastPathComponent }
-            .flatMap { entries(in: $0).reversed() }
     }
 
     private func entries(in file: URL) -> [Entry] {

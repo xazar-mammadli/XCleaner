@@ -68,8 +68,8 @@ struct LargeFilesView: View {
                             }
                             .padding(.top, 40)
                         } else {
-                            RowsCard(count: rows.count) { index in
-                                LargeFileRow(item: rows[index], isSelected: files.binding(for: rows[index]))
+                            RowsCard(rows) { item in
+                                LargeFileRow(item: item, isSelected: files.binding(for: item))
                             }
                         }
                     }
@@ -83,7 +83,6 @@ struct LargeFilesView: View {
                 footer(files, rows: rows)
             }
         }
-        .navigationTitle(Text(SidebarItem.files.title))
         .confirmationDialog(
             Text("Move \(files.selectedBytes.formattedBytes) to the Trash?"),
             isPresented: $isConfirming,

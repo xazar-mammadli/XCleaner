@@ -17,6 +17,46 @@
         }
       }
     },
+    "%@ goes to the Trash, where you can put it back." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Zibil qutusuna gedir, oradan geri qaytara bilərsiniz."
+          }
+        }
+      }
+    },
+    "%@ is running. Quit it before uninstalling or resetting." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ işləyir. Silməzdən və ya sıfırlamazdan əvvəl onu bağlayın."
+          }
+        }
+      }
+    },
+    "%@ was reset" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sıfırlandı"
+          }
+        }
+      }
+    },
+    "%@ was uninstalled" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ silindi"
+          }
+        }
+      }
+    },
     "%lld of ^[%lld item](inflect: true)" : {
       "localizations" : {
         "az" : {
@@ -79,6 +119,16 @@
         }
       }
     },
+    "All Actions" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bütün əməliyyatlar"
+          }
+        }
+      }
+    },
     "All Kinds" : {
       "localizations" : {
         "az" : {
@@ -129,12 +179,52 @@
         }
       }
     },
+    "Any Time" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstənilən vaxt"
+          }
+        }
+      }
+    },
     "App Permissions" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proqram icazələri"
+          }
+        }
+      }
+    },
+    "App data" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram məlumatı"
+          }
+        }
+      }
+    },
+    "Application" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram"
+          }
+        }
+      }
+    },
+    "Application Support" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Application Support"
           }
         }
       }
@@ -155,6 +245,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ən çox yaddaş və prosessor vaxtı işlədən proqramlar."
+          }
+        }
+      }
+    },
+    "Apps you removed didn't leave anything behind." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sildiyiniz proqramlar heç nə qoyub getməyib."
           }
         }
       }
@@ -279,6 +379,26 @@
         }
       }
     },
+    "Choose Folder…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qovluq seç…"
+          }
+        }
+      }
+    },
+    "Choose an app" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram seçin"
+          }
+        }
+      }
+    },
     "Clean" : {
       "localizations" : {
         "az" : {
@@ -349,6 +469,26 @@
         }
       }
     },
+    "Clear History" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarixçəni təmizlə"
+          }
+        }
+      }
+    },
+    "Clear History…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarixçəni təmizlə…"
+          }
+        }
+      }
+    },
     "Clear browsing traces and check which apps can reach your data." : {
       "localizations" : {
         "az" : {
@@ -359,12 +499,32 @@
         }
       }
     },
+    "Clear the cleanup history?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təmizləmə tarixçəsi silinsin?"
+          }
+        }
+      }
+    },
     "Click Open System Settings." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "“System Settings-i aç” düyməsini basın."
+          }
+        }
+      }
+    },
+    "Click to look inside" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçinə baxmaq üçün klikləyin"
           }
         }
       }
@@ -399,6 +559,26 @@
         }
       }
     },
+    "Container" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konteyner"
+          }
+        }
+      }
+    },
+    "Cookies" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cookie-lər"
+          }
+        }
+      }
+    },
     "Copies of attachments saved by the Mail app." : {
       "localizations" : {
         "az" : {
@@ -415,6 +595,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tam Disk Girişini yoxlamaq alınmadı"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarix"
           }
         }
       }
@@ -515,6 +705,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dublikatlar"
+          }
+        }
+      }
+    },
+    "Each entry is named after an app that is no longer installed. Look before you remove: some are shared by several apps." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hər qeyd artıq quraşdırılmamış bir proqramın adını daşıyır. Silməzdən əvvəl baxın: bəziləri bir neçə proqram tərəfindən paylaşılır."
           }
         }
       }
@@ -639,6 +839,16 @@
         }
       }
     },
+    "Files and folders too small to show one by one" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayrıca göstərmək üçün çox kiçik olan fayl və qovluqlar"
+          }
+        }
+      }
+    },
     "Files left behind by apps that were already deleted." : {
       "localizations" : {
         "az" : {
@@ -695,6 +905,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tapıldı: %@"
+          }
+        }
+      }
+    },
+    "Found %@ from ^[%lld app](inflect: true)" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld proqramdan %1$@ tapıldı"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Found %1$@ from ^[%2$lld app](inflect: true)"
           }
         }
       }
@@ -889,6 +1115,16 @@
         }
       }
     },
+    "Its settings and data will be removed, so it starts fresh the next time you open it. The app itself stays." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onun ayarları və məlumatları silinəcək, növbəti dəfə açanda sıfırdan başlayacaq. Proqramın özü qalır."
+          }
+        }
+      }
+    },
     "Kind" : {
       "localizations" : {
         "az" : {
@@ -939,6 +1175,16 @@
         }
       }
     },
+    "Launch agent" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch agent"
+          }
+        }
+      }
+    },
     "Login items, launch agents and background services." : {
       "localizations" : {
         "az" : {
@@ -969,6 +1215,26 @@
         }
       }
     },
+    "Looking for leftovers…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qalıqlar axtarılır…"
+          }
+        }
+      }
+    },
+    "Looking for the app's files…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramın faylları axtarılır…"
+          }
+        }
+      }
+    },
     "Mail Attachments" : {
       "localizations" : {
         "az" : {
@@ -985,6 +1251,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Texniki xidmət"
+          }
+        }
+      }
+    },
+    "Measuring app sizes…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramların ölçüsü hesablanır…"
           }
         }
       }
@@ -1035,6 +1311,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zibil qutusuna köçür (tövsiyə olunur)"
+          }
+        }
+      }
+    },
+    "Move to Trash…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zibil qutusuna köçür…"
+          }
+        }
+      }
+    },
+    "Move “%@” to the Trash?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” Zibil qutusuna köçürülsün?"
           }
         }
       }
@@ -1099,6 +1395,26 @@
         }
       }
     },
+    "Network data" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şəbəkə məlumatı"
+          }
+        }
+      }
+    },
+    "Newest first" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Əvvəlcə yenilər"
+          }
+        }
+      }
+    },
     "No big files found" : {
       "localizations" : {
         "az" : {
@@ -1129,6 +1445,26 @@
         }
       }
     },
+    "No leftovers found" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qalıq tapılmadı"
+          }
+        }
+      }
+    },
+    "No matching actions" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyğun əməliyyat yoxdur"
+          }
+        }
+      }
+    },
     "Not Now" : {
       "localizations" : {
         "az" : {
@@ -1155,6 +1491,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heç nə tapılmadı"
+          }
+        }
+      }
+    },
+    "Nothing in the history matches these filters." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarixçədə bu filtrlərə uyğun heç nə yoxdur."
           }
         }
       }
@@ -1269,6 +1615,26 @@
         }
       }
     },
+    "Past 30 Days" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son 30 gün"
+          }
+        }
+      }
+    },
+    "Past 7 Days" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son 7 gün"
+          }
+        }
+      }
+    },
     "Performance" : {
       "localizations" : {
         "az" : {
@@ -1305,6 +1671,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parametr panelləri, plaginlər və brauzer genişlənmələri."
+          }
+        }
+      }
+    },
+    "Preferences" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         }
       }
@@ -1359,6 +1735,16 @@
         }
       }
     },
+    "Quit %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ proqramını bağla"
+          }
+        }
+      }
+    },
     "Quit %@ first" : {
       "localizations" : {
         "az" : {
@@ -1385,6 +1771,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Qalıq fayllar"
+          }
+        }
+      }
+    },
+    "Remove" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sil"
+          }
+        }
+      }
+    },
+    "Remove %@?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ silinsin?"
           }
         }
       }
@@ -1439,12 +1845,42 @@
         }
       }
     },
+    "Reset" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıfırla"
+          }
+        }
+      }
+    },
+    "Reset %@?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sıfırlansın?"
+          }
+        }
+      }
+    },
     "Reset Apps" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proqramları sıfırlama"
+          }
+        }
+      }
+    },
+    "Reset keeps the app and removes only its data." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıfırlama proqramı saxlayır, yalnız onun məlumatlarını silir."
           }
         }
       }
@@ -1529,6 +1965,16 @@
         }
       }
     },
+    "Saved window state" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yadda saxlanmış pəncərə vəziyyəti"
+          }
+        }
+      }
+    },
     "Scan" : {
       "localizations" : {
         "az" : {
@@ -1545,6 +1991,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yenidən skan et"
+          }
+        }
+      }
+    },
+    "Scan Home Folder" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ev qovluğunu skan et"
           }
         }
       }
@@ -1579,6 +2035,46 @@
         }
       }
     },
+    "Scripts" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skriptlər"
+          }
+        }
+      }
+    },
+    "Search apps" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram axtar"
+          }
+        }
+      }
+    },
+    "Search history" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarixçədə axtar"
+          }
+        }
+      }
+    },
+    "See everything it keeps on your Mac, then uninstall it completely or reset it to a fresh start." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onun Mac-ınızda saxladığı hər şeyi görün, sonra tam silin və ya sıfırlayın."
+          }
+        }
+      }
+    },
     "See what starts with your Mac and what slows it down." : {
       "localizations" : {
         "az" : {
@@ -1605,6 +2101,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İcazəni qur…"
+          }
+        }
+      }
+    },
+    "Shared container" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paylaşılan konteyner"
+          }
+        }
+      }
+    },
+    "Show" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Göstər"
+          }
+        }
+      }
+    },
+    "Show Everything" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hamısını göstər"
           }
         }
       }
@@ -1665,6 +2191,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ötürüldü: %lld element"
+          }
+        }
+      }
+    },
+    "Smaller items" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiçik elementlər"
           }
         }
       }
@@ -1819,6 +2355,26 @@
         }
       }
     },
+    "Test run for %@ finished" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ üçün sınaq bitdi"
+          }
+        }
+      }
+    },
+    "Test run: %@ would have been removed." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınaq: %@ silinəcəkdi."
+          }
+        }
+      }
+    },
     "Test run: %@ would have gone to the Trash." : {
       "localizations" : {
         "az" : {
@@ -1839,6 +2395,46 @@
         }
       }
     },
+    "The app and the selected files will be removed. The app goes to the Trash, where you can put it back." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram və seçilmiş fayllar silinəcək. Proqram Zibil qutusuna gedir, oradan geri qaytara bilərsiniz."
+          }
+        }
+      }
+    },
+    "The record of every cleanup is deleted for good. The files on your Mac stay as they are." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bütün təmizləmələrin qeydi birdəfəlik silinir. Mac-dakı fayllarınız olduğu kimi qalır."
+          }
+        }
+      }
+    },
+    "The selected files go to the Trash, unless Settings say to delete them right away." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçilmiş fayllar Zibil qutusuna gedir (ayarlarda dərhal silmə seçilməyibsə)."
+          }
+        }
+      }
+    },
+    "Today" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu gün"
+          }
+        }
+      }
+    },
     "Trash Bins" : {
       "localizations" : {
         "az" : {
@@ -1849,12 +2445,52 @@
         }
       }
     },
+    "Turn on Full Disk Access to also check app containers." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram konteynerlərini də yoxlamaq üçün Tam Disk Girişini aktiv edin."
+          }
+        }
+      }
+    },
+    "Turn on Full Disk Access to also find the app's containers." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramın konteynerlərini də tapmaq üçün Tam Disk Girişini aktiv edin."
+          }
+        }
+      }
+    },
     "Turn on XCleaner in the list. If it isn't there, click + and choose XCleaner." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Siyahıda XCleaner-i aktiv edin. Siyahıda yoxdursa, + düyməsini basıb XCleaner-i seçin."
+          }
+        }
+      }
+    },
+    "Uninstall" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramı sil"
+          }
+        }
+      }
+    },
+    "Uninstall %@?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ proqramı silinsin?"
           }
         }
       }
@@ -1949,6 +2585,16 @@
         }
       }
     },
+    "Web data" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veb məlumatı"
+          }
+        }
+      }
+    },
     "Which apps can use your camera, microphone, screen and files." : {
       "localizations" : {
         "az" : {
@@ -2008,6 +2654,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XCleaner ev qovluğunuzda böyük faylları axtarır; sistem fayllarını, proqramları və foto kitabxananızı ötürür. Seçdiyiniz fayllar Zibil qutusuna gedir."
+          }
+        }
+      }
+    },
+    "XCleaner measures every folder once, then shows what takes up the most space. Click a folder to look inside it." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner hər qovluğu bir dəfə ölçür və ən çox yer tutanları göstərir. İçinə baxmaq üçün qovluğa klikləyin."
           }
         }
       }
@@ -2072,6 +2728,32 @@
         }
       }
     },
+    "^[%lld action](inflect: true), %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld əməliyyat, %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "^[%1$lld action](inflect: true), %2$@"
+          }
+        }
+      }
+    },
+    "^[%lld app](inflect: true)" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld proqram"
+          }
+        }
+      }
+    },
     "^[%lld file](inflect: true), %@" : {
       "localizations" : {
         "az" : {
@@ -2084,6 +2766,16 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "^[%1$lld file](inflect: true), %2$@"
+          }
+        }
+      }
+    },
+    "“%@” from the same developer is still installed" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eyni developerin “%@” proqramı hələ quraşdırılıb"
           }
         }
       }

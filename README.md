@@ -27,7 +27,7 @@ XCleaner finds the clutter that builds up on a Mac and helps you remove it witho
 It aims to cover what popular commercial cleaners do, but more calmly and openly. There are no scare tactics and no inflated numbers, and nothing is ever removed behind your back.
 
 > [!NOTE]
-> XCleaner is in early development. Cleanup of system junk, installers, downloads and the Trash works today, along with a finder for big files and a full cleanup history. More tools arrive phase by phase, as listed in the [roadmap](#roadmap).
+> XCleaner is in early development. Cleanup of system junk, installers, downloads and the Trash works today. So do a complete app uninstaller, a finder for files left behind by deleted apps, a disk map, a finder for big files and a full cleanup history. More tools arrive phase by phase, as listed in the [roadmap](#roadmap).
 
 ## Safety first
 
@@ -51,12 +51,12 @@ Every removal passes through a single gate that checks the item again right befo
 | Overview | Disk usage, Full Disk Access status, one-click scan | Available |
 | Cleanup | System junk, installers and downloads, Trash bins | Available |
 | | Mail attachments, system-level junk | Phase 3 |
-| Applications | Uninstaller, remaining files of deleted apps, app reset | Phase 2 |
+| Applications | Uninstaller, remaining files of deleted apps, app reset | Available |
 | | Extensions | Phase 3 |
 | | Updater for apps from developers, the App Store and Homebrew | Phase 4 |
 | Performance | Startup items, heavy apps, maintenance tasks | Phase 3 |
 | Files | Biggest and old files | Available |
-| | Disk map | Phase 2 |
+| | Disk map | Available |
 | | Duplicates, similar photos | Phase 4 |
 | Privacy | Browser data | Phase 3 |
 | | App permissions, background item check | Phase 4 |
@@ -120,7 +120,9 @@ XCleaner/
 │   └── Support/                Preferences and helpers
 ├── Packages/CleanerCore/       Cleaning engine (no UI)
 │   ├── Sources/CleanerCore/
+│   │   ├── Apps/               App inventory, leftovers, remaining files
 │   │   ├── Cleaning/           Cleaner, Trash handling, audit log
+│   │   ├── DiskMap/            Folder tree and treemap layout
 │   │   ├── Model/              Cleanable items and safety levels
 │   │   ├── Safety/             SafetyGuard and SafetyPolicy
 │   │   ├── Scanning/           Scanners for junk, downloads, the Trash and big files
@@ -138,7 +140,7 @@ The interface is available in English and Azerbaijani. XCleaner follows the macO
 
 - [x] **Phase 0: Foundation.** Safety engine, app shell, Full Disk Access guide, settings, English and Azerbaijani.
 - [x] **Phase 1: Cleanup basics.** Quick and deep cleanup, biggest and old files, cleanup history, exclusions.
-- [ ] **Phase 2: Applications and disk map.** Uninstaller, remaining files, app reset, disk map.
+- [x] **Phase 2: Applications and disk map.** Uninstaller, remaining files, app reset, disk map.
 - [ ] **Phase 3: System tools.** A secure privileged helper, system-level junk, maintenance, startup items, heavy apps, extensions, browser data and a menu bar monitor.
 - [ ] **Phase 4: Advanced tools.** Duplicates, similar photos, updater, app permissions, background item check and hidden files.
 - [ ] **Phase 5: Release.** Developer ID signing, notarization, automatic updates and a DMG installer.

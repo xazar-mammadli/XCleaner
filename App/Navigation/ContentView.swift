@@ -30,8 +30,10 @@ struct ContentView: View {
                 OverviewView()
             case .cleanup:
                 CleanupView()
+            case .applications:
+                ApplicationsView()
             case .files:
-                LargeFilesView()
+                FilesView()
             case .utilities:
                 HistoryView()
             case let item:

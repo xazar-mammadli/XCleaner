@@ -54,6 +54,8 @@ private struct ItemDetail: View {
         if let note = item.note {
             Text(note.label)
                 .foregroundStyle(.orange)
+        } else if let location = item.location {
+            Text(location.label)
         } else if let date = item.date {
             Text(item.category.label) + Text(verbatim: " · ") + Text(date, format: .relative(presentation: .named))
         } else {
@@ -82,7 +84,7 @@ struct ComingLaterSection: View {
     let item: SidebarItem
 
     var body: some View {
-        let tools = item.plannedTools.filter { $0.phase > 1 }
+        let tools = item.plannedTools.filter { $0.phase > SidebarItem.currentPhase }
         if !tools.isEmpty {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Coming later")

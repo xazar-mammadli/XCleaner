@@ -6,6 +6,9 @@ enum SidebarItem: String, CaseIterable, Identifiable {
 
     var id: Self { self }
 
+    /// The development phase XCleaner has reached. Tools from later phases are listed as coming later.
+    static let currentPhase = 2
+
     var title: LocalizedStringResource {
         switch self {
         case .overview: "Overview"

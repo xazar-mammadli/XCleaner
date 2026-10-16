@@ -77,6 +77,17 @@ struct AuditLogTests {
         await log.record(.init(action: .dryRun, path: "/c", bytes: 3))
         #expect(await log.allEntries().map(\.path) == ["/c", "/b", "/a"])
     }
+
+    @Test func clearingRemovesOnlyItsOwnFiles() async throws {
+        let sandbox = try Sandbox()
+        let log = AuditLog(directory: sandbox.url("Logs"))
+        await log.record(.init(date: .now.addingTimeInterval(-86_400), action: .deleted, path: "/a", bytes: 1))
+        await log.record(.init(action: .movedToTrash, path: "/b", bytes: 2))
+        let other = try sandbox.file("Logs/notes.txt")
+        try await log.clear()
+        #expect(await log.allEntries().isEmpty)
+        #expect(FileManager.default.fileExists(atPath: other.path(percentEncoded: false)))
+    }
 }
 
 @Suite("VolumeUsage")

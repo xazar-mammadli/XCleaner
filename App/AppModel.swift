@@ -12,6 +12,11 @@ final class AppModel {
 
     let cleanup = CleanupModel()
     let largeFiles = LargeFilesModel()
+    let uninstaller = UninstallerModel()
+    let remainingFiles = RemainingFilesModel()
+    let diskMap = DiskMapModel()
+    var applicationsTool = ApplicationsTool.uninstaller
+    var filesTool = FilesTool.largeFiles
     let exclusions = ExclusionStore()
     let auditLog = AuditLog(directory: AuditLog.standardDirectory)
 

@@ -28,6 +28,39 @@ public enum DeletionMethod: String, Sendable, Codable, CaseIterable {
 /// What a found item is, which decides how it is grouped and explained.
 public enum CleanupCategory: String, Sendable, Codable, CaseIterable {
     case userCaches, logs, developerJunk, trash, installers, archives, screenshots, oldDownloads, largeFiles
+    /// An app bundle itself.
+    case application
+    /// Files an app keeps in the home Library: preferences, support files, caches, containers…
+    case appData
+}
+
+/// Where in `~/Library` an app keeps a piece of its data.
+public enum LibraryLocation: String, Sendable, Codable, CaseIterable {
+    case applicationSupport, caches, preferences, containers, groupContainers, applicationScripts
+    case savedState, logs, webKit, httpStorages, cookies, launchAgents
+
+    /// The folder, relative to `~/Library`.
+    public var folder: String {
+        switch self {
+        case .applicationSupport: "Application Support"
+        case .caches: "Caches"
+        case .preferences: "Preferences"
+        case .containers: "Containers"
+        case .groupContainers: "Group Containers"
+        case .applicationScripts: "Application Scripts"
+        case .savedState: "Saved Application State"
+        case .logs: "Logs"
+        case .webKit: "WebKit"
+        case .httpStorages: "HTTPStorages"
+        case .cookies: "Cookies"
+        case .launchAgents: "LaunchAgents"
+        }
+    }
+
+    /// Other apps' containers are guarded by a macOS permission prompt; they are only looked at with Full Disk Access.
+    public var needsFullDiskAccess: Bool {
+        self == .containers || self == .groupContainers || self == .applicationScripts
+    }
 }
 
 /// The broad kind of a user file, used to filter large files.
@@ -41,6 +74,8 @@ public enum ItemNote: Sendable, Hashable {
     case appIsRunning(String)
     /// An archive whose contents already sit unpacked in the named folder next to it.
     case alreadyExtracted(String)
+    /// Another app from the same developer is still installed and may share this data.
+    case sameDeveloperInstalled(String)
 }
 
 /// Something a scan found that the user may choose to remove.
@@ -59,6 +94,8 @@ public struct CleanableItem: Identifiable, Hashable, Sendable {
     public let date: Date?
     public let kind: FileKind?
     public let note: ItemNote?
+    /// For app data: which Library folder it sits in.
+    public let location: LibraryLocation?
 
     public init(
         url: URL,
@@ -70,7 +107,8 @@ public struct CleanableItem: Identifiable, Hashable, Sendable {
         root: URL,
         date: Date? = nil,
         kind: FileKind? = nil,
-        note: ItemNote? = nil
+        note: ItemNote? = nil,
+        location: LibraryLocation? = nil
     ) {
         self.url = url
         self.name = name ?? url.lastPathComponent
@@ -82,6 +120,7 @@ public struct CleanableItem: Identifiable, Hashable, Sendable {
         self.date = date
         self.kind = kind
         self.note = note
+        self.location = location
     }
 
     /// Only items that are safe to remove and not in use start out selected.
