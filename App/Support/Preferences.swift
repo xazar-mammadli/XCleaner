@@ -6,6 +6,7 @@ enum PreferenceKey {
     static let testMode = "testMode"
     static let hasSeenAccessGuide = "hasSeenAccessGuide"
     static let excludedPaths = "excludedPaths"
+    static let showsMenuBarMonitor = "showsMenuBarMonitor"
 }
 
 enum Preferences {

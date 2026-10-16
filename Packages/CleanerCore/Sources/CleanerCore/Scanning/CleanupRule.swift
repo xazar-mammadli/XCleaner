@@ -3,7 +3,7 @@ import Foundation
 /// One place where junk collects: a folder whose children are offered for removal.
 public struct CleanupRule: Sendable {
     public var category: CleanupCategory
-    /// The folder, relative to the home folder.
+    /// The folder, relative to the home folder, or an absolute path for the system folders.
     public var folder: String
     public var safety: SafetyLevel
     /// When set, only children with these exact names are offered.
@@ -20,6 +20,10 @@ public struct CleanupRule: Sendable {
     public var childrenAreBundleIDs: Bool
     /// Overrides `safety` for Apple's own children (`com.apple.…`), which are left for the user to review.
     public var appleSafety: SafetyLevel?
+    /// Leaves out Apple's own children (`com.apple.…`) altogether.
+    public var skipsApple: Bool
+    /// Offers only logs that were rotated out and archived (`system.log.0.gz`, `wifi.log.3.bz2`, `keybagd.log.0`).
+    public var onlyArchives: Bool
 
     public init(
         category: CleanupCategory,
@@ -31,7 +35,9 @@ public struct CleanupRule: Sendable {
         owner: String? = nil,
         displayName: String? = nil,
         childrenAreBundleIDs: Bool = false,
-        appleSafety: SafetyLevel? = nil
+        appleSafety: SafetyLevel? = nil,
+        skipsApple: Bool = false,
+        onlyArchives: Bool = false
     ) {
         self.category = category
         self.folder = folder
@@ -43,11 +49,25 @@ public struct CleanupRule: Sendable {
         self.displayName = displayName
         self.childrenAreBundleIDs = childrenAreBundleIDs
         self.appleSafety = appleSafety
+        self.skipsApple = skipsApple
+        self.onlyArchives = onlyArchives
+    }
+
+    /// The folder itself, for the given home folder.
+    public func location(in home: URL) -> URL {
+        folder.hasPrefix("/") ? URL(filePath: folder, directoryHint: .isDirectory) : home.appending(path: folder)
     }
 
     func offers(_ name: String) -> Bool {
         if let only { return only.contains(name) }
-        return !name.hasPrefix(".") && !skip.contains(name.lowercased())
+        guard !name.hasPrefix("."), !skip.contains(name.lowercased()) else { return false }
+        if skipsApple, name.lowercased().hasPrefix("com.apple.") { return false }
+        if onlyArchives {
+            let lowercased = name.lowercased()
+            return ["gz", "bz2", "xz", "zip"].contains((lowercased as NSString).pathExtension)
+                || lowercased.range(of: #"\.\d+$"#, options: .regularExpression) != nil
+        }
+        return true
     }
 
     public static let standard: [CleanupRule] = [
@@ -83,5 +103,21 @@ public struct CleanupRule: Sendable {
         ),
         CleanupRule(category: .developerJunk, folder: ".npm", safety: .safe, only: ["_cacache"], displayName: "npm"),
         CleanupRule(category: .developerJunk, folder: ".gradle", safety: .review, only: ["caches"], displayName: "Gradle"),
+    ]
+
+    /// Caches and logs in the system folders. Only an administrator may remove them, so they are offered on their own
+    /// and left unselected. Apple's own items stay: macOS looks after them, and protects many of them anyway.
+    public static let system: [CleanupRule] = [
+        CleanupRule(
+            category: .systemCaches, folder: "/Library/Caches", safety: .safe, skip: ["ColorSync", "Desktop Pictures"], skipsApple: true
+        ),
+        CleanupRule(
+            category: .systemLogs, folder: "/Library/Logs", safety: .safe,
+            skip: [
+                "CrashReporter", "DiagnosticReports", "WindowServer", "Xsan", "hidfw-crashlogs", "MCXTools.log", "LKDC-setup.log",
+            ],
+            skipsApple: true
+        ),
+        CleanupRule(category: .systemLogs, folder: "/private/var/log", safety: .safe, onlyArchives: true),
     ]
 }

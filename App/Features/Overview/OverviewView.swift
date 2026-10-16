@@ -69,24 +69,6 @@ private struct DiskUsageCard: View {
     }
 }
 
-private struct LegendItem: View {
-    let color: Color
-    let title: LocalizedStringResource
-    let value: String
-
-    var body: some View {
-        HStack(spacing: 6) {
-            Circle()
-                .fill(color)
-                .frame(width: 8, height: 8)
-            Text(title)
-                .foregroundStyle(.secondary)
-            Text(verbatim: value)
-                .monospacedDigit()
-        }
-        .font(.callout)
-    }
-}
 
 private struct AccessCard: View {
     let status: FullDiskAccessStatus

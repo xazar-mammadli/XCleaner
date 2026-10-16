@@ -28,6 +28,12 @@ struct CleanableItemRow: View {
                     .lineLimit(1)
             }
             Spacer(minLength: 8)
+            if item.needsAdministrator {
+                Image(systemName: "lock.fill")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .help("Removing this asks for your password.")
+            }
             // Safe items carry no tag; the others ask for a closer look.
             if item.safety != .safe {
                 SafetyTag(label: item.safety.label, tint: item.safety.tint)
@@ -84,7 +90,7 @@ struct ComingLaterSection: View {
     let item: SidebarItem
 
     var body: some View {
-        let tools = item.plannedTools.filter { $0.phase > SidebarItem.currentPhase }
+        let tools = item.plannedTools.filter { !SidebarItem.availableTools.contains($0.id) }
         if !tools.isEmpty {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Coming later")

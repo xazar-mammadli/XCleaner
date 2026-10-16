@@ -10,7 +10,7 @@ final class CleanupModel {
 
     struct Group: Identifiable {
         enum Kind: String, CaseIterable, Identifiable {
-            case junk, downloads, trash
+            case junk, system, downloads, trash
             var id: Self { self }
         }
 
@@ -54,11 +54,13 @@ final class CleanupModel {
 
         let context = services.context
         let junkProgress = progressReporter(for: .junk)
+        let systemProgress = progressReporter(for: .system)
         let downloadsProgress = progressReporter(for: .downloads)
         let trashProgress = progressReporter(for: .trash)
         task = Task {
             await withTaskGroup(of: (Group.Kind, ScanResult).self) { scans in
                 scans.addTask { (.junk, await JunkScanner().scan(context, progress: junkProgress)) }
+                scans.addTask { (.system, await JunkScanner(rules: CleanupRule.system).scan(context, progress: systemProgress)) }
                 scans.addTask { (.downloads, await DownloadsScanner().scan(context, progress: downloadsProgress)) }
                 scans.addTask { (.trash, await TrashScanner().scan(context, progress: trashProgress)) }
                 for await (kind, result) in scans {
@@ -99,9 +101,17 @@ final class CleanupModel {
             completed: 0, total: items.count, completedBytes: 0, totalBytes: items.reduce(0) { $0 + $1.size }, currentItem: nil
         )
         phase = .cleaning
-        report = await services.cleaner.clean(items, method: method) { progress in
-            Task { @MainActor [weak self] in self?.updateCleaning(progress) }
+        // Items in the system folders go to a root run in one go, after the password prompt. A test run needs neither.
+        let system = method == .dryRun ? [] : items.filter(\.needsAdministrator)
+        var combined = CleaningReport(requestedMethod: method)
+        if !system.isEmpty {
+            combined.append(await Administrator.remove(system, method: method, log: services.cleaner.auditLog))
         }
+        let others = items.filter { !system.contains($0) }
+        combined.append(await services.cleaner.clean(others, method: method) { progress in
+            Task { @MainActor [weak self] in self?.updateCleaning(progress) }
+        })
+        report = combined
         phase = .finished
     }
 
@@ -150,6 +160,7 @@ extension CleanupModel.Group.Kind {
     var title: LocalizedStringResource {
         switch self {
         case .junk: "System Junk"
+        case .system: "System-Level Junk"
         case .downloads: "Installers & Downloads"
         case .trash: "Trash Bins"
         }
@@ -158,6 +169,7 @@ extension CleanupModel.Group.Kind {
     var summary: LocalizedStringResource {
         switch self {
         case .junk: "Caches, logs and developer files that apps recreate when they need them."
+        case .system: "Caches and old logs that apps leave in the system folders. Removing them asks for your password, so pick them yourself."
         case .downloads: "Installers, unpacked archives, old screenshots and forgotten downloads. These go to the Trash."
         case .trash: "Items already in the Trash. Removing them deletes them for good."
         }
@@ -166,6 +178,7 @@ extension CleanupModel.Group.Kind {
     var systemImage: String {
         switch self {
         case .junk: "sparkles"
+        case .system: "gearshape.2"
         case .downloads: "shippingbox"
         case .trash: "trash"
         }

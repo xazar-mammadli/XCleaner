@@ -10,3 +10,6 @@ xcuserdata/
 
 # Swift Package Manager
 Packages/CleanerCore/.swiftpm/
+
+# Coverage data written by Debug builds run from the command line
+*.profraw

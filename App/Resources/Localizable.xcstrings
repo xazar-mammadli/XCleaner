@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ available" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ boşdur"
+          }
+        }
+      }
+    },
     "%@ available of %@" : {
       "localizations" : {
         "az" : {
@@ -13,6 +23,16 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@ available of %2$@"
+          }
+        }
+      }
+    },
+    "%@ busy" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ yüklü"
           }
         }
       }
@@ -37,6 +57,38 @@
         }
       }
     },
+    "%@ of %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ / %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ of %2$@"
+          }
+        }
+      }
+    },
+    "%@ used of %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstifadədə: %1$@ / %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ used of %2$@"
+          }
+        }
+      }
+    },
     "%@ was reset" : {
       "localizations" : {
         "az" : {
@@ -53,6 +105,52 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ silindi"
+          }
+        }
+      }
+    },
+    "%@, %@ left" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@ qalıb"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@ left"
+          }
+        }
+      }
+    },
+    "%@, charging" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, şarj olunur"
+          }
+        }
+      }
+    },
+    "%@, on power adapter" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, adapterə qoşulub"
+          }
+        }
+      }
+    },
+    "%@/s" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@/san"
           }
         }
       }
@@ -139,6 +237,16 @@
         }
       }
     },
+    "All Processes" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bütün proseslər"
+          }
+        }
+      }
+    },
     "Allow Full Disk Access" : {
       "localizations" : {
         "az" : {
@@ -165,6 +273,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Artıq “%@” qovluğuna açılıb"
+          }
+        }
+      }
+    },
+    "Always running" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Həmişə işləyir"
           }
         }
       }
@@ -239,12 +357,32 @@
         }
       }
     },
-    "Apps that use the most memory and processor time." : {
+    "Apps" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ən çox yaddaş və prosessor vaxtı işlədən proqramlar."
+            "value" : "Proqramlar"
+          }
+        }
+      }
+    },
+    "Apps that use the most memory, CPU and GPU, updated every two seconds." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ən çox yaddaş, CPU və GPU işlədən proqramlar. Hər iki saniyədən bir yenilənir."
+          }
+        }
+      }
+    },
+    "Apps that use the most memory, CPU and GPU." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ən çox yaddaş, CPU və GPU işlədən proqramlar."
           }
         }
       }
@@ -289,6 +427,36 @@
         }
       }
     },
+    "Background tasks that run for the whole Mac, even before anyone logs in. Switching one asks for your password." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bütün Mac üçün, hələ heç kim daxil olmamışdan işləyən fon tapşırıqları. Birini dəyişmək parolunuzu tələb edir."
+          }
+        }
+      }
+    },
+    "Background tasks that run while you're logged in. Switching one off keeps it from starting until you switch it on again." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siz daxil olduğunuz müddətdə işləyən fon tapşırıqları. Birini söndürsəniz, yenidən yandırana qədər işə düşməyəcək."
+          }
+        }
+      }
+    },
+    "Battery" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batareya"
+          }
+        }
+      }
+    },
     "Biggest & Old Files" : {
       "localizations" : {
         "az" : {
@@ -309,6 +477,46 @@
         }
       }
     },
+    "Builds the search index again, for when Spotlight misses files or shows ones that are gone. This takes a while, and your Mac works harder until it's done." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotlight faylları tapmayanda və ya artıq olmayanları göstərəndə axtarış indeksini yenidən qurur. Bu bir qədər çəkir və bitənə qədər Mac daha çox işləyir."
+          }
+        }
+      }
+    },
+    "CPU" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU"
+          }
+        }
+      }
+    },
+    "CPU, GPU, memory, disk, battery and network at a glance." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU, GPU, yaddaş, disk, batareya və şəbəkə bir baxışda."
+          }
+        }
+      }
+    },
+    "CPU, GPU, memory, disk, network and battery at a glance, from the menu bar." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU, GPU, yaddaş, disk, şəbəkə və batareya bir baxışda, menyu zolağından."
+          }
+        }
+      }
+    },
     "Cache" : {
       "localizations" : {
         "az" : {
@@ -319,12 +527,22 @@
         }
       }
     },
-    "Caches and logs in system folders, removed through a secure helper." : {
+    "Caches and old logs in the system folders. Removing them asks for your password." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sistem qovluqlarındakı keş və loglar — təhlükəsiz köməkçi vasitəsilə silinir."
+            "value" : "Sistem qovluqlarındakı keşlər və köhnə loglar. Onları silmək parolunuzu tələb edir."
+          }
+        }
+      }
+    },
+    "Caches and old logs that apps leave in the system folders. Removing them asks for your password, so pick them yourself." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramların sistem qovluqlarında qoyduğu keşlər və köhnə loglar. Silmək parolunuzu tələb etdiyi üçün onları özünüz seçin."
           }
         }
       }
@@ -345,6 +563,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ləğv et"
+          }
+        }
+      }
+    },
+    "Cancelled" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ləğv edildi"
           }
         }
       }
@@ -539,6 +767,16 @@
         }
       }
     },
+    "Comes with %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ilə gəlir"
+          }
+        }
+      }
+    },
     "Coming later" : {
       "localizations" : {
         "az" : {
@@ -559,12 +797,32 @@
         }
       }
     },
+    "Compressed" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıxılmış"
+          }
+        }
+      }
+    },
     "Container" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Konteyner"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Davam et"
           }
         }
       }
@@ -659,6 +917,16 @@
         }
       }
     },
+    "Disk" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disk"
+          }
+        }
+      }
+    },
     "Disk Map" : {
       "localizations" : {
         "az" : {
@@ -729,6 +997,16 @@
         }
       }
     },
+    "Empty file" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boş fayl"
+          }
+        }
+      }
+    },
     "Empty the Trash to get this space back." : {
       "localizations" : {
         "az" : {
@@ -765,6 +1043,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XCleaner-in sildiyi hər şey burada görünəcək."
+          }
+        }
+      }
+    },
+    "Everything that starts on its own when you log in or turn on your Mac." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daxil olanda və ya Mac-ı yandıranda öz-özünə işə düşən hər şey."
           }
         }
       }
@@ -889,12 +1177,62 @@
         }
       }
     },
+    "Fixes for a few common problems. They change system settings, so each asks for your password." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir neçə tez-tez rast gəlinən problemin həlli. Sistem ayarlarını dəyişdikləri üçün hər biri parolunuzu soruşur."
+          }
+        }
+      }
+    },
     "Flags unsigned or suspicious items that start automatically." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avtomatik işə düşən imzasız və ya şübhəli elementləri göstərir."
+          }
+        }
+      }
+    },
+    "Flush the DNS Cache" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS keşini təmizlə"
+          }
+        }
+      }
+    },
+    "Force Quit" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Məcburi bağla"
+          }
+        }
+      }
+    },
+    "Force Quit…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Məcburi bağla…"
+          }
+        }
+      }
+    },
+    "Force quit “%@”?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” məcburi bağlansın?"
           }
         }
       }
@@ -935,6 +1273,16 @@
         }
       }
     },
+    "Frees the space taken by local Time Machine snapshots, which macOS keeps between backups. Backups on your backup disk stay as they are." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-un yedəkləmələr arasında saxladığı lokal Time Machine snapshot-larının tutduğu yeri boşaldır. Yedəkləmə diskindəki yedəklər olduğu kimi qalır."
+          }
+        }
+      }
+    },
     "Full Disk Access is off" : {
       "localizations" : {
         "az" : {
@@ -951,6 +1299,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tam Disk Girişi aktivdir"
+          }
+        }
+      }
+    },
+    "GPU" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GPU"
           }
         }
       }
@@ -981,6 +1339,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ağır proqramlar"
+          }
+        }
+      }
+    },
+    "Helpers that apps open at login once you allow it in the app. Switch them off in Login Items Settings." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramın özündə icazə verdikdən sonra girişdə açılan köməkçilər. Onları Login Items ayarlarında söndürün."
           }
         }
       }
@@ -1021,6 +1389,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XCleaner sizi necə qoruyur"
+          }
+        }
+      }
+    },
+    "How hard macOS has to work to find free memory. High pressure for a long time means the Mac needs more memory than it has." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-un boş yaddaş tapmaq üçün nə qədər çalışdığı. Uzun müddət yüksək təzyiq Mac-a olduğundan çox yaddaş lazım olduğunu göstərir."
           }
         }
       }
@@ -1105,6 +1483,16 @@
         }
       }
     },
+    "It didn't work: %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alınmadı: %@"
+          }
+        }
+      }
+    },
     "Items already in the Trash. Removing them deletes them for good." : {
       "localizations" : {
         "az" : {
@@ -1175,12 +1563,72 @@
         }
       }
     },
+    "Launch Agents" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fon agentləri"
+          }
+        }
+      }
+    },
+    "Launch Daemons" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem xidmətləri"
+          }
+        }
+      }
+    },
     "Launch agent" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Launch agent"
+          }
+        }
+      }
+    },
+    "Local snapshots let you restore files between backups. Removing them frees space, but you can no longer go back to those moments." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokal snapshot-lar yedəkləmələr arasındakı faylları bərpa etməyə imkan verir. Silmək yer açır, amma o anlara artıq qayıda bilməzsiniz."
+          }
+        }
+      }
+    },
+    "Local snapshots right now: %lld" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırda lokal snapshot-lar: %lld"
+          }
+        }
+      }
+    },
+    "Login Items" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Girişdə açılanlar"
+          }
+        }
+      }
+    },
+    "Login Items Settings…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login Items ayarları…"
           }
         }
       }
@@ -1255,12 +1703,62 @@
         }
       }
     },
+    "Makes your Mac forget the addresses of websites it looked up. Helps when sites don't open after a network or DNS change." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac-ın axtardığı saytların ünvanlarını unutdurur. Şəbəkə və ya DNS dəyişikliyindən sonra saytlar açılmayanda kömək edir."
+          }
+        }
+      }
+    },
     "Measuring app sizes…" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proqramların ölçüsü hesablanır…"
+          }
+        }
+      }
+    },
+    "Memory" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaddaş"
+          }
+        }
+      }
+    },
+    "Memory apps hold on to themselves." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramların özləri üçün tutduğu yaddaş."
+          }
+        }
+      }
+    },
+    "Memory macOS keeps for itself and can't move out." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-un özü üçün saxladığı və boşalda bilmədiyi yaddaş."
+          }
+        }
+      }
+    },
+    "Memory squeezed in place to make room." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yer açmaq üçün sıxılmış yaddaş."
           }
         }
       }
@@ -1395,6 +1893,16 @@
         }
       }
     },
+    "Network" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şəbəkə"
+          }
+        }
+      }
+    },
     "Network data" : {
       "localizations" : {
         "az" : {
@@ -1461,6 +1969,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uyğun əməliyyat yoxdur"
+          }
+        }
+      }
+    },
+    "None" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yoxdur"
           }
         }
       }
@@ -1545,6 +2063,16 @@
         }
       }
     },
+    "Off" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sönülü"
+          }
+        }
+      }
+    },
     "Old .dmg and .pkg installers, unneeded archives and old screenshots." : {
       "localizations" : {
         "az" : {
@@ -1575,6 +2103,16 @@
         }
       }
     },
+    "On" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açıq"
+          }
+        }
+      }
+    },
     "Open System Settings" : {
       "localizations" : {
         "az" : {
@@ -1595,6 +2133,16 @@
         }
       }
     },
+    "Open XCleaner" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner-i aç"
+          }
+        }
+      }
+    },
     "Other" : {
       "localizations" : {
         "az" : {
@@ -1611,6 +2159,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ümumi baxış"
+          }
+        }
+      }
+    },
+    "Part of macOS" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-un hissəsi"
           }
         }
       }
@@ -1685,6 +2243,36 @@
         }
       }
     },
+    "Pressure: critical" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təzyiq: kritik"
+          }
+        }
+      }
+    },
+    "Pressure: high" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təzyiq: yüksək"
+          }
+        }
+      }
+    },
+    "Pressure: normal" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təzyiq: normal"
+          }
+        }
+      }
+    },
     "Privacy" : {
       "localizations" : {
         "az" : {
@@ -1695,12 +2283,12 @@
         }
       }
     },
-    "Processor, memory, disk, battery and network at a glance." : {
+    "Program missing" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prosessor, yaddaş, disk, batareya və şəbəkə bir baxışda."
+            "value" : "Proqram yoxdur"
           }
         }
       }
@@ -1735,6 +2323,16 @@
         }
       }
     },
+    "Quit" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağla"
+          }
+        }
+      }
+    },
     "Quit %@" : {
       "localizations" : {
         "az" : {
@@ -1755,12 +2353,42 @@
         }
       }
     },
-    "Reindex Spotlight and Mail, flush the DNS cache and thin local snapshots." : {
+    "Quit XCleaner" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spotlight və Mail indeksini yeniləyin, DNS keşini təmizləyin, lokal snapshot-ları azaldın."
+            "value" : "XCleaner-dən çıx"
+          }
+        }
+      }
+    },
+    "Refresh" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yenilə"
+          }
+        }
+      }
+    },
+    "Reindex Spotlight" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotlight-ı yenidən indekslə"
+          }
+        }
+      }
+    },
+    "Reindex Spotlight, flush the DNS cache and thin local snapshots." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotlight-ı yenidən indeksləyin, DNS keşini təmizləyin və lokal snapshot-ları azaldın."
           }
         }
       }
@@ -1791,6 +2419,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ silinsin?"
+          }
+        }
+      }
+    },
+    "Remove ^[%lld startup item](inflect: true)?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld başlanğıc elementi silinsin?"
           }
         }
       }
@@ -1841,6 +2479,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Silinənlər Zibil qutusuna gedir, onları geri qaytara bilərsiniz."
+          }
+        }
+      }
+    },
+    "Remove…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sil…"
+          }
+        }
+      }
+    },
+    "Removing this asks for your password." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bunu silmək parolunuzu tələb edir."
           }
         }
       }
@@ -1925,6 +2583,16 @@
         }
       }
     },
+    "Run" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşə sal"
+          }
+        }
+      }
+    },
     "Run Test" : {
       "localizations" : {
         "az" : {
@@ -1935,12 +2603,32 @@
         }
       }
     },
+    "Running" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşləyir"
+          }
+        }
+      }
+    },
     "Running the test…" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sınaq aparılır…"
+          }
+        }
+      }
+    },
+    "Runs from time to time" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaxtaşırı işləyir"
           }
         }
       }
@@ -2145,6 +2833,26 @@
         }
       }
     },
+    "Show Program in Finder" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqramı Finder-də göstər"
+          }
+        }
+      }
+    },
+    "Show XCleaner in the menu bar" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner-i menyu zolağında göstər"
+          }
+        }
+      }
+    },
     "Show in Finder" : {
       "localizations" : {
         "az" : {
@@ -2235,6 +2943,46 @@
         }
       }
     },
+    "Spotlight forgets its index and builds it again. Searches may miss files until it's done, which can take an hour or more." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotlight indeksini unudur və yenidən qurur. Bitənə qədər axtarış bəzi faylları tapmaya bilər, bu bir saat və ya daha çox çəkə bilər."
+          }
+        }
+      }
+    },
+    "Starts at login" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Girişdə başlayır"
+          }
+        }
+      }
+    },
+    "Starts when needed" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lazım olanda başlayır"
+          }
+        }
+      }
+    },
+    "Starts with the Mac" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac ilə birlikdə başlayır"
+          }
+        }
+      }
+    },
     "Startup Items" : {
       "localizations" : {
         "az" : {
@@ -2265,6 +3013,36 @@
         }
       }
     },
+    "Switch off" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Söndür"
+          }
+        }
+      }
+    },
+    "Switch on" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yandır"
+          }
+        }
+      }
+    },
+    "Switching it asks for your password." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bunu dəyişmək parolunuzu tələb edir."
+          }
+        }
+      }
+    },
     "System Default (%@)" : {
       "localizations" : {
         "az" : {
@@ -2285,12 +3063,32 @@
         }
       }
     },
+    "System cache" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem keşi"
+          }
+        }
+      }
+    },
     "System files and personal data are protected." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sistem faylları və şəxsi məlumatlar qorunur."
+          }
+        }
+      }
+    },
+    "System logs" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem logları"
           }
         }
       }
@@ -2321,6 +3119,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sınaq rejimi aktivdir, ona görə heç nə silinməyəcək. Nə baş verəcəyini sadəcə görəcəksiniz."
+          }
+        }
+      }
+    },
+    "Test Mode is on, so the snapshots were kept." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınaq rejimi aktivdir, ona görə snapshot-lar saxlanıldı."
           }
         }
       }
@@ -2405,6 +3213,46 @@
         }
       }
     },
+    "The app closes right away, and changes it hasn't saved are lost." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proqram dərhal bağlanır, yadda saxlanmamış dəyişikliklər itir."
+          }
+        }
+      }
+    },
+    "The file names nothing to run, so macOS skips it." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faylda işə salınacaq heç nə yoxdur, ona görə macOS onu ötürür."
+          }
+        }
+      }
+    },
+    "The password prompt was cancelled." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parol pəncərəsi ləğv edildi."
+          }
+        }
+      }
+    },
+    "The program it should start is gone, most likely together with its app." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlatmalı olduğu proqram yoxdur, çox güman ki, öz tətbiqi ilə birlikdə silinib."
+          }
+        }
+      }
+    },
     "The record of every cleanup is deleted for good. The files on your Mac stay as they are." : {
       "localizations" : {
         "az" : {
@@ -2421,6 +3269,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seçilmiş fayllar Zibil qutusuna gedir (ayarlarda dərhal silmə seçilməyibsə)."
+          }
+        }
+      }
+    },
+    "There are no local snapshots right now." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırda lokal snapshot yoxdur."
+          }
+        }
+      }
+    },
+    "They go to the Trash, where you can put them back." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onlar Zibil qutusuna gedir, oradan geri qaytara bilərsiniz."
+          }
+        }
+      }
+    },
+    "They go to the Trash, where you can put them back. Some are in the system folders, so macOS will ask for your password." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onlar Zibil qutusuna gedir, oradan geri qaytara bilərsiniz. Bəziləri sistem qovluqlarındadır, ona görə macOS parolunuzu soruşacaq."
+          }
+        }
+      }
+    },
+    "Thin Local Snapshots" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokal snapshot-ları azalt"
           }
         }
       }
@@ -2595,12 +3483,32 @@
         }
       }
     },
+    "What it shows" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nəyi göstərir"
+          }
+        }
+      }
+    },
     "Which apps can use your camera, microphone, screen and files." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kamera, mikrofon, ekran və fayllarınıza çıxışı olan proqramlar."
+          }
+        }
+      }
+    },
+    "Wired" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sabit"
           }
         }
       }
@@ -2688,6 +3596,16 @@
         }
       }
     },
+    "XCleaner then keeps running in the menu bar after you close its window. Quit it from there." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu halda XCleaner pəncərəsi bağlandıqdan sonra da menyu zolağında işləməyə davam edir. Ondan oradan çıxın."
+          }
+        }
+      }
+    },
     "You can put the files back from the Trash." : {
       "localizations" : {
         "az" : {
@@ -2704,6 +3622,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mac-ınız bir baxışda."
+          }
+        }
+      }
+    },
+    "Your Mac looks up website addresses afresh, so sites may take a moment longer to open the first time. Nothing else changes." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac sayt ünvanlarını yenidən axtarır, ona görə saytlar ilk dəfə bir az gec aça bilər. Başqa heç nə dəyişmir."
           }
         }
       }
@@ -2766,6 +3694,46 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "^[%1$lld file](inflect: true), %2$@"
+          }
+        }
+      }
+    },
+    "^[%lld item](inflect: true) in the system folders: macOS will ask for your password." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem qovluqlarında %lld element: macOS parolunuzu soruşacaq."
+          }
+        }
+      }
+    },
+    "^[%lld process](inflect: true)" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld proses"
+          }
+        }
+      }
+    },
+    "^[%lld startup item](inflect: true) can't run: the program is gone or the file is empty. Such files are usually left behind by deleted apps." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld başlanğıc elementi işləyə bilmir: proqramı yoxdur və ya faylı boşdur. Belə fayllar adətən silinmiş proqramlardan qalır."
+          }
+        }
+      }
+    },
+    "macOS didn't let XCleaner switch “%@”." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS XCleaner-ə “%@” elementini dəyişməyə icazə vermədi."
           }
         }
       }

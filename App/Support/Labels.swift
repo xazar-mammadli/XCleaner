@@ -6,6 +6,19 @@ extension Int64 {
     var formattedBytes: String { formatted(.byteCount(style: .file, spellsOutZero: false)) }
 }
 
+extension String {
+    /// The text with grammar agreement applied, `^[3 item](inflect: true)` becoming "3 items". Alerts and dialogs show
+    /// plain text and leave the markup as it is, so resolve it before handing it to them.
+    init(inflecting resource: LocalizedStringResource) {
+        self = String(AttributedString(localized: resource).characters)
+    }
+}
+
+extension UInt64 {
+    /// Memory counts in powers of two, so 48 GB of memory reads as 48 GB rather than 51.5 GB.
+    var formattedMemory: String { Int64(clamping: self).formatted(.byteCount(style: .memory, spellsOutZero: false)) }
+}
+
 extension CleanableItem {
     /// Sorts items without a known date last.
     var sortDate: Date { date ?? .distantPast }
@@ -16,6 +29,8 @@ extension CleanupCategory {
         switch self {
         case .userCaches: "Cache"
         case .logs: "Logs"
+        case .systemCaches: "System cache"
+        case .systemLogs: "System logs"
         case .developerJunk: "Developer files"
         case .trash: "In the Trash"
         case .installers: "Installer"

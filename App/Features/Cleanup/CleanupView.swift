@@ -41,9 +41,11 @@ private struct CleanupIntro: View {
                                         .fixedSize(horizontal: false, vertical: true)
                                 }
                             } icon: {
+                                // A fixed width, so titles line up however wide each symbol is.
                                 Image(systemName: kind.systemImage)
                                     .font(.title3)
                                     .foregroundStyle(.tint)
+                                    .frame(width: 28)
                             }
                         }
                         Divider()
@@ -121,12 +123,16 @@ private struct CleanupReview: View {
         let planned = items.map { Cleaner.plannedMethod(for: $0, requested: method) }
         let trashed = planned.filter { $0 == .moveToTrash }.count
         let deleted = planned.filter { $0 == .deletePermanently }.count
-        let trashing = Text("Moving to the Trash: ^[\(trashed) item](inflect: true). You can restore anything from there.")
-        let deleting = Text("Deleting for good: ^[\(deleted) item](inflect: true). This can't be undone.")
-        if trashed > 0, deleted > 0 {
-            return trashing + Text(verbatim: "\n") + deleting
+        // Dialogs show plain text, so the counts are inflected here.
+        let trashing = Text(verbatim: String(inflecting: "Moving to the Trash: ^[\(trashed) item](inflect: true). You can restore anything from there."))
+        let deleting = Text(verbatim: String(inflecting: "Deleting for good: ^[\(deleted) item](inflect: true). This can't be undone."))
+        var message = trashed > 0 && deleted > 0 ? trashing + Text(verbatim: "\n") + deleting : deleted > 0 ? deleting : trashing
+        let system = items.filter(\.needsAdministrator).count
+        if system > 0 {
+            message = message + Text(verbatim: "\n")
+                + Text(verbatim: String(inflecting: "^[\(system) item](inflect: true) in the system folders: macOS will ask for your password."))
         }
-        return deleted > 0 ? deleting : trashing
+        return message
     }
 
     private var confirmTitle: LocalizedStringResource {

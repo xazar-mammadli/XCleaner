@@ -32,10 +32,12 @@ struct ContentView: View {
                 CleanupView()
             case .applications:
                 ApplicationsView()
+            case .performance:
+                PerformanceView()
             case .files:
                 FilesView()
             case .utilities:
-                HistoryView()
+                UtilitiesView()
             case let item:
                 SectionRoadmapView(item: item)
             }

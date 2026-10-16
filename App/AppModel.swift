@@ -15,8 +15,13 @@ final class AppModel {
     let uninstaller = UninstallerModel()
     let remainingFiles = RemainingFilesModel()
     let diskMap = DiskMapModel()
+    let heavyApps = HeavyAppsModel()
+    let startupItems = StartupItemsModel()
+    let maintenance = MaintenanceModel()
     var applicationsTool = ApplicationsTool.uninstaller
     var filesTool = FilesTool.largeFiles
+    var performanceTool = PerformanceTool.heavyApps
+    var utilitiesTool = UtilitiesTool.history
     let exclusions = ExclusionStore()
     let auditLog = AuditLog(directory: AuditLog.standardDirectory)
 

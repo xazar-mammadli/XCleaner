@@ -28,3 +28,25 @@ struct UsageBar: View {
         .accessibilityHidden(true)
     }
 }
+
+/// A colored dot, a name and a value, under a `UsageBar`.
+struct LegendItem: View {
+    let color: Color
+    let title: LocalizedStringResource
+    let value: String
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Circle()
+                .fill(color)
+                .frame(width: 8, height: 8)
+            Text(title)
+                .foregroundStyle(.secondary)
+            Text(verbatim: value)
+                .monospacedDigit()
+        }
+        .font(.callout)
+        .lineLimit(1)
+        .fixedSize()
+    }
+}

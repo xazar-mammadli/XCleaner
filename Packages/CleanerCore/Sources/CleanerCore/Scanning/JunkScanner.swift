@@ -15,7 +15,7 @@ public struct JunkScanner: Sendable {
 
         for rule in rules {
             guard !Task.isCancelled else { break }
-            let folder = context.home.appending(path: rule.folder)
+            let folder = rule.location(in: context.home)
             let names: [String]
             switch DirectoryListing.children(of: folder) {
             case .missing:

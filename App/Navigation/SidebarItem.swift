@@ -6,8 +6,14 @@ enum SidebarItem: String, CaseIterable, Identifiable {
 
     var id: Self { self }
 
-    /// The development phase XCleaner has reached. Tools from later phases are listed as coming later.
-    static let currentPhase = 2
+    /// Tools that work today, by `PlannedTool.id`. The others are listed as coming later.
+    static let availableTools: Set<String> = [
+        "system-junk", "installers", "trash-bins", "system-level-junk",
+        "uninstaller", "remaining-files", "reset-apps",
+        "startup-items", "heavy-apps", "maintenance",
+        "large-files", "disk-map",
+        "history", "menu-bar",
+    ]
 
     var title: LocalizedStringResource {
         switch self {
@@ -60,7 +66,7 @@ enum SidebarItem: String, CaseIterable, Identifiable {
                 PlannedTool(id: "mail-attachments", title: "Mail Attachments", phase: 3, systemImage: "paperclip",
                             detail: "Copies of attachments saved by the Mail app."),
                 PlannedTool(id: "system-level-junk", title: "System-Level Junk", phase: 3, systemImage: "gearshape.2",
-                            detail: "Caches and logs in system folders, removed through a secure helper."),
+                            detail: "Caches and old logs in the system folders. Removing them asks for your password."),
             ]
         case .applications:
             [
@@ -80,9 +86,9 @@ enum SidebarItem: String, CaseIterable, Identifiable {
                 PlannedTool(id: "startup-items", title: "Startup Items", phase: 3, systemImage: "power",
                             detail: "Login items, launch agents and background services."),
                 PlannedTool(id: "heavy-apps", title: "Heavy Apps", phase: 3, systemImage: "speedometer",
-                            detail: "Apps that use the most memory and processor time."),
+                            detail: "Apps that use the most memory, CPU and GPU."),
                 PlannedTool(id: "maintenance", title: "Maintenance", phase: 3, systemImage: "wrench.adjustable",
-                            detail: "Reindex Spotlight and Mail, flush the DNS cache and thin local snapshots."),
+                            detail: "Reindex Spotlight, flush the DNS cache and thin local snapshots."),
             ]
         case .files:
             [
@@ -109,7 +115,7 @@ enum SidebarItem: String, CaseIterable, Identifiable {
                 PlannedTool(id: "history", title: "Cleanup History", phase: 1, systemImage: "clock.arrow.circlepath",
                             detail: "Everything XCleaner removed, and when."),
                 PlannedTool(id: "menu-bar", title: "Menu Bar Monitor", phase: 3, systemImage: "menubar.rectangle",
-                            detail: "Processor, memory, disk, battery and network at a glance."),
+                            detail: "CPU, GPU, memory, disk, battery and network at a glance."),
                 PlannedTool(id: "hidden-files", title: "Hidden Files", phase: 4, systemImage: "eye.slash",
                             detail: "Show, find and manage hidden files."),
             ]

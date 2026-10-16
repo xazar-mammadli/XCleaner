@@ -20,6 +20,7 @@ struct SettingsView: View {
 
 private struct GeneralSettings: View {
     @State private var language = AppLanguage.current
+    @AppStorage(PreferenceKey.showsMenuBarMonitor) private var showsMenuBarMonitor = false
 
     var body: some View {
         Form {
@@ -40,6 +41,8 @@ private struct GeneralSettings: View {
                     Button("Restart Now") { AppRelauncher.relaunch() }
                 }
             }
+
+            Toggle("Show XCleaner in the menu bar", isOn: $showsMenuBarMonitor)
         }
         .settingsTabStyle()
     }

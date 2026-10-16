@@ -28,6 +28,8 @@ public enum DeletionMethod: String, Sendable, Codable, CaseIterable {
 /// What a found item is, which decides how it is grouped and explained.
 public enum CleanupCategory: String, Sendable, Codable, CaseIterable {
     case userCaches, logs, developerJunk, trash, installers, archives, screenshots, oldDownloads, largeFiles
+    /// Caches and logs in the system folders, which only an administrator may remove.
+    case systemCaches, systemLogs
     /// An app bundle itself.
     case application
     /// Files an app keeps in the home Library: preferences, support files, caches, containers…
@@ -125,7 +127,8 @@ public struct CleanableItem: Identifiable, Hashable, Sendable {
 
     /// Only items that are safe to remove and not in use start out selected.
     public var isSelectedByDefault: Bool {
-        guard safety == .safe else { return false }
+        // Removing those asks for a password, so the user opts in.
+        guard safety == .safe, !needsAdministrator else { return false }
         if case .appIsRunning = note { return false }
         return true
     }
