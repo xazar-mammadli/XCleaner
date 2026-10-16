@@ -64,7 +64,20 @@ public actor AuditLog {
     }
 
     public func entries(on day: Date) -> [Entry] {
-        guard let data = try? Data(contentsOf: fileURL(for: day)) else { return [] }
+        entries(in: fileURL(for: day))
+    }
+
+    /// Every recorded action, newest first.
+    public func allEntries() -> [Entry] {
+        let files = (try? FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)) ?? []
+        return files
+            .filter { $0.lastPathComponent.hasPrefix("cleanup-") && $0.pathExtension == "jsonl" }
+            .sorted { $0.lastPathComponent > $1.lastPathComponent }
+            .flatMap { entries(in: $0).reversed() }
+    }
+
+    private func entries(in file: URL) -> [Entry] {
+        guard let data = try? Data(contentsOf: file) else { return [] }
         return data.split(separator: 0x0A).compactMap { try? decoder.decode(Entry.self, from: Data($0)) }
     }
 

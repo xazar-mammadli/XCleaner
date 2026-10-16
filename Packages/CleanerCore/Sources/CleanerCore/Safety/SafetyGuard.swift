@@ -8,6 +8,7 @@ public enum BlockReason: Sendable, Equatable {
     case protectedContainer(String)
     case personalData(String)
     case insideSealedPackage(String)
+    case excludedByUser(String)
     case volumeRoot
     case outsideAllowedRoot
 
@@ -21,6 +22,7 @@ public enum BlockReason: Sendable, Equatable {
         case .protectedContainer(let path): "protectedContainer:\(path)"
         case .personalData(let path): "personalData:\(path)"
         case .insideSealedPackage(let path): "insideSealedPackage:\(path)"
+        case .excludedByUser(let path): "excludedByUser:\(path)"
         case .volumeRoot: "volumeRoot"
         case .outsideAllowedRoot: "outsideAllowedRoot"
         }
@@ -40,12 +42,14 @@ public struct SafetyGuard: Sendable {
     private let neverDelete: [[String]]
     private let containers: [[String]]
     private let personal: [[String]]
+    private let excluded: [[String]]
 
     public init(policy: SafetyPolicy) {
         self.policy = policy
         neverDelete = policy.neverDeleteTrees.map(PathUtilities.components(of:))
         containers = policy.protectedContainers.map(PathUtilities.components(of:))
         personal = policy.personalTrees.map(PathUtilities.components(of:))
+        excluded = policy.excludedPaths.map(PathUtilities.components(of:))
     }
 
     /// Decides whether `url` may be removed. `root` is the folder the item was found in; the item must be strictly inside it.
@@ -65,6 +69,9 @@ public struct SafetyGuard: Sendable {
         }
         if let hit = containers.first(where: { $0.count == parts.count && PathUtilities.isWithin(parts, $0, ignoringCase: true) }) {
             return .blocked(.protectedContainer(PathUtilities.joined(hit)))
+        }
+        if let hit = excluded.first(where: { PathUtilities.isWithin(parts, $0, ignoringCase: true) }) {
+            return .blocked(.excludedByUser(PathUtilities.joined(hit)))
         }
 
         var parent = stat()
@@ -87,5 +94,19 @@ public struct SafetyGuard: Sendable {
             return .blocked(.outsideAllowedRoot)
         }
         return .allowed(path: path, trashOnly: origin == .userSelection)
+    }
+
+    /// Whether the user excluded `url`, so scans should not even offer it.
+    public func isExcluded(_ url: URL) -> Bool {
+        guard !excluded.isEmpty else { return false }
+        let path = PathUtilities.canonicalItemPath(of: url) ?? url.standardizedFileURL.path(percentEncoded: false)
+        return isExcluded(path: path)
+    }
+
+    /// The same check for a path that is already canonical, as file-system walks produce.
+    public func isExcluded(path: String) -> Bool {
+        guard !excluded.isEmpty else { return false }
+        let parts = PathUtilities.components(of: path)
+        return excluded.contains { PathUtilities.isWithin(parts, $0, ignoringCase: true) }
     }
 }

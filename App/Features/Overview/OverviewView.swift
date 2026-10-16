@@ -128,18 +128,24 @@ private struct AccessCard: View {
 }
 
 private struct QuickCleanupCard: View {
+    @Environment(AppModel.self) private var model
+
     var body: some View {
         Card {
             VStack(alignment: .leading, spacing: 10) {
-                HStack {
-                    Label("Quick Cleanup", systemImage: "sparkles")
-                        .font(.headline)
-                    Spacer()
-                    PhaseBadge(phase: 1)
-                }
+                Label("Quick Cleanup", systemImage: "sparkles")
+                    .font(.headline)
                 Text("Finds caches, logs and other junk that is safe to remove. You review everything before anything is removed.")
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
+                Spacer(minLength: 4)
+                Button {
+                    model.startQuickCleanup()
+                } label: {
+                    Label("Scan", systemImage: "magnifyingglass")
+                        .padding(.horizontal, 6)
+                }
+                .buttonStyle(.borderedProminent)
             }
         }
     }

@@ -72,10 +72,62 @@ struct FakeTrash: TrashHandling {
 extension SafetyPolicy {
     /// The standard policy for a home folder inside a test sandbox. The sandbox lives in the temporary
     /// folder (/private/var/folders), which the real policy protects, so only that one entry is lifted.
-    static func forTests(home: URL) -> SafetyPolicy {
-        var policy = SafetyPolicy.standard(home: home)
+    static func forTests(home: URL, excluding excluded: [URL] = []) -> SafetyPolicy {
+        var policy = SafetyPolicy.standard(home: home, excluding: excluded)
         policy.neverDeleteTrees.removeAll { $0 == "/private/var/folders" }
         return policy
+    }
+}
+
+/// A fixed set of installed and running apps.
+struct FakeAppCatalog: AppCatalog {
+    var running: [String: String] = [:]
+    var installed: [String: String] = [:]
+
+    func runningApplications() -> [String: String] { running }
+    func applicationName(forBundleIdentifier bundleIdentifier: String) -> String? { installed[bundleIdentifier] }
+}
+
+extension Sandbox {
+    /// Sets the "Date Last Opened" Finder shows.
+    func setLastUsed(_ url: URL, to date: Date) throws {
+        var timespec = (Int64(date.timeIntervalSince1970).littleEndian, Int64(0).littleEndian)
+        try setExtendedAttribute("com.apple.lastuseddate#PS", on: url, to: withUnsafeBytes(of: &timespec) { Data($0) })
+    }
+
+    /// Marks a file the way macOS marks the screenshots it saves.
+    func markAsScreenshot(_ url: URL) throws {
+        let flag = try PropertyListSerialization.data(fromPropertyList: true, format: .binary, options: 0)
+        try setExtendedAttribute("com.apple.metadata:kMDItemIsScreenCapture", on: url, to: flag)
+    }
+
+    func setCreationDate(_ url: URL, to date: Date) throws {
+        try FileManager.default.setAttributes([.creationDate: date], ofItemAtPath: path(url))
+    }
+
+    private func setExtendedAttribute(_ name: String, on url: URL, to value: Data) throws {
+        let status = value.withUnsafeBytes { setxattr(path(url), name, $0.baseAddress, value.count, 0, 0) }
+        guard status == 0 else { throw POSIXError(POSIXErrorCode(rawValue: errno) ?? .EIO) }
+    }
+}
+
+/// Counts from any thread.
+final class Counter: @unchecked Sendable {
+    private let lock = NSLock()
+    private var current = 0
+
+    var value: Int { lock.withLock { current } }
+
+    func set(_ newValue: Int) {
+        lock.withLock { current = newValue }
+    }
+}
+
+extension ScanResult {
+    var names: Set<String> { Set(items.map(\.url.lastPathComponent)) }
+
+    func item(named name: String) -> CleanableItem? {
+        items.first { $0.url.lastPathComponent == name }
     }
 }
 

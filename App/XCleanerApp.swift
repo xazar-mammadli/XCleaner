@@ -15,6 +15,7 @@ struct XCleanerApp: App {
 
         Settings {
             SettingsView()
+                .environment(model)
         }
     }
 }

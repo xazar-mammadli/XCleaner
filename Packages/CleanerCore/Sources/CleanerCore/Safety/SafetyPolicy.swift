@@ -10,23 +10,26 @@ public struct SafetyPolicy: Sendable {
     public var personalTrees: [String]
     /// Package types whose insides stay untouched. Changing anything inside an app breaks its code signature.
     public var sealedPackageExtensions: Set<String>
+    /// Locations the user asked XCleaner to leave alone. They are neither scanned nor removed.
+    public var excludedPaths: [String]
 
     public init(
         neverDeleteTrees: [String],
         protectedContainers: [String],
         personalTrees: [String],
-        sealedPackageExtensions: Set<String>
+        sealedPackageExtensions: Set<String>,
+        excludedPaths: [String] = []
     ) {
         self.neverDeleteTrees = neverDeleteTrees
         self.protectedContainers = protectedContainers
         self.personalTrees = personalTrees
         self.sealedPackageExtensions = sealedPackageExtensions
+        self.excludedPaths = excludedPaths
     }
 
-    /// The policy XCleaner runs with for the given home folder.
-    public static func standard(home: URL) -> SafetyPolicy {
-        let homePath = PathUtilities.realPath(home.path(percentEncoded: false))
-            ?? PathUtilities.joined(PathUtilities.components(of: home.standardizedFileURL.path(percentEncoded: false)))
+    /// The policy XCleaner runs with for the given home folder and the user's exclusions.
+    public static func standard(home: URL, excluding excluded: [URL] = []) -> SafetyPolicy {
+        let homePath = canonical(home)
         func inHome(_ relative: String) -> String { homePath + "/" + relative }
 
         let personal = ["Desktop", "Documents", "Downloads", "Movies", "Music", "Pictures", "Public"].map(inHome)
@@ -64,7 +67,13 @@ public struct SafetyPolicy: Sendable {
                 inHome("Library/Preferences"),
             ] + personal,
             personalTrees: personal,
-            sealedPackageExtensions: ["app", "photoslibrary"]
+            sealedPackageExtensions: ["app", "photoslibrary"],
+            excludedPaths: excluded.map(canonical)
         )
+    }
+
+    private static func canonical(_ url: URL) -> String {
+        PathUtilities.realPath(url.path(percentEncoded: false))
+            ?? PathUtilities.joined(PathUtilities.components(of: url.standardizedFileURL.path(percentEncoded: false)))
     }
 }

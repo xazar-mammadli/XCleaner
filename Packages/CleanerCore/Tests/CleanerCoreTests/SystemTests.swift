@@ -67,6 +67,18 @@ struct FullDiskAccessCheckerTests {
     }
 }
 
+@Suite("AuditLog")
+struct AuditLogTests {
+    @Test func listsEveryEntryNewestFirst() async throws {
+        let sandbox = try Sandbox()
+        let log = AuditLog(directory: sandbox.url("Logs"))
+        await log.record(.init(date: .now.addingTimeInterval(-86_400), action: .deleted, path: "/a", bytes: 1))
+        await log.record(.init(action: .movedToTrash, path: "/b", bytes: 2))
+        await log.record(.init(action: .dryRun, path: "/c", bytes: 3))
+        #expect(await log.allEntries().map(\.path) == ["/c", "/b", "/a"])
+    }
+}
+
 @Suite("VolumeUsage")
 struct VolumeUsageTests {
     @Test func splitsTheDiskIntoUsedAndAvailable() throws {

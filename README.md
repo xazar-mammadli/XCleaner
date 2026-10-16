@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/overview.jpg" width="820" alt="XCleaner overview screen">
+  <img src="docs/images/cleanup.jpg" width="820" alt="XCleaner reviewing junk found by a scan">
 </p>
 
 ## About
@@ -27,7 +27,7 @@ XCleaner finds the clutter that builds up on a Mac and helps you remove it witho
 It aims to cover what popular commercial cleaners do, but more calmly and openly. There are no scare tactics and no inflated numbers, and nothing is ever removed behind your back.
 
 > [!NOTE]
-> XCleaner is in early development. The foundation is in place: the safety engine, the app shell, settings and localization. The cleanup tools arrive phase by phase, as listed in the [roadmap](#roadmap).
+> XCleaner is in early development. Cleanup of system junk, installers, downloads and the Trash works today, along with a finder for big files and a full cleanup history. More tools arrive phase by phase, as listed in the [roadmap](#roadmap).
 
 ## Safety first
 
@@ -38,7 +38,9 @@ Every removal passes through a single gate that checks the item again right befo
 - **An allowlist, not a guess.** An item can only be removed from inside the folder its scan looked in. Symlinks are never followed, and `..` tricks are refused.
 - **Protected locations stay untouched.** XCleaner never removes macOS system folders, Keychains, iCloud Drive and other cloud storage, Mail, Messages or the Photos library. Automatic cleanup rules never reach into your personal folders, such as Desktop, Documents and Downloads.
 - **App bundles stay sealed.** XCleaner never edits files inside an app, so code signatures stay valid.
-- **A full history.** Every action is recorded in a local log in `~/Library/Logs/XCleaner`.
+- **A full history.** Every action is recorded in a local log in `~/Library/Logs/XCleaner` and listed under Utilities.
+- **Exclusions.** Folders you add under Settings › Exclusions are never scanned or removed.
+- **Apps in use are left alone.** Files that belong to a running app are flagged and left unselected.
 - **Test Mode.** Scan and review as usual while nothing is removed. Debug builds start with Test Mode on.
 - **Private by design.** Your files never leave your Mac, and XCleaner collects no data.
 
@@ -46,27 +48,27 @@ Every removal passes through a single gate that checks the item again right befo
 
 | Area | Tools | Status |
 |---|---|---|
-| Overview | Disk usage, Full Disk Access status | Available |
-| Cleanup | System junk, installers and downloads, Trash bins | Phase 1 |
+| Overview | Disk usage, Full Disk Access status, one-click scan | Available |
+| Cleanup | System junk, installers and downloads, Trash bins | Available |
 | | Mail attachments, system-level junk | Phase 3 |
 | Applications | Uninstaller, remaining files of deleted apps, app reset | Phase 2 |
 | | Extensions | Phase 3 |
 | | Updater for apps from developers, the App Store and Homebrew | Phase 4 |
 | Performance | Startup items, heavy apps, maintenance tasks | Phase 3 |
-| Files | Biggest and old files | Phase 1 |
+| Files | Biggest and old files | Available |
 | | Disk map | Phase 2 |
 | | Duplicates, similar photos | Phase 4 |
 | Privacy | Browser data | Phase 3 |
 | | App permissions, background item check | Phase 4 |
-| Utilities | Cleanup history | Phase 1 |
+| Utilities | Cleanup history | Available |
 | | Menu bar monitor | Phase 3 |
 | | Hidden files | Phase 4 |
 
 ## Screenshots
 
-| Safety settings | Azerbaijani interface |
+| Overview | Safety settings |
 |---|---|
-| <img src="docs/images/settings-safety.jpg" width="400" alt="Safety settings"> | <img src="docs/images/overview-az.jpg" width="400" alt="Overview screen in Azerbaijani"> |
+| <img src="docs/images/overview.jpg" width="400" alt="Overview screen with disk usage"> | <img src="docs/images/settings-safety.jpg" width="400" alt="Safety settings"> |
 
 ## Requirements
 
@@ -121,7 +123,7 @@ XCleaner/
 │   │   ├── Cleaning/           Cleaner, Trash handling, audit log
 │   │   ├── Model/              Cleanable items and safety levels
 │   │   ├── Safety/             SafetyGuard and SafetyPolicy
-│   │   ├── Scanning/           Disk space measurement
+│   │   ├── Scanning/           Scanners for junk, downloads, the Trash and big files
 │   │   └── System/             Full Disk Access check, volume usage
 │   └── Tests/CleanerCoreTests/
 ├── docs/images/                Images used in this README
@@ -135,7 +137,7 @@ The interface is available in English and Azerbaijani. XCleaner follows the macO
 ## Roadmap
 
 - [x] **Phase 0: Foundation.** Safety engine, app shell, Full Disk Access guide, settings, English and Azerbaijani.
-- [ ] **Phase 1: Cleanup basics.** Quick and deep cleanup, biggest and old files, cleanup history, exclusions.
+- [x] **Phase 1: Cleanup basics.** Quick and deep cleanup, biggest and old files, cleanup history, exclusions.
 - [ ] **Phase 2: Applications and disk map.** Uninstaller, remaining files, app reset, disk map.
 - [ ] **Phase 3: System tools.** A secure privileged helper, system-level junk, maintenance, startup items, heavy apps, extensions, browser data and a menu bar monitor.
 - [ ] **Phase 4: Advanced tools.** Duplicates, similar photos, updater, app permissions, background item check and hidden files.

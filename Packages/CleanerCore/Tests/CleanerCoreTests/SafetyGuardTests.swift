@@ -96,6 +96,14 @@ struct SafetyGuardTests {
         }
     }
 
+    @Test func honoursTheUsersExclusions() throws {
+        let kept = try sandbox.directory("home/Library/Caches/com.example.keep")
+        let careful = SafetyGuard(policy: .forTests(home: home, excluding: [kept]))
+        #expect(careful.evaluate(kept, origin: .rule, root: caches) == .blocked(.excludedByUser(path(kept))))
+        #expect(careful.isExcluded(kept.appending(path: "inner")))
+        #expect(!careful.isExcluded(caches.appending(path: "com.example.other")))
+    }
+
     @Test func standardPolicyProtectsSystemAndTemporaryFolders() throws {
         let strict = SafetyGuard(policy: .standard(home: home))
 

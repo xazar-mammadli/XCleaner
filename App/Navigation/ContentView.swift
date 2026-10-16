@@ -28,6 +28,12 @@ struct ContentView: View {
             switch model.selection ?? .overview {
             case .overview:
                 OverviewView()
+            case .cleanup:
+                CleanupView()
+            case .files:
+                LargeFilesView()
+            case .utilities:
+                HistoryView()
             case let item:
                 SectionRoadmapView(item: item)
             }

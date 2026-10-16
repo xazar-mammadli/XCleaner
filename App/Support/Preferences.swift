@@ -1,9 +1,11 @@
 import AppKit
+import CleanerCore
 
 enum PreferenceKey {
     static let removalMethod = "removalMethod"
     static let testMode = "testMode"
     static let hasSeenAccessGuide = "hasSeenAccessGuide"
+    static let excludedPaths = "excludedPaths"
 }
 
 enum Preferences {
@@ -13,6 +15,14 @@ enum Preferences {
     #else
     static let defaultTestMode = false
     #endif
+
+    /// How removals happen right now, as set under Settings › Safety.
+    static var deletionMethod: DeletionMethod {
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: PreferenceKey.testMode) as? Bool ?? defaultTestMode { return .dryRun }
+        let removal = defaults.string(forKey: PreferenceKey.removalMethod).flatMap(RemovalMethod.init(rawValue:)) ?? .trash
+        return removal == .trash ? .moveToTrash : .deletePermanently
+    }
 }
 
 /// What happens to the items the user removes.

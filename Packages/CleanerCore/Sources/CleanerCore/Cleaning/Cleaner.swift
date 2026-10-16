@@ -23,8 +23,28 @@ public struct CleaningReport: Sendable {
     public internal(set) var failed: [Failed] = []
     public internal(set) var wasCancelled = false
 
+    public init(requestedMethod: DeletionMethod) {
+        self.requestedMethod = requestedMethod
+    }
+
     /// Bytes deleted or moved to the Trash, or that would have been in a dry run.
-    public var removedBytes: Int64 { removed.reduce(0) { $0 + $1.item.size } }
+    public var removedBytes: Int64 { bytes(where: { _ in true }) }
+    /// Bytes moved to the Trash. That space only comes back once the Trash is emptied.
+    public var trashedBytes: Int64 { bytes(where: { $0 == .moveToTrash }) }
+    /// Bytes deleted for good, which are free again right away.
+    public var deletedBytes: Int64 { bytes(where: { $0 == .deletePermanently }) }
+
+    /// Combines the reports of several runs, such as the regular items and the Trash's own items.
+    public mutating func append(_ other: CleaningReport) {
+        removed += other.removed
+        blocked += other.blocked
+        failed += other.failed
+        wasCancelled = wasCancelled || other.wasCancelled
+    }
+
+    private func bytes(where matches: (DeletionMethod) -> Bool) -> Int64 {
+        removed.filter { matches($0.method) }.reduce(0) { $0 + $1.item.size }
+    }
 }
 
 /// Removes items, and is the only code in XCleaner that may. Each item is checked again by `SafetyGuard`
@@ -53,7 +73,7 @@ public struct Cleaner: Sendable {
                 await auditLog?.record(.init(
                     action: .blocked, path: item.url.path(percentEncoded: false), bytes: item.size, detail: reason.code))
             case .allowed(let path, let trashOnly):
-                let effective: DeletionMethod = trashOnly && method == .deletePermanently ? .moveToTrash : method
+                let effective = Self.method(for: item, requested: method, trashOnly: trashOnly)
                 do {
                     try remove(path, using: effective)
                     report.removed.append(.init(item: item, method: effective))
@@ -66,6 +86,23 @@ public struct Cleaner: Sendable {
             }
         }
         return report
+    }
+
+    /// What will happen to `item` when `requested` is asked for, so the user can be told before confirming.
+    public static func plannedMethod(for item: CleanableItem, requested: DeletionMethod) -> DeletionMethod {
+        method(for: item, requested: requested, trashOnly: item.origin == .userSelection)
+    }
+
+    static func method(for item: CleanableItem, requested: DeletionMethod, trashOnly: Bool) -> DeletionMethod {
+        switch requested {
+        case .dryRun:
+            .dryRun
+        case .moveToTrash:
+            // Moving something that is already in the Trash to the Trash would do nothing: emptying it is the point.
+            item.category == .trash && !trashOnly ? .deletePermanently : .moveToTrash
+        case .deletePermanently:
+            trashOnly ? .moveToTrash : .deletePermanently
+        }
     }
 
     private func remove(_ path: String, using method: DeletionMethod) throws {
