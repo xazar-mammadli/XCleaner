@@ -38,6 +38,19 @@ struct JunkScannerTests {
         #expect(result.issues.isEmpty)
     }
 
+    @Test func reportsWhatItFindsAsItGoes() async {
+        let updates = Recorder<ScanProgress>()
+        let context = ScanContext(home: home, safety: SafetyGuard(policy: .forTests(home: home)), apps: apps)
+        let result = await JunkScanner().scan(context) { updates.append($0) }
+
+        let final = updates.values.last
+        #expect(final?.location == nil)
+        #expect(final?.itemsFound == result.items.count)
+        #expect(final?.bytesFound == result.totalBytes)
+        #expect(updates.values.dropLast().allSatisfy { $0.location != nil })
+        #expect(updates.values.map(\.itemsFound) == updates.values.map(\.itemsFound).sorted())
+    }
+
     @Test func namesItemsAfterTheirApps() async {
         let result = await scan()
         #expect(result.item(named: "com.example.editor")?.name == "Example Editor")

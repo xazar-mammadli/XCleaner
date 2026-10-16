@@ -2,6 +2,8 @@ import AppKit
 import CleanerCore
 import SwiftUI
 
+/// Every tab is a grouped form that reports its own height, so the window resizes to fit each tab
+/// instead of keeping the size of whichever tab was shown first.
 struct SettingsView: View {
     var body: some View {
         TabView {
@@ -13,72 +15,6 @@ struct SettingsView: View {
                 .tabItem { Label("Exclusions", systemImage: "nosign") }
         }
         .frame(width: 520)
-    }
-}
-
-private struct ExclusionsSettings: View {
-    @Environment(AppModel.self) private var model
-    @State private var selection: String?
-
-    var body: some View {
-        let exclusions = model.exclusions
-        VStack(alignment: .leading, spacing: 10) {
-            Text("XCleaner never scans or removes anything in these locations.")
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-            List(selection: $selection) {
-                ForEach(exclusions.paths, id: \.self) { path in
-                    Label {
-                        Text(verbatim: (path as NSString).abbreviatingWithTildeInPath)
-                            .lineLimit(1)
-                            .truncationMode(.middle)
-                    } icon: {
-                        Image(nsImage: NSWorkspace.shared.icon(forFile: path))
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                    }
-                    .help(Text(verbatim: path))
-                }
-            }
-            .listStyle(.bordered(alternatesRowBackgrounds: true))
-            .frame(height: 200)
-            .overlay {
-                if exclusions.paths.isEmpty {
-                    Text("No exclusions yet")
-                        .foregroundStyle(.secondary)
-                }
-            }
-            HStack(spacing: 4) {
-                Button {
-                    chooseExclusions()
-                } label: {
-                    Image(systemName: "plus")
-                        .frame(width: 16, height: 16)
-                }
-                .help("Add a file or folder")
-                Button {
-                    if let selection { exclusions.remove(selection) }
-                    selection = nil
-                } label: {
-                    Image(systemName: "minus")
-                        .frame(width: 16, height: 16)
-                }
-                .disabled(selection == nil)
-                .help("Remove the selected location")
-            }
-        }
-        .padding(20)
-    }
-
-    private func chooseExclusions() {
-        let panel = NSOpenPanel()
-        panel.canChooseDirectories = true
-        panel.canChooseFiles = true
-        panel.allowsMultipleSelection = true
-        panel.prompt = String(localized: "Exclude")
-        if panel.runModal() == .OK {
-            model.exclusions.add(panel.urls)
-        }
     }
 }
 
@@ -105,9 +41,7 @@ private struct GeneralSettings: View {
                 }
             }
         }
-        .formStyle(.grouped)
-        .scrollDisabled(true)
-        .fixedSize(horizontal: false, vertical: true)
+        .settingsTabStyle()
     }
 }
 
@@ -144,13 +78,79 @@ private struct SafetySettings: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .formStyle(.grouped)
+        .settingsTabStyle()
     }
 
     private func revealCleanupHistory() {
         let folder = AuditLog.standardDirectory
         try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         NSWorkspace.shared.open(folder)
+    }
+}
+
+private struct ExclusionsSettings: View {
+    @Environment(AppModel.self) private var model
+
+    /// Beyond this many entries the tab stops growing and scrolls instead.
+    private let visibleRows = 6
+
+    var body: some View {
+        let exclusions = model.exclusions
+        Form {
+            Section {
+                if exclusions.paths.isEmpty {
+                    Text("No exclusions yet")
+                        .foregroundStyle(.secondary)
+                }
+                ForEach(exclusions.paths, id: \.self) { path in
+                    HStack(spacing: 8) {
+                        Image(nsImage: NSWorkspace.shared.icon(forFile: path))
+                            .resizable()
+                            .frame(width: 18, height: 18)
+                        Text(verbatim: (path as NSString).abbreviatingWithTildeInPath)
+                            .lineLimit(1)
+                            .truncationMode(.middle)
+                            .help(Text(verbatim: path))
+                        Spacer()
+                        Button {
+                            exclusions.remove(path)
+                        } label: {
+                            Image(systemName: "minus.circle.fill")
+                                .foregroundStyle(.secondary)
+                        }
+                        .buttonStyle(.borderless)
+                        .help("Remove from the list")
+                    }
+                }
+                Button("Add…") { chooseExclusions() }
+                    .help("Add a file or folder")
+            } footer: {
+                Text("XCleaner never scans or removes anything in these locations.")
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .settingsTabStyle(scrollsAfter: exclusions.paths.count > visibleRows ? 380 : nil)
+    }
+
+    private func chooseExclusions() {
+        let panel = NSOpenPanel()
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = true
+        panel.allowsMultipleSelection = true
+        panel.prompt = String(localized: "Exclude")
+        if panel.runModal() == .OK {
+            model.exclusions.add(panel.urls)
+        }
+    }
+}
+
+private extension View {
+    /// A grouped form that is exactly as tall as its content, or `height` tall and scrolling when that is given.
+    func settingsTabStyle(scrollsAfter height: CGFloat? = nil) -> some View {
+        formStyle(.grouped)
+            .scrollDisabled(height == nil)
+            .frame(height: height)
+            .fixedSize(horizontal: false, vertical: height == nil)
     }
 }
 

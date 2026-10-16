@@ -9,8 +9,9 @@ public struct TrashScanner: Sendable {
         self.externalTrashes = externalTrashes
     }
 
-    public func scan(_ context: ScanContext) async -> ScanResult {
+    public func scan(_ context: ScanContext, progress: ScanProgressHandler? = nil) async -> ScanResult {
         var result = ScanResult()
+        defer { result.report(to: progress, at: nil) }
         let folders = [context.home.appending(path: ".Trash")] + externalTrashes()
 
         for folder in folders {
@@ -30,6 +31,7 @@ public struct TrashScanner: Sendable {
                 guard !Task.isCancelled else { break }
                 let url = folder.appending(path: name)
                 guard !context.safety.isExcluded(url) else { continue }
+                result.report(to: progress, at: url)
                 let size = DirectorySizer.allocatedSize(of: url).bytes
                 result.items.append(CleanableItem(
                     url: url, name: name, category: .trash, size: size, safety: .review, origin: .rule, root: folder

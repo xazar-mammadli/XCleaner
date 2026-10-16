@@ -13,9 +13,7 @@ struct CleanupView: View {
             case .scanning, .review:
                 CleanupReview()
             case .cleaning:
-                ProgressView("Cleaning…")
-                    .controlSize(.large)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                CleaningProgressView()
             case .finished:
                 CleanupSummary()
             }
@@ -82,14 +80,16 @@ private struct CleanupReview: View {
     var body: some View {
         let cleanup = model.cleanup
         VStack(spacing: 0) {
+            // Groups expand with their own chevron rather than a DisclosureGroup, whose triangle
+            // sits at the top of the row and crowds the checkbox.
             List {
                 ForEach(cleanup.groups) { group in
-                    DisclosureGroup(isExpanded: expansion(of: group.kind)) {
+                    GroupHeader(group: group, isExpanded: expansion(of: group.kind))
+                    if expanded.contains(group.kind) {
                         ForEach(group.items) { item in
                             CleanableItemRow(item: item, isSelected: cleanup.binding(for: item))
+                                .padding(.leading, GroupHeader.childIndent)
                         }
-                    } label: {
-                        GroupHeader(group: group)
                     }
                 }
             }
@@ -151,10 +151,32 @@ private struct CleanupReview: View {
 private struct GroupHeader: View {
     @Environment(AppModel.self) private var model
     let group: CleanupModel.Group
+    @Binding var isExpanded: Bool
+
+    private static let chevronWidth: CGFloat = 14
+    private static let spacing: CGFloat = 10
+    /// How far item rows are indented, so their checkboxes line up under the group's checkbox.
+    static let childIndent = chevronWidth + spacing
 
     var body: some View {
         let cleanup = model.cleanup
-        HStack(spacing: 12) {
+        HStack(spacing: Self.spacing) {
+            Button {
+                toggleExpansion()
+            } label: {
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(.secondary)
+                    .rotationEffect(.degrees(isExpanded ? 90 : 0))
+                    .frame(width: Self.chevronWidth, height: Self.chevronWidth)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .disabled(group.items.isEmpty)
+            .opacity(group.items.isEmpty ? 0.3 : 1)
+            .help(Text(expansionLabel))
+            .accessibilityLabel(Text(expansionLabel))
+
             Group {
                 // An empty group would otherwise show as checked, since all of its zero items are "selected".
                 if group.items.isEmpty {
@@ -169,24 +191,33 @@ private struct GroupHeader: View {
             .labelsHidden()
             .disabled(group.items.isEmpty)
 
-            Image(systemName: group.kind.systemImage)
-                .font(.title3)
-                .foregroundStyle(.tint)
-                .frame(width: 24)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(group.kind.title)
-                    .font(.headline)
-                Text(group.kind.summary)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+            HStack(spacing: Self.spacing) {
+                Image(systemName: group.kind.systemImage)
+                    .font(.title3)
+                    .foregroundStyle(.tint)
+                    .frame(width: 24)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(group.kind.title)
+                        .font(.headline)
+                    Text(group.kind.summary)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer(minLength: 12)
             }
-            Spacer(minLength: 12)
+            .contentShape(Rectangle())
+            .onTapGesture(perform: toggleExpansion)
             if !group.issues.isEmpty {
                 Image(systemName: "exclamationmark.shield")
                     .foregroundStyle(.orange)
                     .help("Some folders could not be read. Turn on Full Disk Access to include them.")
             }
             if group.isScanning {
+                if let found = group.progress?.bytesFound, found > 0 {
+                    Text(found.formattedBytes)
+                        .foregroundStyle(.secondary)
+                        .monospacedDigit()
+                }
                 ProgressView()
                     .controlSize(.small)
             } else if group.items.isEmpty {
@@ -205,6 +236,15 @@ private struct GroupHeader: View {
         if group.wasStopped { return "Stopped" }
         return group.issues.isEmpty ? "Nothing found" : "Needs Full Disk Access"
     }
+
+    private var expansionLabel: LocalizedStringResource {
+        isExpanded ? "Collapse" : "Expand"
+    }
+
+    private func toggleExpansion() {
+        guard !group.items.isEmpty else { return }
+        withAnimation(.snappy(duration: 0.2)) { isExpanded.toggle() }
+    }
 }
 
 private struct ReviewFooter: View {
@@ -216,15 +256,20 @@ private struct ReviewFooter: View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 2) {
                 if cleanup.phase == .scanning {
-                    Text("Scanning…")
+                    Text("Scanning… found \(cleanup.foundBytes.formattedBytes) so far")
                         .font(.headline)
+                        .monospacedDigit()
+                    Text(verbatim: cleanup.currentLocation.map { ($0 as NSString).abbreviatingWithTildeInPath } ?? " ")
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .truncationMode(.middle)
                 } else {
                     Text("Found \(cleanup.foundBytes.formattedBytes)")
                         .font(.headline)
+                    Text("Selected: \(cleanup.selectedBytes.formattedBytes)")
+                        .foregroundStyle(.secondary)
+                        .monospacedDigit()
                 }
-                Text("Selected: \(cleanup.selectedBytes.formattedBytes)")
-                    .foregroundStyle(.secondary)
-                    .monospacedDigit()
             }
             Spacer()
             if cleanup.phase == .scanning {
@@ -234,7 +279,9 @@ private struct ReviewFooter: View {
                 Button {
                     isConfirming = true
                 } label: {
-                    Text("Clean \(cleanup.selectedBytes.formattedBytes)")
+                    Text(cleanup.selection.isEmpty
+                        ? "Clean" as LocalizedStringResource
+                        : "Clean \(cleanup.selectedBytes.formattedBytes)")
                         .padding(.horizontal, 8)
                 }
                 .buttonStyle(.borderedProminent)
@@ -247,6 +294,36 @@ private struct ReviewFooter: View {
         .padding(.vertical, 14)
         .background(.bar)
         .overlay(alignment: .top) { Divider() }
+    }
+}
+
+/// A determinate progress bar while items are removed: how many, how much, and which one right now.
+private struct CleaningProgressView: View {
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        let cleanup = model.cleanup
+        let isTest = cleanup.cleaningMethod == .dryRun
+        VStack(spacing: 14) {
+            Image(systemName: isTest ? "testtube.2" : "sparkles")
+                .font(.system(size: 40))
+                .foregroundStyle(.tint)
+                .symbolEffect(.pulse)
+            Text(isTest ? "Running the test…" as LocalizedStringResource : "Cleaning…")
+                .font(.title2.weight(.semibold))
+            if let progress = cleanup.cleaningProgress {
+                ProgressView(value: progress.fraction)
+                    .frame(width: 380)
+                Text("\(progress.completed) of ^[\(progress.total) item](inflect: true) · \(progress.completedBytes.formattedBytes) of \(progress.totalBytes.formattedBytes)")
+                    .monospacedDigit()
+                Text(verbatim: progress.currentItem ?? " ")
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+                    .frame(width: 380)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

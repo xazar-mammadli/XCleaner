@@ -47,6 +47,26 @@ public struct CleaningReport: Sendable {
     }
 }
 
+/// How far a cleanup run has come.
+public struct CleaningProgress: Sendable, Equatable {
+    public let completed: Int
+    public let total: Int
+    public let completedBytes: Int64
+    public let totalBytes: Int64
+    /// The item being handled right now; nil once the run is over.
+    public let currentItem: String?
+
+    public init(completed: Int, total: Int, completedBytes: Int64, totalBytes: Int64, currentItem: String?) {
+        self.completed = completed
+        self.total = total
+        self.completedBytes = completedBytes
+        self.totalBytes = totalBytes
+        self.currentItem = currentItem
+    }
+
+    public var fraction: Double { total == 0 ? 1 : Double(completed) / Double(total) }
+}
+
 /// Removes items, and is the only code in XCleaner that may. Each item is checked again by `SafetyGuard`
 /// right before it is touched, and every outcome is written to the audit log.
 public struct Cleaner: Sendable {
@@ -60,12 +80,34 @@ public struct Cleaner: Sendable {
         self.auditLog = auditLog
     }
 
-    public func clean(_ items: [CleanableItem], method: DeletionMethod) async -> CleaningReport {
+    /// `progress` hears about each item before it is touched, and once more when the run is over.
+    public func clean(
+        _ items: [CleanableItem],
+        method: DeletionMethod,
+        progress: (@Sendable (CleaningProgress) -> Void)? = nil
+    ) async -> CleaningReport {
         var report = CleaningReport(requestedMethod: method)
+        let totalBytes = items.reduce(0) { $0 + $1.size }
+        var completedBytes: Int64 = 0
+        var completed = 0
+        defer {
+            progress?(CleaningProgress(
+                completed: completed, total: items.count, completedBytes: completedBytes, totalBytes: totalBytes, currentItem: nil
+            ))
+        }
+
         for item in items {
             guard !Task.isCancelled else {
                 report.wasCancelled = true
                 break
+            }
+            progress?(CleaningProgress(
+                completed: completed, total: items.count, completedBytes: completedBytes, totalBytes: totalBytes,
+                currentItem: item.name
+            ))
+            defer {
+                completed += 1
+                completedBytes += item.size
             }
             switch safety.evaluate(item.url, origin: item.origin, root: item.root) {
             case .blocked(let reason):

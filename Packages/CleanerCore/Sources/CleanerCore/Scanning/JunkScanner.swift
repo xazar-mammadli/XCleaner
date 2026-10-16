@@ -8,8 +8,9 @@ public struct JunkScanner: Sendable {
         self.rules = rules
     }
 
-    public func scan(_ context: ScanContext) async -> ScanResult {
+    public func scan(_ context: ScanContext, progress: ScanProgressHandler? = nil) async -> ScanResult {
         var result = ScanResult()
+        defer { result.report(to: progress, at: nil) }
         let running = RunningApps(context.apps.runningApplications())
 
         for rule in rules {
@@ -34,6 +35,7 @@ public struct JunkScanner: Sendable {
                     result.issues.insert(.accessDenied(url.path(percentEncoded: false)))
                     continue
                 }
+                result.report(to: progress, at: url)
                 let size = DirectorySizer.allocatedSize(of: url).bytes
                 guard size > 0 else { continue }
                 result.items.append(item(for: rule, named: name, at: url, in: folder, size: size, context: context, running: running))

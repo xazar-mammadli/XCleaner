@@ -16,6 +16,7 @@ final class LargeFilesModel {
     private(set) var filesSeen = 0
     private(set) var scannedMinimum: Int64 = 0
     private(set) var isRemoving = false
+    private(set) var removalProgress: CleaningProgress?
     private(set) var lastReport: CleaningReport?
     private(set) var selection: Set<URL> = []
     var minimumSize: Int64 = 100_000_000
@@ -65,7 +66,13 @@ final class LargeFilesModel {
         let picked = selectedItems
         guard !picked.isEmpty else { return }
         isRemoving = true
-        let report = await services.cleaner.clean(picked, method: method)
+        removalProgress = nil
+        let report = await services.cleaner.clean(picked, method: method) { progress in
+            Task { @MainActor [weak self] in
+                guard let self, self.isRemoving else { return }
+                self.removalProgress = progress
+            }
+        }
         if report.requestedMethod != .dryRun {
             let removed = Set(report.removed.map(\.item.url))
             items.removeAll { removed.contains($0.url) }
@@ -73,6 +80,7 @@ final class LargeFilesModel {
         }
         lastReport = report
         isRemoving = false
+        removalProgress = nil
     }
 
     func binding(for item: CleanableItem) -> Binding<Bool> {

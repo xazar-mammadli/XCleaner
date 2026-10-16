@@ -17,6 +17,38 @@
         }
       }
     },
+    "%lld of ^[%lld item](inflect: true)" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld / %2$lld element"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of ^[%2$lld item](inflect: true)"
+          }
+        }
+      }
+    },
+    "%lld of ^[%lld item](inflect: true) · %@ of %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld / %2$lld element · %3$@ / %4$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of ^[%2$lld item](inflect: true) · %3$@ of %4$@"
+          }
+        }
+      }
+    },
     "A record of every removal is kept on this Mac." : {
       "localizations" : {
         "az" : {
@@ -33,6 +65,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fayl və ya qovluq əlavə et"
+          }
+        }
+      }
+    },
+    "Add…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Əlavə et…"
           }
         }
       }
@@ -327,6 +369,16 @@
         }
       }
     },
+    "Collapse" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yığ"
+          }
+        }
+      }
+    },
     "Coming later" : {
       "localizations" : {
         "az" : {
@@ -543,6 +595,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İstisnalar"
+          }
+        }
+      }
+    },
+    "Expand" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genişləndir"
           }
         }
       }
@@ -1337,22 +1399,22 @@
         }
       }
     },
+    "Remove from the list" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siyahıdan çıxar"
+          }
+        }
+      }
+    },
     "Remove junk your Mac doesn't need: caches, logs, leftovers and old installers." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mac-ın ehtiyacı olmayan zibili silin: keşlər, loglar, qalıqlar və köhnə quraşdırıcılar."
-          }
-        }
-      }
-    },
-    "Remove the selected location" : {
-      "localizations" : {
-        "az" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seçilmiş yeri siyahıdan çıxar"
           }
         }
       }
@@ -1437,6 +1499,16 @@
         }
       }
     },
+    "Running the test…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınaq aparılır…"
+          }
+        }
+      }
+    },
     "Safe" : {
       "localizations" : {
         "az" : {
@@ -1497,12 +1569,12 @@
         }
       }
     },
-    "Scanning…" : {
+    "Scanning… found %@ so far" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skan edilir…"
+            "value" : "Skan edilir… indiyə qədər %@ tapılıb"
           }
         }
       }

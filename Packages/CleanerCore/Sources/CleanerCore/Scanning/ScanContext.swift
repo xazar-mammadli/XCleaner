@@ -25,6 +25,22 @@ public struct ScanContext: Sendable {
     }
 }
 
+/// What a scan has found so far, and where it is looking now.
+public struct ScanProgress: Sendable, Equatable {
+    public let itemsFound: Int
+    public let bytesFound: Int64
+    /// The folder or item being measured; nil once the scan is over.
+    public let location: String?
+
+    public init(itemsFound: Int, bytesFound: Int64, location: String?) {
+        self.itemsFound = itemsFound
+        self.bytesFound = bytesFound
+        self.location = location
+    }
+}
+
+public typealias ScanProgressHandler = @Sendable (ScanProgress) -> Void
+
 public enum ScanIssue: Sendable, Hashable {
     /// macOS refused to show a folder's contents, usually because Full Disk Access is off.
     case accessDenied(String)
@@ -40,6 +56,11 @@ public struct ScanResult: Sendable {
     }
 
     public var totalBytes: Int64 { items.reduce(0) { $0 + $1.size } }
+
+    /// Reports progress for the item about to be measured at `location`, or the finished scan when it is nil.
+    func report(to progress: ScanProgressHandler?, at location: URL?) {
+        progress?(ScanProgress(itemsFound: items.count, bytesFound: totalBytes, location: location?.path(percentEncoded: false)))
+    }
 }
 
 enum DirectoryListing {

@@ -109,6 +109,18 @@ struct CleanerTests {
         #expect(sandbox.exists(item.url))
     }
 
+    @Test func reportsProgressForEveryItem() async throws {
+        let first = try cacheItem("com.example/one.db", bytes: 64)
+        let second = try cacheItem("com.example/two.db", bytes: 32)
+        let updates = Recorder<CleaningProgress>()
+        _ = await cleaner.clean([first, second], method: .dryRun) { updates.append($0) }
+
+        #expect(updates.values.map(\.completed) == [0, 1, 2])
+        #expect(updates.values.map(\.currentItem) == ["one.db", "two.db", nil])
+        #expect(updates.values.last?.completedBytes == 96)
+        #expect(updates.values.allSatisfy { $0.total == 2 && $0.totalBytes == 96 })
+    }
+
     @Test func splitsTrashedAndDeletedBytes() async throws {
         let cache = try cacheItem("com.example/cache.db", bytes: 64)
         let trashFolder = try sandbox.directory("home/.Trash")

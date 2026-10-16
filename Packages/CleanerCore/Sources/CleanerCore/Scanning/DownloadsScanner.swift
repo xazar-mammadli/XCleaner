@@ -12,14 +12,18 @@ public struct DownloadsScanner: Sendable {
 
     public init() {}
 
-    public func scan(_ context: ScanContext) async -> ScanResult {
+    public func scan(_ context: ScanContext, progress: ScanProgressHandler? = nil) async -> ScanResult {
         var result = ScanResult()
-        scan(context.home.appending(path: "Downloads"), offeringOldFiles: true, context, into: &result)
-        scan(context.home.appending(path: "Desktop"), offeringOldFiles: false, context, into: &result)
+        scan(context.home.appending(path: "Downloads"), offeringOldFiles: true, context, progress, into: &result)
+        scan(context.home.appending(path: "Desktop"), offeringOldFiles: false, context, progress, into: &result)
+        result.report(to: progress, at: nil)
         return result
     }
 
-    private func scan(_ folder: URL, offeringOldFiles: Bool, _ context: ScanContext, into result: inout ScanResult) {
+    private func scan(
+        _ folder: URL, offeringOldFiles: Bool, _ context: ScanContext, _ progress: ScanProgressHandler?,
+        into result: inout ScanResult
+    ) {
         let names: [String]
         switch DirectoryListing.children(of: folder) {
         case .missing:
@@ -36,6 +40,7 @@ public struct DownloadsScanner: Sendable {
             guard !Task.isCancelled else { return }
             let url = folder.appending(path: name)
             guard !context.safety.isExcluded(url) else { continue }
+            result.report(to: progress, at: url)
 
             let path = url.path(percentEncoded: false)
             let values = try? url.resourceValues(forKeys: [

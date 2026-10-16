@@ -111,6 +111,18 @@ extension Sandbox {
     }
 }
 
+/// Collects values reported from any thread, such as progress updates.
+final class Recorder<Value: Sendable>: @unchecked Sendable {
+    private let lock = NSLock()
+    private var stored: [Value] = []
+
+    var values: [Value] { lock.withLock { stored } }
+
+    func append(_ value: Value) {
+        lock.withLock { stored.append(value) }
+    }
+}
+
 /// Counts from any thread.
 final class Counter: @unchecked Sendable {
     private let lock = NSLock()

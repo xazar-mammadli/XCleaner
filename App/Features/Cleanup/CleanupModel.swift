@@ -20,35 +20,47 @@ final class CleanupModel {
         var wasStopped = false
         var items: [CleanableItem] = []
         var issues: Set<ScanIssue> = []
+        /// What the scan has found so far, while it runs.
+        var progress: ScanProgress?
 
         var id: Kind { kind }
         var totalBytes: Int64 { items.reduce(0) { $0 + $1.size } }
+        /// Found so far while scanning, or the final total afterwards.
+        var liveBytes: Int64 { isScanning ? progress?.bytesFound ?? 0 : totalBytes }
     }
 
     private(set) var phase = Phase.idle
     private(set) var groups: [Group] = []
     private(set) var selection: Set<URL> = []
     private(set) var report: CleaningReport?
+    /// The folder or item a scan looked at most recently.
+    private(set) var currentLocation: String?
+    private(set) var cleaningProgress: CleaningProgress?
+    private(set) var cleaningMethod: DeletionMethod?
     private var task: Task<Void, Never>?
 
     var allItems: [CleanableItem] { groups.flatMap(\.items) }
     var selectedItems: [CleanableItem] { allItems.filter { selection.contains($0.url) } }
     var selectedBytes: Int64 { selectedItems.reduce(0) { $0 + $1.size } }
-    var foundBytes: Int64 { groups.reduce(0) { $0 + $1.totalBytes } }
+    var foundBytes: Int64 { groups.reduce(0) { $0 + $1.liveBytes } }
 
     func scan(with services: AppServices) {
         task?.cancel()
         phase = .scanning
         report = nil
         selection = []
+        currentLocation = nil
         groups = Group.Kind.allCases.map { Group(kind: $0) }
 
         let context = services.context
+        let junkProgress = progressReporter(for: .junk)
+        let downloadsProgress = progressReporter(for: .downloads)
+        let trashProgress = progressReporter(for: .trash)
         task = Task {
             await withTaskGroup(of: (Group.Kind, ScanResult).self) { scans in
-                scans.addTask { (.junk, await JunkScanner().scan(context)) }
-                scans.addTask { (.downloads, await DownloadsScanner().scan(context)) }
-                scans.addTask { (.trash, await TrashScanner().scan(context)) }
+                scans.addTask { (.junk, await JunkScanner().scan(context, progress: junkProgress)) }
+                scans.addTask { (.downloads, await DownloadsScanner().scan(context, progress: downloadsProgress)) }
+                scans.addTask { (.trash, await TrashScanner().scan(context, progress: trashProgress)) }
                 for await (kind, result) in scans {
                     finish(kind, with: result)
                 }
@@ -82,8 +94,14 @@ final class CleanupModel {
     func clean(with services: AppServices, method: DeletionMethod) async {
         let items = selectedItems
         guard !items.isEmpty else { return }
+        cleaningMethod = method
+        cleaningProgress = CleaningProgress(
+            completed: 0, total: items.count, completedBytes: 0, totalBytes: items.reduce(0) { $0 + $1.size }, currentItem: nil
+        )
         phase = .cleaning
-        report = await services.cleaner.clean(items, method: method)
+        report = await services.cleaner.clean(items, method: method) { progress in
+            Task { @MainActor [weak self] in self?.updateCleaning(progress) }
+        }
         phase = .finished
     }
 
@@ -97,6 +115,25 @@ final class CleanupModel {
         } else {
             selection.remove(item.url)
         }
+    }
+
+    /// Progress arrives from the scan's own thread and is applied here, on the main actor.
+    private func progressReporter(for kind: Group.Kind) -> ScanProgressHandler {
+        { progress in
+            Task { @MainActor [weak self] in self?.update(progress, for: kind) }
+        }
+    }
+
+    private func update(_ progress: ScanProgress, for kind: Group.Kind) {
+        guard let index = groups.firstIndex(where: { $0.kind == kind }), groups[index].isScanning else { return }
+        groups[index].progress = progress
+        if let location = progress.location { currentLocation = location }
+    }
+
+    private func updateCleaning(_ progress: CleaningProgress) {
+        // Updates can arrive late or out of order; only ever move forward, and only while cleaning.
+        guard phase == .cleaning, progress.completed >= cleaningProgress?.completed ?? 0 else { return }
+        cleaningProgress = progress
     }
 
     private func finish(_ kind: Group.Kind, with result: ScanResult) {

@@ -154,6 +154,13 @@ struct LargeFilesView: View {
                     .help("Some folders could not be read. Turn on Full Disk Access to include them.")
             }
             Spacer()
+            if files.isRemoving, let progress = files.removalProgress {
+                ProgressView(value: progress.fraction)
+                    .frame(width: 140)
+                Text("\(progress.completed) of ^[\(progress.total) item](inflect: true)")
+                    .foregroundStyle(.secondary)
+                    .monospacedDigit()
+            }
             Button {
                 isConfirming = true
             } label: {
