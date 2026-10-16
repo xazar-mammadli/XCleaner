@@ -11,6 +11,7 @@ struct ApplicationsView: View {
             switch model.applicationsTool {
             case .uninstaller: UninstallerView()
             case .remainingFiles: RemainingFilesView()
+            case .extensions: ExtensionsView()
             }
         }
         .navigationTitle(Text(SidebarItem.applications.title))

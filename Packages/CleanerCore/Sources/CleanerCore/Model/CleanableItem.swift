@@ -30,6 +30,10 @@ public enum CleanupCategory: String, Sendable, Codable, CaseIterable {
     case userCaches, logs, developerJunk, trash, installers, archives, screenshots, oldDownloads, largeFiles
     /// Caches and logs in the system folders, which only an administrator may remove.
     case systemCaches, systemLogs
+    /// Copies of attachments the user opened in Mail.
+    case mailAttachments
+    /// A browser's cache, history or cookies.
+    case browserData
     /// An app bundle itself.
     case application
     /// Files an app keeps in the home Library: preferences, support files, caches, containers…

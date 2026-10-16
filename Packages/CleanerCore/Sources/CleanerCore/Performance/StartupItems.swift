@@ -225,9 +225,10 @@ public enum LaunchControl {
         return result
     }
 
-    static func run(_ arguments: [String]) -> (status: Int32, output: String) {
+    /// Runs `launchctl`, or another of macOS's command-line tools, and returns its exit status and output.
+    static func run(_ arguments: [String], tool: String = "/bin/launchctl") -> (status: Int32, output: String) {
         let process = Process()
-        process.executableURL = URL(filePath: "/bin/launchctl")
+        process.executableURL = URL(filePath: tool)
         process.arguments = arguments
         let pipe = Pipe()
         process.standardOutput = pipe

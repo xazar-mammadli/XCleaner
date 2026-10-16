@@ -27,7 +27,7 @@ XCleaner finds the clutter that builds up on a Mac and helps you remove it witho
 It aims to cover what popular commercial cleaners do, but more calmly and openly. There are no scare tactics and no inflated numbers, and nothing is ever removed behind your back.
 
 > [!NOTE]
-> XCleaner is in early development. Cleanup of system junk, installers, downloads and the Trash works today. So do a complete app uninstaller, a finder for files left behind by deleted apps, a disk map, a finder for big files, a monitor for heavy apps, a startup items manager, maintenance tasks, a menu bar monitor and a full cleanup history. More tools arrive phase by phase, as listed in the [roadmap](#roadmap).
+> XCleaner is in early development. Cleanup of system junk, installers, downloads and the Trash works today. So do a complete app uninstaller, a finder for files left behind by deleted apps, a disk map, a finder for big files, a monitor for heavy apps, a startup items manager, maintenance tasks, extensions, browser data, a menu bar monitor and a full cleanup history. More tools arrive phase by phase, as listed in the [roadmap](#roadmap).
 
 ## Safety first
 
@@ -52,15 +52,15 @@ Every removal passes through a single gate that checks the item again right befo
 | Overview | Disk usage, Full Disk Access status, one-click scan | Available |
 | Cleanup | System junk, installers and downloads, Trash bins | Available |
 | | System-level junk (asks for your password) | Available |
-| | Mail attachments | Phase 3 |
+| | Mail attachments | Available |
 | Applications | Uninstaller, remaining files of deleted apps, app reset | Available |
-| | Extensions | Phase 3 |
+| | Extensions | Available |
 | | Updater for apps from developers, the App Store and Homebrew | Phase 4 |
 | Performance | Heavy apps, startup items, maintenance tasks | Available |
 | Files | Biggest and old files | Available |
 | | Disk map | Available |
 | | Duplicates, similar photos | Phase 4 |
-| Privacy | Browser data | Phase 3 |
+| Privacy | Browser data | Available |
 | | App permissions, background item check | Phase 4 |
 | Utilities | Cleanup history | Available |
 | | Menu bar monitor | Available |
@@ -122,11 +122,12 @@ XCleaner/
 │   └── Support/                Preferences and helpers
 ├── Packages/CleanerCore/       Cleaning engine (no UI)
 │   ├── Sources/CleanerCore/
-│   │   ├── Apps/               App inventory, leftovers, remaining files
+│   │   ├── Apps/               App inventory, leftovers, remaining files, extensions
 │   │   ├── Cleaning/           Cleaner, Trash handling, audit log
 │   │   ├── DiskMap/            Folder tree and treemap layout
 │   │   ├── Model/              Cleanable items and safety levels
 │   │   ├── Performance/        Process usage, launch agents and login items
+│   │   ├── Privacy/            Browser history, cookies and caches
 │   │   ├── Privileged/         The one-off root run behind administrator tasks
 │   │   ├── Safety/             SafetyGuard and SafetyPolicy
 │   │   ├── Scanning/           Scanners for junk, downloads, the Trash and big files
@@ -145,7 +146,7 @@ The interface is available in English and Azerbaijani. XCleaner follows the macO
 - [x] **Phase 0: Foundation.** Safety engine, app shell, Full Disk Access guide, settings, English and Azerbaijani.
 - [x] **Phase 1: Cleanup basics.** Quick and deep cleanup, biggest and old files, cleanup history, exclusions.
 - [x] **Phase 2: Applications and disk map.** Uninstaller, remaining files, app reset, disk map.
-- [ ] **Phase 3: System tools.** System-level junk and other administrator tasks without a resident helper, maintenance, startup items, heavy apps, extensions, browser data and a menu bar monitor.
+- [x] **Phase 3: System tools.** System-level junk and other administrator tasks without a resident helper, maintenance, startup items, heavy apps, Mail attachments, extensions, browser data and a menu bar monitor.
 - [ ] **Phase 4: Advanced tools.** Duplicates, similar photos, updater, app permissions, background item check and hidden files.
 - [ ] **Phase 5: Release.** Developer ID signing, notarization, automatic updates and a DMG installer.
 

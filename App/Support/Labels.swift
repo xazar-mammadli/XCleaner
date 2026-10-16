@@ -31,6 +31,8 @@ extension CleanupCategory {
         case .logs: "Logs"
         case .systemCaches: "System cache"
         case .systemLogs: "System logs"
+        case .mailAttachments: "Mail attachment"
+        case .browserData: "Browser data"
         case .developerJunk: "Developer files"
         case .trash: "In the Trash"
         case .installers: "Installer"

@@ -43,6 +43,23 @@ enum Administrator {
         }
     }
 
+    /// Removes `items`: those in the system folders in a root run after the password prompt, the rest as usual.
+    /// A test run removes nothing, so it needs no password and everything goes the usual way.
+    static func clean(
+        _ items: [CleanableItem], with cleaner: Cleaner, method: DeletionMethod,
+        progress: (@Sendable (CleaningProgress) -> Void)? = nil
+    ) async -> CleaningReport {
+        let system = method == .dryRun ? [] : items.filter(\.needsAdministrator)
+        var report = CleaningReport(requestedMethod: method)
+        // One root run per way of removing: what the user picked only ever goes to the Trash.
+        let byMethod = Dictionary(grouping: system) { Cleaner.plannedMethod(for: $0, requested: method) }
+        for (planned, group) in byMethod.sorted(by: { $0.key.rawValue < $1.key.rawValue }) {
+            report.append(await remove(group, method: planned, log: cleaner.auditLog))
+        }
+        report.append(await cleaner.clean(items.filter { !system.contains($0) }, method: method, progress: progress))
+        return report
+    }
+
     /// Removes items from the system folders as root, and records what happened in the history.
     static func remove(_ items: [CleanableItem], method: DeletionMethod, log: AuditLog?) async -> CleaningReport {
         let request = PrivilegedRequest.remove(paths: items.map { $0.url.path(percentEncoded: false) }, method: method, owner: .current)

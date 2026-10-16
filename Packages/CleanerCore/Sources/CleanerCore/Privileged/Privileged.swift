@@ -92,8 +92,11 @@ public struct PrivilegedResponse: Codable, Sendable, Equatable {
 
 /// Carries out a `PrivilegedRequest` inside the root run.
 public enum PrivilegedRunner {
-    /// The only folders a privileged run removes anything from, whatever the request says.
-    public static let removableRoots = ["/Library/Caches", "/Library/Logs", "/private/var/log", "/Library/LaunchAgents", "/Library/LaunchDaemons"]
+    /// The only folders a privileged run removes anything from, whatever the request says: system caches and logs,
+    /// launch items, and the folders of system-wide add-ons.
+    public static let removableRoots =
+        ["/Library/Caches", "/Library/Logs", "/private/var/log", "/Library/LaunchAgents", "/Library/LaunchDaemons"]
+        + ExtensionScanner.systemFolders
 
     public static func perform(_ request: PrivilegedRequest) async -> PrivilegedResponse {
         switch request {

@@ -2,7 +2,7 @@ import CleanerCore
 import SwiftUI
 
 enum ApplicationsTool: String, CaseIterable, Identifiable {
-    case uninstaller, remainingFiles
+    case uninstaller, remainingFiles, extensions
 
     var id: Self { self }
 
@@ -10,6 +10,7 @@ enum ApplicationsTool: String, CaseIterable, Identifiable {
         switch self {
         case .uninstaller: "Uninstaller"
         case .remainingFiles: "Remaining Files"
+        case .extensions: "Extensions"
         }
     }
 }

@@ -213,3 +213,34 @@ struct LargeFileScannerTests {
         #expect(counter.value == 4)
     }
 }
+
+@Suite("MailAttachmentsScanner")
+struct MailAttachmentsScannerTests {
+    @Test func offersOpenedAttachmentsByTheirOwnName() async throws {
+        let sandbox = try Sandbox()
+        let home = sandbox.root
+        let downloads = "Library/Containers/com.apple.mail/Data/Library/Mail Downloads"
+        try sandbox.file("\(downloads)/8A1C2B3D-0000-4000-8000-000000000001/Quarterly report.pdf", bytes: 8_192)
+        try sandbox.file("Library/Mail Downloads/old-invoice.zip", bytes: 4_096)
+        try sandbox.file("Library/Mail/V10/mailbox/message.emlx", bytes: 4_096)
+        let safety = SafetyGuard(policy: .forTests(home: home))
+
+        let result = await MailAttachmentsScanner().scan(
+            ScanContext(home: home, safety: safety, apps: FakeAppCatalog(), hasFullDiskAccess: true)
+        )
+        #expect(Set(result.items.map(\.name)) == ["Quarterly report.pdf", "old-invoice.zip"])
+        #expect(result.items.allSatisfy { $0.category == .mailAttachments && $0.safety == .review && !$0.isSelectedByDefault })
+        #expect(!result.items.contains { $0.url.path(percentEncoded: false).contains("/Library/Mail/") })
+    }
+
+    @Test func leavesMailsContainerAloneWithoutFullDiskAccess() async throws {
+        let sandbox = try Sandbox()
+        let home = sandbox.root
+        try sandbox.file("Library/Containers/com.apple.mail/Data/Library/Mail Downloads/X/file.pdf")
+        let result = await MailAttachmentsScanner().scan(
+            ScanContext(home: home, safety: SafetyGuard(policy: .forTests(home: home)), apps: FakeAppCatalog())
+        )
+        #expect(result.items.isEmpty)
+        #expect(!result.issues.isEmpty)
+    }
+}

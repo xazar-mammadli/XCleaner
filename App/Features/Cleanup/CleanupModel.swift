@@ -10,7 +10,7 @@ final class CleanupModel {
 
     struct Group: Identifiable {
         enum Kind: String, CaseIterable, Identifiable {
-            case junk, system, downloads, trash
+            case junk, system, downloads, mail, trash
             var id: Self { self }
         }
 
@@ -56,12 +56,14 @@ final class CleanupModel {
         let junkProgress = progressReporter(for: .junk)
         let systemProgress = progressReporter(for: .system)
         let downloadsProgress = progressReporter(for: .downloads)
+        let mailProgress = progressReporter(for: .mail)
         let trashProgress = progressReporter(for: .trash)
         task = Task {
             await withTaskGroup(of: (Group.Kind, ScanResult).self) { scans in
                 scans.addTask { (.junk, await JunkScanner().scan(context, progress: junkProgress)) }
                 scans.addTask { (.system, await JunkScanner(rules: CleanupRule.system).scan(context, progress: systemProgress)) }
                 scans.addTask { (.downloads, await DownloadsScanner().scan(context, progress: downloadsProgress)) }
+                scans.addTask { (.mail, await MailAttachmentsScanner().scan(context, progress: mailProgress)) }
                 scans.addTask { (.trash, await TrashScanner().scan(context, progress: trashProgress)) }
                 for await (kind, result) in scans {
                     finish(kind, with: result)
@@ -101,17 +103,9 @@ final class CleanupModel {
             completed: 0, total: items.count, completedBytes: 0, totalBytes: items.reduce(0) { $0 + $1.size }, currentItem: nil
         )
         phase = .cleaning
-        // Items in the system folders go to a root run in one go, after the password prompt. A test run needs neither.
-        let system = method == .dryRun ? [] : items.filter(\.needsAdministrator)
-        var combined = CleaningReport(requestedMethod: method)
-        if !system.isEmpty {
-            combined.append(await Administrator.remove(system, method: method, log: services.cleaner.auditLog))
-        }
-        let others = items.filter { !system.contains($0) }
-        combined.append(await services.cleaner.clean(others, method: method) { progress in
+        report = await Administrator.clean(items, with: services.cleaner, method: method) { progress in
             Task { @MainActor [weak self] in self?.updateCleaning(progress) }
-        })
-        report = combined
+        }
         phase = .finished
     }
 
@@ -162,6 +156,7 @@ extension CleanupModel.Group.Kind {
         case .junk: "System Junk"
         case .system: "System-Level Junk"
         case .downloads: "Installers & Downloads"
+        case .mail: "Mail Attachments"
         case .trash: "Trash Bins"
         }
     }
@@ -171,6 +166,7 @@ extension CleanupModel.Group.Kind {
         case .junk: "Caches, logs and developer files that apps recreate when they need them."
         case .system: "Caches and old logs that apps leave in the system folders. Removing them asks for your password, so pick them yourself."
         case .downloads: "Installers, unpacked archives, old screenshots and forgotten downloads. These go to the Trash."
+        case .mail: "Copies Mail saved when you opened attachments. The originals stay in your mail."
         case .trash: "Items already in the Trash. Removing them deletes them for good."
         }
     }
@@ -180,6 +176,7 @@ extension CleanupModel.Group.Kind {
         case .junk: "sparkles"
         case .system: "gearshape.2"
         case .downloads: "shippingbox"
+        case .mail: "paperclip"
         case .trash: "trash"
         }
     }

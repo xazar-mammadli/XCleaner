@@ -36,6 +36,8 @@ struct ContentView: View {
                 PerformanceView()
             case .files:
                 FilesView()
+            case .privacy:
+                PrivacyView()
             case .utilities:
                 UtilitiesView()
             case let item:

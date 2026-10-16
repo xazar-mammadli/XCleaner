@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ Extensions" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ əlavələri"
+          }
+        }
+      }
+    },
     "%@ available" : {
       "localizations" : {
         "az" : {
@@ -203,6 +213,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fayl və ya qovluq əlavə et"
+          }
+        }
+      }
+    },
+    "Add-ons for macOS and for your browsers: preference panes, plug-ins, services and browser extensions." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS və brauzerləriniz üçün əlavələr: ayar panelləri, plug-in-lər, xidmətlər və brauzer əlavələri."
           }
         }
       }
@@ -417,6 +437,16 @@
         }
       }
     },
+    "Audio Plug-ins" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio plug-in-lər"
+          }
+        }
+      }
+    },
     "Background Item Check" : {
       "localizations" : {
         "az" : {
@@ -473,6 +503,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brauzer məlumatları"
+          }
+        }
+      }
+    },
+    "Browser data" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brauzer datası"
+          }
+        }
+      }
+    },
+    "Browser plug-ins of the past. Today's browsers no longer load them." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keçmişin brauzer plug-in-ləri. İndiki brauzerlər onları artıq yükləmir."
           }
         }
       }
@@ -697,6 +747,26 @@
         }
       }
     },
+    "Clear" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təmizlə"
+          }
+        }
+      }
+    },
+    "Clear %@ of browser data?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ brauzer datası təmizlənsin?"
+          }
+        }
+      }
+    },
     "Clear History" : {
       "localizations" : {
         "az" : {
@@ -837,12 +907,32 @@
         }
       }
     },
+    "Copies Mail saved when you opened attachments. The originals stay in your mail." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qoşmaları açanda Mail-in saxladığı nüsxələr. Orijinallar poçtunuzda qalır."
+          }
+        }
+      }
+    },
     "Copies of attachments saved by the Mail app." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mail proqramının saxladığı qoşma nüsxələri."
+          }
+        }
+      }
+    },
+    "Copies of pages and images. Sites load a little slower the first time afterwards." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Səhifə və şəkillərin nüsxələri. Bundan sonra saytlar ilk dəfə bir az gec açılır."
           }
         }
       }
@@ -997,6 +1087,16 @@
         }
       }
     },
+    "Effects, instruments and audio devices for music and calling apps." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musiqi və zəng proqramları üçün effektlər, alətlər və audio cihazlar."
+          }
+        }
+      }
+    },
     "Empty file" : {
       "localizations" : {
         "az" : {
@@ -1107,6 +1207,16 @@
         }
       }
     },
+    "Extra panels in System Settings." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Settings-də əlavə panellər."
+          }
+        }
+      }
+    },
     "Failed" : {
       "localizations" : {
         "az" : {
@@ -1203,6 +1313,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DNS keşini təmizlə"
+          }
+        }
+      }
+    },
+    "For everyone on this Mac" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Mac-dakı hər kəs üçün"
           }
         }
       }
@@ -1373,12 +1493,32 @@
         }
       }
     },
+    "History" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarixçə"
+          }
+        }
+      }
+    },
     "History, cookies and caches of Safari, Chrome, Firefox, Edge and Brave." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Safari, Chrome, Firefox, Edge və Brave-in tarixçəsi, cookie-ləri və keşi."
+          }
+        }
+      }
+    },
+    "History, cookies and caches your browsers keep. Passwords, bookmarks and open tabs are never touched." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brauzerlərinizin saxladığı tarixçə, çərəzlər və keşlər. Parollara, əlfəcinlərə və açıq tablara heç vaxt toxunulmur."
           }
         }
       }
@@ -1483,12 +1623,42 @@
         }
       }
     },
+    "Internet Plug-ins" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnternet plug-in-ləri"
+          }
+        }
+      }
+    },
     "It didn't work: %@" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alınmadı: %@"
+          }
+        }
+      }
+    },
+    "It goes to the Trash, where you can put it back." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zibil qutusuna gedir, oradan geri qaytara bilərsiniz."
+          }
+        }
+      }
+    },
+    "It goes to the Trash, where you can put it back. It's installed for everyone on this Mac, so macOS will ask for your password." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zibil qutusuna gedir, oradan geri qaytara bilərsiniz. Bu Mac-dakı hər kəs üçün quraşdırılıb, ona görə macOS parolunuzu soruşacaq."
           }
         }
       }
@@ -1689,6 +1859,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mail qoşmaları"
+          }
+        }
+      }
+    },
+    "Mail attachment" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail qoşması"
           }
         }
       }
@@ -1953,6 +2133,16 @@
         }
       }
     },
+    "No extensions" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Əlavə yoxdur"
+          }
+        }
+      }
+    },
     "No leftovers found" : {
       "localizations" : {
         "az" : {
@@ -2053,6 +2243,26 @@
         }
       }
     },
+    "Nothing to clear" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Təmizlənəcək heç nə yoxdur"
+          }
+        }
+      }
+    },
+    "Nothing was added to macOS or to your browsers." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS-a və ya brauzerlərinizə heç nə əlavə edilməyib."
+          }
+        }
+      }
+    },
     "Nothing was removed, because Test Mode is on." : {
       "localizations" : {
         "az" : {
@@ -2113,6 +2323,26 @@
         }
       }
     },
+    "Only for you" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnız sizin üçün"
+          }
+        }
+      }
+    },
+    "Open %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ aç"
+          }
+        }
+      }
+    },
     "Open System Settings" : {
       "localizations" : {
         "az" : {
@@ -2159,6 +2389,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ümumi baxış"
+          }
+        }
+      }
+    },
+    "Pages you visited and files you downloaded, and the suggestions built from them." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ziyarət etdiyiniz səhifələr, endirdiyiniz fayllar və onlardan qurulan təkliflər."
           }
         }
       }
@@ -2223,6 +2463,16 @@
         }
       }
     },
+    "Preference Panes" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayar panelləri"
+          }
+        }
+      }
+    },
     "Preference panes, plug-ins and browser extensions." : {
       "localizations" : {
         "az" : {
@@ -2273,6 +2523,16 @@
         }
       }
     },
+    "Previews for more kinds of files. Recent macOS no longer loads this older kind." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha çox fayl növü üçün önizləmələr. Yeni macOS bu köhnə növü artıq yükləmir."
+          }
+        }
+      }
+    },
     "Privacy" : {
       "localizations" : {
         "az" : {
@@ -2313,12 +2573,32 @@
         }
       }
     },
+    "Quick Actions in the Services menu and in Finder." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Services menyusunda və Finder-də Quick Action-lar."
+          }
+        }
+      }
+    },
     "Quick Cleanup" : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sürətli təmizlik"
+          }
+        }
+      }
+    },
+    "Quick Look Plug-ins" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Look plug-in-ləri"
           }
         }
       }
@@ -2359,6 +2639,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XCleaner-dən çıx"
+          }
+        }
+      }
+    },
+    "Quit it to clear its data." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datasını təmizləmək üçün onu bağlayın."
           }
         }
       }
@@ -2459,6 +2749,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mac-ın ehtiyacı olmayan zibili silin: keşlər, loglar, qalıqlar və köhnə quraşdırıcılar."
+          }
+        }
+      }
+    },
+    "Remove these in %@ itself: browsers put back extensions that disappear behind their back." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bunları birbaşa %@ brauzerində silin: brauzerlər xəbəri olmadan yox olan əlavələri geri qaytarır."
+          }
+        }
+      }
+    },
+    "Remove “%@”?" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” silinsin?"
           }
         }
       }
@@ -2633,6 +2943,16 @@
         }
       }
     },
+    "Safari extensions come inside apps, and go when their app goes." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari əlavələri proqramların içində gəlir və proqramla birlikdə silinir."
+          }
+        }
+      }
+    },
     "Safe" : {
       "localizations" : {
         "az" : {
@@ -2723,6 +3043,26 @@
         }
       }
     },
+    "Screen Savers" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran qoruyucuları"
+          }
+        }
+      }
+    },
+    "Screen savers you added." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Əlavə etdiyiniz ekran qoruyucuları."
+          }
+        }
+      }
+    },
     "Scripts" : {
       "localizations" : {
         "az" : {
@@ -2779,6 +3119,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seçilib: %@"
+          }
+        }
+      }
+    },
+    "Services" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xidmətlər"
           }
         }
       }
@@ -2943,6 +3293,16 @@
         }
       }
     },
+    "Spotlight Plug-ins" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotlight plug-in-ləri"
+          }
+        }
+      }
+    },
     "Spotlight forgets its index and builds it again. Searches may miss files until it's done, which can take an hour or more." : {
       "localizations" : {
         "az" : {
@@ -3103,6 +3463,16 @@
         }
       }
     },
+    "Teach Spotlight to search inside more kinds of files." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotlight-a daha çox fayl növünün içində axtarmağı öyrədir."
+          }
+        }
+      }
+    },
     "Test Mode" : {
       "localizations" : {
         "az" : {
@@ -3233,6 +3603,26 @@
         }
       }
     },
+    "The files are deleted for good. This can't be undone." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fayllar birdəfəlik silinir. Bunu geri qaytarmaq olmaz."
+          }
+        }
+      }
+    },
+    "The files go to the Trash. Empty it to remove them for good." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fayllar Zibil qutusuna gedir. Birdəfəlik silmək üçün onu boşaldın."
+          }
+        }
+      }
+    },
     "The password prompt was cancelled." : {
       "localizations" : {
         "az" : {
@@ -3349,6 +3739,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proqramın konteynerlərini də tapmaq üçün Tam Disk Girişini aktiv edin."
+          }
+        }
+      }
+    },
+    "Turn on Full Disk Access to include Safari." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safari-ni də daxil etmək üçün Full Disk Access-i yandırın."
           }
         }
       }
@@ -3493,6 +3893,16 @@
         }
       }
     },
+    "What websites stored, sign-ins included. Clearing them signs you out of websites." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saytların saxladığı məlumatlar, girişlər daxil. Təmizləsəniz, saytlardan çıxış edəcəksiniz."
+          }
+        }
+      }
+    },
     "Which apps can use your camera, microphone, screen and files." : {
       "localizations" : {
         "az" : {
@@ -3616,6 +4026,16 @@
         }
       }
     },
+    "You'll be signed out of websites in %@." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu brauzerlərdə saytlardan çıxış edəcəksiniz: %@."
+          }
+        }
+      }
+    },
     "Your Mac at a glance." : {
       "localizations" : {
         "az" : {
@@ -3632,6 +4052,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mac sayt ünvanlarını yenidən axtarır, ona görə saytlar ilk dəfə bir az gec aça bilər. Başqa heç nə dəyişmir."
+          }
+        }
+      }
+    },
+    "Your browsers keep no history, cookies or caches right now." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brauzerləriniz hazırda tarixçə, çərəz və ya keş saxlamır."
           }
         }
       }

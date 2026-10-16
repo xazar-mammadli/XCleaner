@@ -8,10 +8,11 @@ enum SidebarItem: String, CaseIterable, Identifiable {
 
     /// Tools that work today, by `PlannedTool.id`. The others are listed as coming later.
     static let availableTools: Set<String> = [
-        "system-junk", "installers", "trash-bins", "system-level-junk",
-        "uninstaller", "remaining-files", "reset-apps",
+        "system-junk", "installers", "trash-bins", "system-level-junk", "mail-attachments",
+        "uninstaller", "remaining-files", "reset-apps", "extensions",
         "startup-items", "heavy-apps", "maintenance",
         "large-files", "disk-map",
+        "browser-data",
         "history", "menu-bar",
     ]
 

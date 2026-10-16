@@ -83,14 +83,7 @@ final class StartupItemsModel {
                 safety: .review, origin: .userSelection, root: item.plistURL.deletingLastPathComponent(), location: .launchAgents
             )
         }
-        // Files in the system folders go to a root run, after the password prompt. A test run needs neither.
-        let system = method == .dryRun ? [] : cleanable.filter(\.needsAdministrator)
-        var report = CleaningReport(requestedMethod: method)
-        if !system.isEmpty {
-            report.append(await Administrator.remove(system, method: .moveToTrash, log: services.cleaner.auditLog))
-        }
-        report.append(await services.cleaner.clean(cleanable.filter { !system.contains($0) }, method: method))
-        lastReport = report
+        lastReport = await Administrator.clean(cleanable, with: services.cleaner, method: method)
         await reload()
     }
 

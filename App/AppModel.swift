@@ -14,6 +14,8 @@ final class AppModel {
     let largeFiles = LargeFilesModel()
     let uninstaller = UninstallerModel()
     let remainingFiles = RemainingFilesModel()
+    let extensions = ExtensionsModel()
+    let browserData = BrowserDataModel()
     let diskMap = DiskMapModel()
     let heavyApps = HeavyAppsModel()
     let startupItems = StartupItemsModel()
