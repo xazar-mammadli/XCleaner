@@ -28,6 +28,7 @@ final class AppModel {
     var performanceTool = PerformanceTool.heavyApps
     var privacyTool = PrivacyTool.browserData
     var utilitiesTool = UtilitiesTool.history
+    let updates = UpdateModel()
     let exclusions = ExclusionStore()
     let auditLog = AuditLog(directory: AuditLog.standardDirectory)
 

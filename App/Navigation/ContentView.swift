@@ -20,7 +20,7 @@ struct ContentView: View {
             }
             .navigationSplitViewColumnWidth(min: 190, ideal: 210, max: 260)
             .safeAreaInset(edge: .bottom) {
-                if testMode {
+                if Preferences.hasTestMode, testMode {
                     TestModeBadge()
                 }
             }
@@ -47,6 +47,9 @@ struct ContentView: View {
         .sheet(isPresented: $model.isShowingAccessGuide) {
             FullDiskAccessGuide()
         }
+        .sheet(isPresented: Bindable(model.updates).isShowingSheet) {
+            UpdateSheet()
+        }
         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
             model.refresh()
         }
@@ -54,6 +57,8 @@ struct ContentView: View {
             if model.fullDiskAccess != .granted, !hasSeenAccessGuide {
                 hasSeenAccessGuide = true
                 model.isShowingAccessGuide = true
+            } else {
+                model.updates.checkIfDue()
             }
         }
     }

@@ -15,6 +15,13 @@ struct XCleanerApp: App {
         }
         .defaultSize(width: 1060, height: 700)
         .windowResizability(.contentMinSize)
+        .commands {
+            CommandGroup(after: .appInfo) {
+                Button("Check for Updates…") {
+                    model.updates.check(userInitiated: true)
+                }
+            }
+        }
 
         MenuBarExtra(isInserted: $showsMenuBarMonitor) {
             MenuBarPanel()

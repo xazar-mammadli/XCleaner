@@ -1,0 +1,35 @@
+name: Feature request
+description: An idea that would make XCleaner better.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to do?
+      description: Describe the problem or the task, not only the solution.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How could XCleaner help?
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      options:
+        - Cleanup
+        - Applications
+        - Performance
+        - Files
+        - Privacy
+        - Utilities
+        - Something new
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Anything you tried instead?

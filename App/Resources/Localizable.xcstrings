@@ -863,6 +863,46 @@
         }
       }
     },
+    "Check Now" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İndi yoxla"
+          }
+        }
+      }
+    },
+    "Check for Updates…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniləmələri yoxla…"
+          }
+        }
+      }
+    },
+    "Check for updates automatically" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniləmələri avtomatik yoxla"
+          }
+        }
+      }
+    },
+    "Checking for Updates…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniləmələr yoxlanılır…"
+          }
+        }
+      }
+    },
     "Checking signatures…" : {
       "localizations" : {
         "az" : {
@@ -1049,6 +1089,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İçinə baxmaq üçün klikləyin"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağla"
           }
         }
       }
@@ -1425,6 +1475,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hazırdır"
+          }
+        }
+      }
+    },
+    "Download it from the release page and drag it into the Applications folder." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onu release səhifəsindən yükləyib Applications qovluğuna sürüşdürün."
+          }
+        }
+      }
+    },
+    "Downloading the Update…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniləmə yüklənir…"
           }
         }
       }
@@ -1935,6 +2005,16 @@
         }
       }
     },
+    "GitHub gave an answer XCleaner couldn't read." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner GitHub-ın cavabını oxuya bilmədi."
+          }
+        }
+      }
+    },
     "Goes with its folder" : {
       "localizations" : {
         "az" : {
@@ -2195,6 +2275,16 @@
         }
       }
     },
+    "Install and Relaunch" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quraşdır və yenidən aç"
+          }
+        }
+      }
+    },
     "Installer" : {
       "localizations" : {
         "az" : {
@@ -2221,6 +2311,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quraşdırıcılar, artıq açılmış arxivlər, köhnə ekran şəkilləri və unudulmuş yükləmələr. Bunlar Zibil qutusuna gedir."
+          }
+        }
+      }
+    },
+    "Installing the Update…" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniləmə quraşdırılır…"
           }
         }
       }
@@ -2377,6 +2477,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Əvvəlcə böyüklər"
+          }
+        }
+      }
+    },
+    "Last checked %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son yoxlama: %@"
+          }
+        }
+      }
+    },
+    "Later" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonra"
           }
         }
       }
@@ -3147,6 +3267,16 @@
         }
       }
     },
+    "Not checked yet" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hələ yoxlanılmayıb"
+          }
+        }
+      }
+    },
     "Not installed" : {
       "localizations" : {
         "az" : {
@@ -3307,6 +3437,16 @@
         }
       }
     },
+    "OK" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
     "Off" : {
       "localizations" : {
         "az" : {
@@ -3363,6 +3503,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Açıq"
+          }
+        }
+      }
+    },
+    "Once a day, XCleaner asks GitHub for its latest release. Nothing about your Mac is sent." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner gündə bir dəfə GitHub-dan son versiyasını soruşur. Mac-ınız haqqında heç nə göndərilmir."
           }
         }
       }
@@ -3433,6 +3583,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ aç"
+          }
+        }
+      }
+    },
+    "Open Release Page" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Release səhifəsini aç"
           }
         }
       }
@@ -3863,6 +4023,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spotlight-ı yenidən indeksləyin, DNS keşini təmizləyin və lokal snapshot-ları azaldın."
+          }
+        }
+      }
+    },
+    "Release Page" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Release səhifəsi"
           }
         }
       }
@@ -4313,12 +4483,12 @@
         }
       }
     },
-    "Scan and review as usual, but nothing is removed." : {
+    "Scan and review as usual, but nothing is removed. Only development builds have this." : {
       "localizations" : {
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skan və baxış həmişəki kimi işləyir, amma heç nə silinmir."
+            "value" : "Hər şeyi adi qaydada skan edib nəzərdən keçirirsiniz, amma heç nə silinmir. Bu, yalnız development build-lərdə var."
           }
         }
       }
@@ -4639,6 +4809,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oxşar qovluqlar"
+          }
+        }
+      }
+    },
+    "Skip This Version" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu versiyanı ötür"
           }
         }
       }
@@ -5069,6 +5249,16 @@
         }
       }
     },
+    "The Update Didn't Work" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniləmə alınmadı"
+          }
+        }
+      }
+    },
     "The app and the selected files will be removed. The app goes to the Trash, where you can put it back." : {
       "localizations" : {
         "az" : {
@@ -5085,6 +5275,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proqram dərhal bağlanır, yadda saxlanmamış dəyişikliklər itir."
+          }
+        }
+      }
+    },
+    "The download failed. Check the internet connection and try again." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükləmə alınmadı. İnternet bağlantısını yoxlayıb yenidən cəhd edin."
+          }
+        }
+      }
+    },
+    "The downloaded app isn't a newer XCleaner, so it was left alone." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklənən proqram daha yeni XCleaner deyil, ona görə ona toxunulmadı."
+          }
+        }
+      }
+    },
+    "The downloaded app isn't signed by XCleaner's developer, so it was left alone." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklənən proqram XCleaner-in developeri tərəfindən imzalanmayıb, ona görə ona toxunulmadı."
+          }
+        }
+      }
+    },
+    "The downloaded disk image holds no XCleaner." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklənən disk şəklində XCleaner yoxdur."
           }
         }
       }
@@ -5179,6 +5409,16 @@
         }
       }
     },
+    "The update couldn't be put in place: %@" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniləməni yerinə qoymaq mümkün olmadı: %@"
+          }
+        }
+      }
+    },
     "Then the emptied “%@” goes to the Trash" : {
       "localizations" : {
         "az" : {
@@ -5225,6 +5465,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lokal snapshot-ları azalt"
+          }
+        }
+      }
+    },
+    "This copy of XCleaner wasn't installed from a release, so it can't update itself. Download the new version from the release page." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner-in bu nüsxəsi release-dən quraşdırılmayıb, ona görə özünü yeniləyə bilmir. Yeni versiyanı release səhifəsindən yükləyin."
           }
         }
       }
@@ -5415,6 +5665,16 @@
         }
       }
     },
+    "Version %@ is the latest." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ versiyası ən sonuncudur."
+          }
+        }
+      }
+    },
     "Video" : {
       "localizations" : {
         "az" : {
@@ -5558,6 +5818,26 @@
     "XCleaner" : {
       "shouldTranslate" : false
     },
+    "XCleaner %@ Is Available" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner %@ çıxıb"
+          }
+        }
+      }
+    },
+    "XCleaner Is Up to Date" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner ən son versiyadadır"
+          }
+        }
+      }
+    },
     "XCleaner can check every location it cleans." : {
       "localizations" : {
         "az" : {
@@ -5574,6 +5854,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XCleaner artıq təmizlədiyi bütün yerləri yoxlaya bilir."
+          }
+        }
+      }
+    },
+    "XCleaner can't replace itself where it is. Move it to the Applications folder, or download the new version from the release page." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner olduğu yerdə özünü əvəz edə bilmir. Onu Applications qovluğuna köçürün və ya yeni versiyanı release səhifəsindən yükləyin."
           }
         }
       }
@@ -5638,6 +5928,16 @@
         }
       }
     },
+    "XCleaner starts again when it's done." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitəndə XCleaner yenidən açılacaq."
+          }
+        }
+      }
+    },
     "XCleaner then keeps running in the menu bar after you close its window. Quit it from there." : {
       "localizations" : {
         "az" : {
@@ -5654,6 +5954,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Faylları Zibil qutusundan geri qaytara bilərsiniz."
+          }
+        }
+      }
+    },
+    "You have %@." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sizdəki versiya: %@."
           }
         }
       }

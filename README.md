@@ -12,7 +12,8 @@
   <img src="https://img.shields.io/badge/macOS-14%2B-111111?logo=apple&logoColor=white" alt="macOS 14+">
   <img src="https://img.shields.io/badge/Swift-6-F05138?logo=swift&logoColor=white" alt="Swift 6">
   <img src="https://img.shields.io/badge/UI-SwiftUI-0A84FF" alt="SwiftUI">
-  <img src="https://img.shields.io/badge/status-early%20development-orange" alt="Status: early development">
+  <a href="https://github.com/xazar-mammadli/XCleaner/releases/latest"><img src="https://img.shields.io/github/v/release/xazar-mammadli/XCleaner?label=release" alt="Latest release"></a>
+  <a href="https://github.com/xazar-mammadli/XCleaner/actions/workflows/ci.yml"><img src="https://github.com/xazar-mammadli/XCleaner/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT"></a>
 </p>
 
@@ -26,8 +27,18 @@ XCleaner finds the clutter that builds up on a Mac and helps you remove it witho
 
 It aims to cover what popular commercial cleaners do, but more calmly and openly. There are no scare tactics and no inflated numbers, and nothing is ever removed behind your back.
 
-> [!NOTE]
-> XCleaner is in early development. Every tool in the table below works today: cleanup of system junk, installers, downloads and the Trash, a complete app uninstaller, a finder for files left behind by deleted apps, a disk map, finders for big files and duplicates, a monitor for heavy apps, a startup items manager, maintenance tasks, extensions, browser data, app permissions, a background item check, hidden files, a menu bar monitor and a full cleanup history. What is left before a first release is listed in the [roadmap](#roadmap).
+Everything in the [feature table](#features) works today: cleanup of system junk, installers, downloads and the Trash, a complete app uninstaller, a finder for files left behind by deleted apps, a disk map, finders for big files and duplicates, a monitor for heavy apps, a startup items manager, maintenance tasks, extensions, browser data, app permissions, a background item check, hidden files, a menu bar monitor and a full cleanup history.
+
+## Download
+
+Get the disk image of the [latest release](https://github.com/xazar-mammadli/XCleaner/releases/latest), open it, and drag XCleaner into the Applications folder.
+
+> [!IMPORTANT]
+> XCleaner is signed, but not with an Apple Developer ID yet, so macOS can't check it with Apple. The first time you open it, macOS says it can't verify the developer. Open **System Settings › Privacy & Security**, scroll down and click **Open Anyway** next to the message about XCleaner. You only need to do this once.
+
+XCleaner then walks you through granting Full Disk Access, which it needs to see caches and app leftovers in protected folders.
+
+**Updates.** Once a day, XCleaner asks GitHub whether a newer release exists, and offers to install it. It installs only releases signed with the same certificate as the copy you have, so Full Disk Access stays granted. You can turn the check off under Settings › General. To check a download yourself, see [SECURITY.md](SECURITY.md#checking-a-release).
 
 ## Safety first
 
@@ -45,7 +56,8 @@ Every removal passes through a single gate that checks the item again right befo
 - **Exclusions.** Folders you add under Settings › Exclusions are never scanned or removed.
 - **Apps in use are left alone.** Files that belong to a running app are flagged and left unselected.
 - **Test Mode.** Scan and review as usual while nothing is removed. Debug builds start with Test Mode on.
-- **Private by design.** Your files never leave your Mac, and XCleaner collects no data.
+- **Private by design.** Your files never leave your Mac, and XCleaner collects no data. The only request it makes is the daily check for a newer release, which sends nothing about your Mac.
+- **Genuine updates only.** An update replaces XCleaner only when its signature matches the copy you have. The previous version goes to the Trash.
 
 ## Features
 
@@ -86,7 +98,7 @@ cd XCleaner
 open XCleaner.xcodeproj
 ```
 
-In Xcode, choose the **XCleaner** scheme and press **Run** (⌘R).
+In Xcode, choose the **XCleaner** scheme and press **Run** (⌘R). Debug builds start in Test Mode, where scans work as usual but nothing is removed.
 
 To build from the terminal instead:
 
@@ -99,7 +111,7 @@ open .build/DerivedData/Build/Products/Debug/XCleaner.app
 
 XCleaner needs Full Disk Access to see caches, logs and app leftovers in protected folders. On first launch, the app walks you through granting it under System Settings › Privacy & Security › Full Disk Access.
 
-macOS ties this permission to the app's code signature. Builds that are only signed to run locally get a new signature every time, so you may need to grant the permission again after each build. To avoid that, choose your team under **Signing & Capabilities** in Xcode. A free personal team is enough.
+macOS ties this permission to the app's code signature. Builds that are only signed to run locally get a new signature every time, so you may need to grant the permission again after each build. To avoid that, choose your team under **Signing & Capabilities** in Xcode. A free personal team is enough. Releases don't have this problem: they are all signed with the same certificate.
 
 ## Running tests
 
@@ -121,6 +133,7 @@ XCleaner/
 │   ├── Navigation/             Sidebar and window layout
 │   ├── Resources/              App icon, colors, Localizable.xcstrings
 │   └── Support/                Preferences and helpers
+├── .github/                    CI, issue and pull request templates, code owners
 ├── Packages/CleanerCore/       Cleaning engine (no UI)
 │   ├── Sources/CleanerCore/
 │   │   ├── Apps/               App inventory, leftovers, remaining files, extensions
@@ -134,9 +147,11 @@ XCleaner/
 │   │   ├── Privileged/         The one-off root run behind administrator tasks
 │   │   ├── Safety/             SafetyGuard and SafetyPolicy
 │   │   ├── Scanning/           Scanners for junk, downloads, the Trash and big files
-│   │   └── System/             Full Disk Access check, disk, memory, processor, GPU, network and battery
+│   │   ├── System/             Full Disk Access check, disk, memory, processor, GPU, network and battery
+│   │   └── Updates/            Release check and signature-checked self-update
 │   └── Tests/CleanerCoreTests/
 ├── docs/images/                Images used in this README
+├── scripts/                    Signing identity and release packaging
 └── XCleaner.xcodeproj
 ```
 
@@ -151,11 +166,17 @@ The interface is available in English and Azerbaijani. XCleaner follows the macO
 - [x] **Phase 2: Applications and disk map.** Uninstaller, remaining files, app reset, disk map.
 - [x] **Phase 3: System tools.** System-level junk and other administrator tasks without a resident helper, maintenance, startup items, heavy apps, Mail attachments, extensions, browser data and a menu bar monitor.
 - [x] **Phase 4: Advanced tools.** Duplicates with Smart Select and folder merging, app permissions, background item check and hidden files.
-- [ ] **Phase 5: Release.** Developer ID signing, notarization, automatic updates and a DMG installer.
+- [x] **Phase 5: Release.** Signed releases on GitHub, a DMG installer, and updates that install themselves.
+- [ ] **Later.** Signing with an Apple Developer ID and notarization, so macOS no longer asks on first launch.
 
 ## Contributing
 
-Issues and pull requests are welcome. For larger changes, please open an issue first to discuss them. Any code that removes files must go through `Cleaner` and `SafetyGuard` and must come with tests.
+Bug reports, ideas, translations and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before you start; for larger changes, open an issue first.
+
+- Every pull request is reviewed by the maintainer, and CI must pass. Only the maintainer merges into `master` and publishes releases.
+- Any code that removes files must go through `Cleaner` and `SafetyGuard` and must come with tests.
+- Report security problems privately, as [SECURITY.md](SECURITY.md) describes.
+- Everyone taking part follows the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## License
 

@@ -1,0 +1,51 @@
+name: Bug report
+description: Something doesn't work as it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report this. If it is a security problem, please report it privately instead (see the Security tab).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Files › Duplicates
+        2. Click Scan
+        3. …
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: XCleaner version
+      description: XCleaner › About XCleaner
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and Mac
+      placeholder: "macOS 26.1, MacBook Pro with Apple silicon"
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or anything else
+      description: Screenshots help a lot. Please leave out personal file names you'd rather not share.
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Before you send
+      options:
+        - label: I looked through the existing issues, and this one isn't there yet.
+          required: true

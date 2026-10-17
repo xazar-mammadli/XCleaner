@@ -7,20 +7,31 @@ enum PreferenceKey {
     static let hasSeenAccessGuide = "hasSeenAccessGuide"
     static let excludedPaths = "excludedPaths"
     static let showsMenuBarMonitor = "showsMenuBarMonitor"
+    static let checksForUpdates = "checksForUpdates"
+    static let lastUpdateCheck = "lastUpdateCheck"
+    static let skippedVersion = "skippedVersion"
 }
 
 enum Preferences {
-    /// Debug builds start in Test Mode, so nothing is ever removed while XCleaner itself is being developed.
+    /// Test Mode is for developing XCleaner: debug builds have it and start in it, so nothing is ever removed while
+    /// XCleaner itself is being worked on. Release builds have no Test Mode at all.
     #if DEBUG
+    static let hasTestMode = true
     static let defaultTestMode = true
     #else
+    static let hasTestMode = false
     static let defaultTestMode = false
     #endif
+
+    /// Whether XCleaner looks for a newer release once a day, as set under Settings › General. On unless turned off.
+    static var checksForUpdates: Bool {
+        UserDefaults.standard.object(forKey: PreferenceKey.checksForUpdates) as? Bool ?? true
+    }
 
     /// How removals happen right now, as set under Settings › Safety.
     static var deletionMethod: DeletionMethod {
         let defaults = UserDefaults.standard
-        if defaults.object(forKey: PreferenceKey.testMode) as? Bool ?? defaultTestMode { return .dryRun }
+        if hasTestMode, defaults.object(forKey: PreferenceKey.testMode) as? Bool ?? defaultTestMode { return .dryRun }
         let removal = defaults.string(forKey: PreferenceKey.removalMethod).flatMap(RemovalMethod.init(rawValue:)) ?? .trash
         return removal == .trash ? .moveToTrash : .deletePermanently
     }

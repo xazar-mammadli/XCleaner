@@ -19,8 +19,10 @@ struct SettingsView: View {
 }
 
 private struct GeneralSettings: View {
+    @Environment(AppModel.self) private var model
     @State private var language = AppLanguage.current
     @AppStorage(PreferenceKey.showsMenuBarMonitor) private var showsMenuBarMonitor = false
+    @AppStorage(PreferenceKey.checksForUpdates) private var checksForUpdates = true
 
     var body: some View {
         Form {
@@ -43,6 +45,22 @@ private struct GeneralSettings: View {
             }
 
             Toggle("Show XCleaner in the menu bar", isOn: $showsMenuBarMonitor)
+
+            Section {
+                Toggle("Check for updates automatically", isOn: $checksForUpdates)
+                LabeledContent {
+                    Button("Check Now") { model.updates.check(userInitiated: true) }
+                } label: {
+                    if let checked = model.updates.lastChecked {
+                        Text("Last checked \(checked.formatted(.relative(presentation: .named)))")
+                    } else {
+                        Text("Not checked yet")
+                    }
+                }
+            } footer: {
+                Text("Once a day, XCleaner asks GitHub for its latest release. Nothing about your Mac is sent.")
+                    .foregroundStyle(.secondary)
+            }
         }
         .settingsTabStyle()
     }
@@ -65,11 +83,13 @@ private struct SafetySettings: View {
                     .foregroundStyle(.secondary)
             }
 
-            Section {
-                Toggle("Test Mode", isOn: $testMode)
-            } footer: {
-                Text("Scan and review as usual, but nothing is removed.")
-                    .foregroundStyle(.secondary)
+            if Preferences.hasTestMode {
+                Section {
+                    Toggle("Test Mode", isOn: $testMode)
+                } footer: {
+                    Text("Scan and review as usual, but nothing is removed. Only development builds have this.")
+                        .foregroundStyle(.secondary)
+                }
             }
 
             Section {
