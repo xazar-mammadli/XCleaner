@@ -7687,28 +7687,6 @@
         }
       }
     },
-    "Once a day, XCleaner asks GitHub for its latest release. Nothing about your Mac is sent." : {
-      "localizations" : {
-        "az" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "XCleaner gündə bir dəfə GitHub-dan son versiyasını soruşur. Mac-ınız haqqında heç nə göndərilmir."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Раз в день XCleaner запрашивает у GitHub свою последнюю версию. Никакие данные о вашем Mac не отправляются."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "XCleaner günde bir kez GitHub'dan en son sürümünü sorar. Mac'iniz hakkında hiçbir şey gönderilmez."
-          }
-        }
-      }
-    },
     "One copy always stays." : {
       "localizations" : {
         "az" : {
@@ -13074,6 +13052,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XCleaner, penceresini kapattıktan sonra menü çubuğunda çalışmaya devam eder. Oradan çıkın."
+          }
+        }
+      }
+    },
+    "XCleaner was updated, but the new version didn't open. Quit XCleaner and open it again." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner yeniləndi, amma yeni versiya açılmadı. XCleaner-dən çıxıb onu yenidən açın."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner обновлён, но новая версия не открылась. Завершите XCleaner и откройте его снова."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner güncellendi ancak yeni sürüm açılmadı. XCleaner'dan çıkıp yeniden açın."
           }
         }
       }

@@ -51,6 +51,7 @@ struct XCleanerApp: App {
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
+        AppRelauncher.closePreviousCopy()
         MenuTranslator.shared.start()
     }
 

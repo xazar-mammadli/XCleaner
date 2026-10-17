@@ -86,12 +86,42 @@ enum AppLanguage: String {
     }
 }
 
+/// Starts XCleaner again: after a change of language, and after an update.
 enum AppRelauncher {
-    static func relaunch() {
+    /// Starts a new copy of XCleaner from the same place, then quits this one. If the new copy doesn't start, this one
+    /// stays open and `failed` runs.
+    static func relaunch(failed: @escaping @MainActor @Sendable () -> Void = {}) {
         let configuration = NSWorkspace.OpenConfiguration()
         configuration.createsNewApplicationInstance = true
-        NSWorkspace.shared.openApplication(at: Bundle.main.bundleURL, configuration: configuration) { _, _ in
-            Task { @MainActor in NSApp.terminate(nil) }
+        NSWorkspace.shared.openApplication(at: Bundle.main.bundleURL, configuration: configuration) { app, _ in
+            let started = app != nil
+            Task { @MainActor in
+                guard started else { return failed() }
+                NSApp.terminate(nil)
+                // Still here: macOS doesn't quit while a sheet is open, such as the update sheet that asked for the
+                // relaunch. The new copy is already running, so this one ends now.
+                exit(0)
+            }
+        }
+    }
+
+    /// At launch: asks a copy of XCleaner that started this one, such as the version an update just replaced, to quit.
+    /// Versions before 1.1.1 can't quit while their update sheet is open, so one that is still running a moment later
+    /// is made to.
+    static func closePreviousCopy() {
+        let current = NSRunningApplication.current
+        let place = (Bundle.main.bundleURL.path(percentEncoded: false) as NSString).standardizingPath
+        let previous = NSRunningApplication.runningApplications(withBundleIdentifier: Bundle.main.bundleIdentifier ?? "")
+            .filter { app in
+                app.processIdentifier != current.processIdentifier
+                    && (app.bundleURL?.path(percentEncoded: false)).map { ($0 as NSString).standardizingPath } == place
+                    && (app.launchDate ?? .distantFuture) < (current.launchDate ?? .now)
+            }
+        guard !previous.isEmpty else { return }
+        previous.forEach { $0.terminate() }
+        Task {
+            try? await Task.sleep(for: .seconds(3))
+            previous.filter { !$0.isTerminated }.forEach { $0.forceTerminate() }
         }
     }
 }

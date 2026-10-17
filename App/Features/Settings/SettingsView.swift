@@ -59,9 +59,6 @@ private struct GeneralSettings: View {
                         Text("Not checked yet")
                     }
                 }
-            } footer: {
-                Text("Once a day, XCleaner asks GitHub for its latest release. Nothing about your Mac is sent.")
-                    .foregroundStyle(.secondary)
             }
         }
         .settingsTabStyle()

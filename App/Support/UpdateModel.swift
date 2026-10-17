@@ -113,7 +113,9 @@ final class UpdateModel {
                     }
                     try UpdateInstaller.replace(installed, with: candidate, trash: SystemTrash())
                 }.value
-                AppRelauncher.relaunch()
+                AppRelauncher.relaunch { [weak self] in
+                    self?.state = .failed(String(localized: "XCleaner was updated, but the new version didn't open. Quit XCleaner and open it again."))
+                }
             } catch let failure as UpdateInstaller.Failure {
                 state = .failed(failure.message)
             } catch {
