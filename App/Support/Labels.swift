@@ -33,6 +33,8 @@ extension CleanupCategory {
         case .systemLogs: "System logs"
         case .mailAttachments: "Mail attachment"
         case .browserData: "Browser data"
+        case .duplicates: "Duplicate"
+        case .hiddenItems: "Hidden item"
         case .developerJunk: "Developer files"
         case .trash: "In the Trash"
         case .installers: "Installer"
@@ -128,6 +130,7 @@ extension AuditLog.Entry.Action {
         case .dryRun: "Test run"
         case .blocked: "Skipped"
         case .failed: "Failed"
+        case .moved: "Moved"
         }
     }
 
@@ -138,6 +141,7 @@ extension AuditLog.Entry.Action {
         case .dryRun: "testtube.2"
         case .blocked: "hand.raised"
         case .failed: "exclamationmark.triangle"
+        case .moved: "arrow.right.doc.on.clipboard"
         }
     }
 }

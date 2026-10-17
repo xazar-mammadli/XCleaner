@@ -558,33 +558,89 @@ private struct OrphanGroupCard: View {
     }
 }
 
-/// What the last removal did, with a way to the Trash.
+/// What the last removal did, with a way to the Trash, and why anything was skipped.
 struct RemovalSummary: View {
     @Environment(AppModel.self) private var model
     let report: CleaningReport
+    @State private var showsSkipped = false
 
     var body: some View {
-        let skipped = report.blocked.count + report.failed.count
+        let skipped = report.blocked.map { ($0.item, Text($0.reason.label)) } + report.failed.map { ($0.item, Text(verbatim: $0.message)) }
+        let trashed = report.removed.contains { $0.method == .moveToTrash }
+        let deleted = report.removed.contains { $0.method == .deletePermanently }
         HStack(spacing: 10) {
-            Image(systemName: report.requestedMethod == .dryRun ? "testtube.2" : "checkmark.circle.fill")
-                .foregroundStyle(report.requestedMethod == .dryRun ? Color.orange : Color.green)
             if report.requestedMethod == .dryRun {
+                Image(systemName: "testtube.2")
+                    .foregroundStyle(.orange)
                 Text("Test run: \(report.removedBytes.formattedBytes) would have been removed.")
-            } else if report.trashedBytes > 0 {
-                Text("Moved to the Trash: \(report.trashedBytes.formattedBytes)")
+            } else if report.removed.isEmpty {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundStyle(.orange)
+                Text("Nothing was removed.")
             } else {
-                Text("Deleted for good: \(report.deletedBytes.formattedBytes)")
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(.green)
+                if trashed {
+                    Text("Moved to the Trash: \(report.trashedBytes.formattedBytes)")
+                }
+                if deleted {
+                    Text("Deleted for good: \(report.deletedBytes.formattedBytes)")
+                }
             }
-            if skipped > 0 {
-                Text("Skipped: ^[\(skipped) item](inflect: true)")
-                    .foregroundStyle(.secondary)
+            if !skipped.isEmpty {
+                Button {
+                    showsSkipped.toggle()
+                } label: {
+                    HStack(spacing: 3) {
+                        Text("Skipped: ^[\(skipped.count) item](inflect: true)")
+                        Image(systemName: "chevron.down")
+                            .font(.caption2)
+                    }
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(.secondary)
+                .help("Why they were skipped")
+                .popover(isPresented: $showsSkipped, arrowEdge: .bottom) {
+                    SkippedItems(items: skipped)
+                }
             }
             Spacer()
-            if report.trashedBytes > 0 {
+            if trashed {
                 Button("Open Trash") { model.openTrash() }
             }
         }
         .padding(10)
         .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
+}
+
+/// The items a removal left alone, each with its reason.
+private struct SkippedItems: View {
+    let items: [(CleanableItem, Text)]
+
+    var body: some View {
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 10) {
+                ForEach(Array(items.enumerated()), id: \.offset) { _, entry in
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(verbatim: entry.0.name)
+                            .lineLimit(1)
+                            .truncationMode(.middle)
+                        Text(verbatim: (entry.0.url.deletingLastPathComponent().path(percentEncoded: false) as NSString).abbreviatingWithTildeInPath)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                            .truncationMode(.middle)
+                        entry.1
+                            .font(.caption)
+                            .foregroundStyle(.orange)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .help(Text(verbatim: entry.0.url.path(percentEncoded: false)))
+                }
+            }
+            .padding(14)
+        }
+        .frame(width: 440, height: min(380, CGFloat(items.count) * 64 + 28))
     }
 }

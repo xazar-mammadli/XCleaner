@@ -2,13 +2,14 @@ import CleanerCore
 import SwiftUI
 
 enum FilesTool: String, CaseIterable, Identifiable {
-    case largeFiles, diskMap
+    case largeFiles, duplicates, diskMap
 
     var id: Self { self }
 
     var title: LocalizedStringResource {
         switch self {
         case .largeFiles: "Biggest & Old Files"
+        case .duplicates: "Duplicates"
         case .diskMap: "Disk Map"
         }
     }

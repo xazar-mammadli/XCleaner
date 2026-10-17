@@ -2,7 +2,52 @@ import AppKit
 import CleanerCore
 import SwiftUI
 
+enum PrivacyTool: String, CaseIterable, Identifiable {
+    case browserData, appPermissions, backgroundCheck
+
+    var id: Self { self }
+
+    var title: LocalizedStringResource {
+        switch self {
+        case .browserData: "Browser Data"
+        case .appPermissions: "App Permissions"
+        case .backgroundCheck: "Background Check"
+        }
+    }
+}
+
 struct PrivacyView: View {
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        @Bindable var model = model
+        Group {
+            switch model.privacyTool {
+            case .browserData: BrowserDataView()
+            case .appPermissions: AppPermissionsView()
+            case .backgroundCheck: BackgroundCheckView()
+            }
+        }
+        .navigationTitle(Text(SidebarItem.privacy.title))
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Picker(selection: $model.privacyTool) {
+                    ForEach(PrivacyTool.allCases) { tool in
+                        Text(tool.title).tag(tool)
+                    }
+                } label: {
+                    Text(SidebarItem.privacy.title)
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+            }
+        }
+    }
+}
+
+// MARK: - Browser data
+
+private struct BrowserDataView: View {
     @Environment(AppModel.self) private var model
     @State private var isConfirming = false
 
@@ -52,7 +97,6 @@ struct PrivacyView: View {
                 footer(data)
             }
         }
-        .navigationTitle(Text(SidebarItem.privacy.title))
         .task {
             if !data.hasScanned { data.scan(hasFullDiskAccess: model.fullDiskAccess == .granted) }
         }

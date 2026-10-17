@@ -39,6 +39,14 @@ final class Sandbox: Sendable {
     }
 
     @discardableResult
+    func file(_ relative: String, contents: Data) throws -> URL {
+        let url = url(relative)
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try contents.write(to: url)
+        return url
+    }
+
+    @discardableResult
     func symlink(_ relative: String, to destination: URL) throws -> URL {
         let url = url(relative)
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
@@ -145,4 +153,17 @@ extension ScanResult {
 
 func path(_ url: URL) -> String {
     url.path(percentEncoded: false)
+}
+
+/// Bytes that look random and differ everywhere for different seeds, so files made from them only match on purpose.
+func noise(_ seed: UInt64, count: Int) -> Data {
+    var state = (seed &+ 1) &* 0x9E37_79B9_7F4A_7C15
+    var bytes = [UInt8](repeating: 0, count: count)
+    for index in 0..<count {
+        state ^= state << 13
+        state ^= state >> 7
+        state ^= state << 17
+        bytes[index] = UInt8(truncatingIfNeeded: state)
+    }
+    return Data(bytes)
 }

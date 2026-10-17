@@ -10,6 +10,7 @@ struct FilesView: View {
         Group {
             switch model.filesTool {
             case .largeFiles: LargeFilesView()
+            case .duplicates: DuplicatesView()
             case .diskMap: DiskMapView()
             }
         }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum UtilitiesTool: String, CaseIterable, Identifiable {
-    case history, menuBar
+    case history, menuBar, hiddenFiles
 
     var id: Self { self }
 
@@ -9,6 +9,7 @@ enum UtilitiesTool: String, CaseIterable, Identifiable {
         switch self {
         case .history: "Cleanup History"
         case .menuBar: "Menu Bar Monitor"
+        case .hiddenFiles: "Hidden Files"
         }
     }
 }
@@ -22,6 +23,7 @@ struct UtilitiesView: View {
             switch model.utilitiesTool {
             case .history: HistoryView()
             case .menuBar: MenuBarMonitorView()
+            case .hiddenFiles: HiddenFilesView()
             }
         }
         .navigationTitle(Text(SidebarItem.utilities.title))

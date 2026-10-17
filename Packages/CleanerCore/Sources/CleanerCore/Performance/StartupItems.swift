@@ -38,6 +38,8 @@ public struct LaunchItem: Sendable, Identifiable, Hashable {
     public let bundledIn: URL?
     /// The program it runs.
     public let program: String?
+    /// What it hands the program, the program itself first (`ProgramArguments`).
+    public let arguments: [String]
     /// Apps the job says it belongs to (`AssociatedBundleIdentifiers`).
     public let bundleIdentifiers: [String]
     public let schedule: Schedule
@@ -47,7 +49,7 @@ public struct LaunchItem: Sendable, Identifiable, Hashable {
 
     public init(
         label: String, plistURL: URL, kind: Kind, isUsers: Bool, bundledIn: URL?, program: String?, bundleIdentifiers: [String],
-        schedule: Schedule, problem: Problem?, isDisabledInFile: Bool
+        schedule: Schedule, problem: Problem?, isDisabledInFile: Bool, arguments: [String] = []
     ) {
         self.label = label
         self.plistURL = plistURL
@@ -55,6 +57,7 @@ public struct LaunchItem: Sendable, Identifiable, Hashable {
         self.isUsers = isUsers
         self.bundledIn = bundledIn
         self.program = program
+        self.arguments = arguments
         self.bundleIdentifiers = bundleIdentifiers
         self.schedule = schedule
         self.problem = problem
@@ -126,7 +129,8 @@ public struct LaunchItemScanner: Sendable {
             bundleIdentifiers: plist["AssociatedBundleIdentifiers"] as? [String] ?? [],
             schedule: schedule(of: plist),
             problem: problem,
-            isDisabledInFile: plist["Disabled"] as? Bool ?? false
+            isDisabledInFile: plist["Disabled"] as? Bool ?? false,
+            arguments: plist["ProgramArguments"] as? [String] ?? []
         )
     }
 

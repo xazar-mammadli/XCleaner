@@ -55,7 +55,9 @@ public struct SafetyPolicy: Sendable {
                 inHome("Pictures/Photos Library.photoslibrary"),
                 // XCleaner's own record of what it removed
                 inHome("Library/Logs/XCleaner"),
-            ],
+            ]
+                // Keys, tokens and passwords that command-line tools keep in hidden files
+                + credentialPaths.map(inHome),
             protectedContainers: [
                 "/", "/Applications", "/Library", "/Users", "/Volumes", "/private", "/private/var", "/private/tmp", "/tmp",
                 "/Library/Application Support", "/Library/Caches", "/Library/LaunchAgents", "/Library/LaunchDaemons",
@@ -71,6 +73,12 @@ public struct SafetyPolicy: Sendable {
             excludedPaths: excluded.map(canonical)
         )
     }
+
+    /// Where command-line tools keep keys, tokens and passwords, relative to the home folder.
+    public static let credentialPaths = [
+        ".ssh", ".gnupg", ".aws", ".azure", ".kube", ".password-store", ".netrc", ".git-credentials", ".npmrc", ".pypirc",
+        ".docker/config.json", ".gem/credentials", ".config/gcloud", ".config/gh",
+    ]
 
     private static func canonical(_ url: URL) -> String {
         PathUtilities.realPath(url.path(percentEncoded: false))

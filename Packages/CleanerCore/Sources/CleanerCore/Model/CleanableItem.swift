@@ -34,6 +34,10 @@ public enum CleanupCategory: String, Sendable, Codable, CaseIterable {
     case mailAttachments
     /// A browser's cache, history or cookies.
     case browserData
+    /// A copy of a file or folder that exists elsewhere too.
+    case duplicates
+    /// A hidden file or folder the user picked.
+    case hiddenItems
     /// An app bundle itself.
     case application
     /// Files an app keeps in the home Library: preferences, support files, caches, containers…

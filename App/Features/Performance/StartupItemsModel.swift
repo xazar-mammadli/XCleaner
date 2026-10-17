@@ -16,6 +16,9 @@ final class StartupItemsModel {
     /// A job that launchctl refused to switch.
     private(set) var failedSwitch: String?
     private(set) var lastReport: CleaningReport?
+    /// What the background check found, by the job's file or the login item's bundle. Filled in after the list itself.
+    private(set) var reviews: [URL: BackgroundReview] = [:]
+    private(set) var isReviewing = false
 
     var loginItems: [LoginItem] { snapshot?.loginItems ?? [] }
     var agents: [LaunchItem] { jobs(of: .agent) }
@@ -103,6 +106,16 @@ final class StartupItemsModel {
             return name.lowercased().hasSuffix(".app") ? String(name.dropLast(4)) : name
         }
         isLoading = false
+
+        // Reading signatures takes a moment, so the list shows first.
+        isReviewing = true
+        reviews = await Task.detached(priority: .userInitiated) {
+            var reviews: [URL: BackgroundReview] = [:]
+            for job in snapshot.jobs { reviews[job.plistURL] = BackgroundCheck.review(job) }
+            for item in snapshot.loginItems { reviews[item.url] = BackgroundCheck.review(item) }
+            return reviews
+        }.value
+        isReviewing = false
     }
 }
 

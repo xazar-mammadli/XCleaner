@@ -6,6 +6,8 @@ public actor AuditLog {
     public struct Entry: Codable, Sendable, Equatable {
         public enum Action: String, Codable, Sendable, CaseIterable {
             case movedToTrash, deleted, dryRun, blocked, failed
+            /// Moved into another folder, as merging folders does. `detail` holds the new path.
+            case moved
         }
 
         public let date: Date

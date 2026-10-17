@@ -197,7 +197,7 @@ private struct HistoryRow: View {
             Text(verbatim: (entry.path as NSString).abbreviatingWithTildeInPath)
                 .lineLimit(1)
                 .truncationMode(.middle)
-                .help(Text(verbatim: entry.path))
+                .help(Text(verbatim: entry.action == .moved ? "\(entry.path) → \(entry.detail ?? "")" : entry.path))
             Spacer(minLength: 12)
             Text(entry.bytes.formattedBytes)
                 .monospacedDigit()

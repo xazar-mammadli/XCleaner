@@ -27,7 +27,7 @@ XCleaner finds the clutter that builds up on a Mac and helps you remove it witho
 It aims to cover what popular commercial cleaners do, but more calmly and openly. There are no scare tactics and no inflated numbers, and nothing is ever removed behind your back.
 
 > [!NOTE]
-> XCleaner is in early development. Cleanup of system junk, installers, downloads and the Trash works today. So do a complete app uninstaller, a finder for files left behind by deleted apps, a disk map, a finder for big files, a monitor for heavy apps, a startup items manager, maintenance tasks, extensions, browser data, a menu bar monitor and a full cleanup history. More tools arrive phase by phase, as listed in the [roadmap](#roadmap).
+> XCleaner is in early development. Every tool in the table below works today: cleanup of system junk, installers, downloads and the Trash, a complete app uninstaller, a finder for files left behind by deleted apps, a disk map, finders for big files and duplicates, a monitor for heavy apps, a startup items manager, maintenance tasks, extensions, browser data, app permissions, a background item check, hidden files, a menu bar monitor and a full cleanup history. What is left before a first release is listed in the [roadmap](#roadmap).
 
 ## Safety first
 
@@ -38,6 +38,8 @@ Every removal passes through a single gate that checks the item again right befo
 - **An allowlist, not a guess.** An item can only be removed from inside the folder its scan looked in. Symlinks are never followed, and `..` tricks are refused.
 - **Protected locations stay untouched.** XCleaner never removes macOS system folders, Keychains, iCloud Drive and other cloud storage, Mail, Messages or the Photos library. Automatic cleanup rules never reach into your personal folders, such as Desktop, Documents and Downloads.
 - **App bundles stay sealed.** XCleaner never edits files inside an app, so code signatures stay valid.
+- **One copy always stays.** Duplicates are compared by content, and a copy only goes while another one stays, unchanged since the scan. Merging folders moves files within one disk without ever replacing anything, and every move is recorded.
+- **Keys and passwords stay put.** SSH and GnuPG keys and the sign-ins of command-line tools such as `~/.aws` or `~/.docker/config.json` are never removed, nor is any folder that holds them.
 - **Root only when you ask, and only for that.** Removing system files, switching launch daemons and maintenance tasks ask for your password each time. XCleaner then runs itself as root for that one job, checks every path again against a short list of system folders, and exits. Nothing keeps running in the background with those rights.
 - **A full history.** Every action is recorded in a local log in `~/Library/Logs/XCleaner` and listed under Utilities.
 - **Exclusions.** Folders you add under Settings › Exclusions are never scanned or removed.
@@ -55,16 +57,15 @@ Every removal passes through a single gate that checks the item again right befo
 | | Mail attachments | Available |
 | Applications | Uninstaller, remaining files of deleted apps, app reset | Available |
 | | Extensions | Available |
-| | Updater for apps from developers, the App Store and Homebrew | Phase 4 |
 | Performance | Heavy apps, startup items, maintenance tasks | Available |
 | Files | Biggest and old files | Available |
+| | Duplicates, with Smart Select and folder merging | Available |
 | | Disk map | Available |
-| | Duplicates, similar photos | Phase 4 |
 | Privacy | Browser data | Available |
-| | App permissions, background item check | Phase 4 |
+| | App permissions, background item check | Available |
 | Utilities | Cleanup history | Available |
 | | Menu bar monitor | Available |
-| | Hidden files | Phase 4 |
+| | Hidden files | Available |
 
 ## Screenshots
 
@@ -125,9 +126,11 @@ XCleaner/
 │   │   ├── Apps/               App inventory, leftovers, remaining files, extensions
 │   │   ├── Cleaning/           Cleaner, Trash handling, audit log
 │   │   ├── DiskMap/            Folder tree and treemap layout
+│   │   ├── Duplicates/         Duplicate files and folders, Smart Select, folder merging
+│   │   ├── HiddenFiles/        Hidden items, Finder's hidden flag and setting
 │   │   ├── Model/              Cleanable items and safety levels
 │   │   ├── Performance/        Process usage, launch agents and login items
-│   │   ├── Privacy/            Browser history, cookies and caches
+│   │   ├── Privacy/            Browser data, app permissions, background item check
 │   │   ├── Privileged/         The one-off root run behind administrator tasks
 │   │   ├── Safety/             SafetyGuard and SafetyPolicy
 │   │   ├── Scanning/           Scanners for junk, downloads, the Trash and big files
@@ -147,7 +150,7 @@ The interface is available in English and Azerbaijani. XCleaner follows the macO
 - [x] **Phase 1: Cleanup basics.** Quick and deep cleanup, biggest and old files, cleanup history, exclusions.
 - [x] **Phase 2: Applications and disk map.** Uninstaller, remaining files, app reset, disk map.
 - [x] **Phase 3: System tools.** System-level junk and other administrator tasks without a resident helper, maintenance, startup items, heavy apps, Mail attachments, extensions, browser data and a menu bar monitor.
-- [ ] **Phase 4: Advanced tools.** Duplicates, similar photos, updater, app permissions, background item check and hidden files.
+- [x] **Phase 4: Advanced tools.** Duplicates with Smart Select and folder merging, app permissions, background item check and hidden files.
 - [ ] **Phase 5: Release.** Developer ID signing, notarization, automatic updates and a DMG installer.
 
 ## Contributing

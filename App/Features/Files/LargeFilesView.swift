@@ -35,7 +35,7 @@ struct LargeFilesView: View {
                             .foregroundStyle(.secondary)
                     }
                     if let report = files.lastReport {
-                        RemovalBanner(report: report)
+                        RemovalSummary(report: report)
                     }
 
                     switch files.phase {
@@ -238,33 +238,5 @@ private struct LargeFileRow: View {
                 NSWorkspace.shared.activateFileViewerSelecting([item.url])
             }
         }
-    }
-}
-
-/// Confirms what the last removal did, with a way back to the Trash.
-private struct RemovalBanner: View {
-    @Environment(AppModel.self) private var model
-    let report: CleaningReport
-
-    var body: some View {
-        HStack(spacing: 10) {
-            Image(systemName: report.requestedMethod == .dryRun ? "testtube.2" : "checkmark.circle.fill")
-                .foregroundStyle(report.requestedMethod == .dryRun ? Color.orange : Color.green)
-            if report.requestedMethod == .dryRun {
-                Text("Test run: \(report.removedBytes.formattedBytes) would have gone to the Trash.")
-            } else {
-                Text("Moved to the Trash: \(report.trashedBytes.formattedBytes)")
-            }
-            if !report.blocked.isEmpty || !report.failed.isEmpty {
-                Text("Skipped: ^[\(report.blocked.count + report.failed.count) item](inflect: true)")
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
-            if report.trashedBytes > 0 {
-                Button("Open Trash") { model.openTrash() }
-            }
-        }
-        .padding(10)
-        .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 }

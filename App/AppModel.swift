@@ -12,10 +12,13 @@ final class AppModel {
 
     let cleanup = CleanupModel()
     let largeFiles = LargeFilesModel()
+    let duplicates = DuplicatesModel()
     let uninstaller = UninstallerModel()
     let remainingFiles = RemainingFilesModel()
     let extensions = ExtensionsModel()
     let browserData = BrowserDataModel()
+    let permissions = PermissionsModel()
+    let hiddenFiles = HiddenFilesModel()
     let diskMap = DiskMapModel()
     let heavyApps = HeavyAppsModel()
     let startupItems = StartupItemsModel()
@@ -23,6 +26,7 @@ final class AppModel {
     var applicationsTool = ApplicationsTool.uninstaller
     var filesTool = FilesTool.largeFiles
     var performanceTool = PerformanceTool.heavyApps
+    var privacyTool = PrivacyTool.browserData
     var utilitiesTool = UtilitiesTool.history
     let exclusions = ExclusionStore()
     let auditLog = AuditLog(directory: AuditLog.standardDirectory)

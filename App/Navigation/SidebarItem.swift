@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The sections of the sidebar. Every section except the overview is still being built and lists the tools coming to it.
+/// The sections of the sidebar, and the tools in each.
 enum SidebarItem: String, CaseIterable, Identifiable {
     case overview, cleanup, applications, performance, files, privacy, utilities
 
@@ -11,9 +11,9 @@ enum SidebarItem: String, CaseIterable, Identifiable {
         "system-junk", "installers", "trash-bins", "system-level-junk", "mail-attachments",
         "uninstaller", "remaining-files", "reset-apps", "extensions",
         "startup-items", "heavy-apps", "maintenance",
-        "large-files", "disk-map",
-        "browser-data",
-        "history", "menu-bar",
+        "large-files", "duplicates", "disk-map",
+        "browser-data", "app-permissions", "background-check",
+        "history", "menu-bar", "hidden-files",
     ]
 
     var title: LocalizedStringResource {
@@ -44,7 +44,7 @@ enum SidebarItem: String, CaseIterable, Identifiable {
         switch self {
         case .overview: "Your Mac at a glance."
         case .cleanup: "Remove junk your Mac doesn't need: caches, logs, leftovers and old installers."
-        case .applications: "Uninstall apps completely, find what deleted apps left behind and keep apps up to date."
+        case .applications: "Uninstall apps completely, find what deleted apps left behind and manage extensions."
         case .performance: "See what starts with your Mac and what slows it down."
         case .files: "Find out what takes up space: big files, duplicates and a map of your disk."
         case .privacy: "Clear browsing traces and check which apps can reach your data."
@@ -79,8 +79,6 @@ enum SidebarItem: String, CaseIterable, Identifiable {
                             detail: "Return an app to its first-launch state without reinstalling it."),
                 PlannedTool(id: "extensions", title: "Extensions", phase: 3, systemImage: "puzzlepiece.extension",
                             detail: "Preference panes, plug-ins and browser extensions."),
-                PlannedTool(id: "updater", title: "Updater", phase: 4, systemImage: "arrow.down.circle",
-                            detail: "Updates from developers, the App Store and Homebrew in one list."),
             ]
         case .performance:
             [
@@ -99,8 +97,6 @@ enum SidebarItem: String, CaseIterable, Identifiable {
                             detail: "An interactive map of what fills your disk."),
                 PlannedTool(id: "duplicates", title: "Duplicates", phase: 4, systemImage: "doc.on.doc",
                             detail: "Identical files and folders, with Smart Select and folder merging."),
-                PlannedTool(id: "similar-photos", title: "Similar Photos", phase: 4, systemImage: "photo.on.rectangle",
-                            detail: "Near-identical shots, so you can keep the best one."),
             ]
         case .privacy:
             [

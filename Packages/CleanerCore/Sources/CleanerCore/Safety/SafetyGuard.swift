@@ -67,6 +67,10 @@ public struct SafetyGuard: Sendable {
         if let hit = neverDelete.first(where: { PathUtilities.isWithin(parts, $0, ignoringCase: true) }) {
             return .blocked(.protectedLocation(PathUtilities.joined(hit)))
         }
+        // Nor anything holding such a folder or file, which would take it along.
+        if let held = neverDelete.first(where: { $0.count > parts.count && PathUtilities.isWithin($0, parts, ignoringCase: true) }) {
+            return .blocked(.protectedLocation(PathUtilities.joined(held)))
+        }
         if let hit = containers.first(where: { $0.count == parts.count && PathUtilities.isWithin(parts, $0, ignoringCase: true) }) {
             return .blocked(.protectedContainer(PathUtilities.joined(hit)))
         }
@@ -94,6 +98,16 @@ public struct SafetyGuard: Sendable {
             return .blocked(.outsideAllowedRoot)
         }
         return .allowed(path: path, trashOnly: origin == .userSelection)
+    }
+
+    /// Whether files may be moved into `folder`, as merging folders does: never into protected or excluded locations,
+    /// nor into a package such as an app.
+    public func acceptsItems(in folder: URL) -> Bool {
+        guard let path = PathUtilities.realPath(folder.path(percentEncoded: false)) else { return false }
+        let parts = PathUtilities.components(of: path)
+        if neverDelete.contains(where: { PathUtilities.isWithin(parts, $0, ignoringCase: true) }) { return false }
+        if excluded.contains(where: { PathUtilities.isWithin(parts, $0, ignoringCase: true) }) { return false }
+        return !parts.contains { policy.sealedPackageExtensions.contains(($0 as NSString).pathExtension.lowercased()) }
     }
 
     /// Whether the user excluded `url`, so scans should not even offer it.
