@@ -18,7 +18,7 @@ struct ContentView: View {
                     Image(systemName: item.systemImage)
                 }
             }
-            .navigationSplitViewColumnWidth(min: 190, ideal: 210, max: 260)
+            .navigationSplitViewColumnWidth(min: 190, ideal: 210, max: 240)
             .safeAreaInset(edge: .bottom) {
                 if Preferences.hasTestMode, testMode {
                     TestModeBadge()

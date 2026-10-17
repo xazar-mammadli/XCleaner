@@ -47,6 +47,8 @@ enum AppLanguage: String {
     case system
     case english = "en"
     case azerbaijani = "az"
+    case russian = "ru"
+    case turkish = "tr"
 
     /// The language this copy of XCleaner started with. A change only shows after a restart.
     static let atLaunch = current
@@ -56,6 +58,8 @@ enum AppLanguage: String {
         let saved = UserDefaults.standard.persistentDomain(forName: Bundle.main.bundleIdentifier ?? "")?["AppleLanguages"]
         guard let code = (saved as? [String])?.first else { return .system }
         if code.hasPrefix("az") { return .azerbaijani }
+        if code.hasPrefix("ru") { return .russian }
+        if code.hasPrefix("tr") { return .turkish }
         if code.hasPrefix("en") { return .english }
         return .system
     }

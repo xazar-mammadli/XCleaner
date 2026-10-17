@@ -29,7 +29,9 @@ private struct GeneralSettings: View {
             Picker("Language", selection: $language) {
                 Text("System Default (\(AppLanguage.systemLanguageName))").tag(AppLanguage.system)
                 Text(verbatim: "English").tag(AppLanguage.english)
-                Text(verbatim: "Azərbaycan dili").tag(AppLanguage.azerbaijani)
+                Text(verbatim: "Azərbaycan").tag(AppLanguage.azerbaijani)
+                Text(verbatim: "Русский").tag(AppLanguage.russian)
+                Text(verbatim: "Türkçe").tag(AppLanguage.turkish)
             }
             .onChange(of: language) { _, newLanguage in
                 newLanguage.save()

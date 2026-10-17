@@ -29,6 +29,19 @@ struct UsageBar: View {
     }
 }
 
+/// The legend under a `UsageBar`: its items in a row, or one above the other when the row doesn't fit.
+struct Legend<Content: View>: View {
+    var spacing: CGFloat = 18
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: spacing) { content }
+            VStack(alignment: .leading, spacing: 6) { content }
+        }
+    }
+}
+
 /// A colored dot, a name and a value, under a `UsageBar`.
 struct LegendItem: View {
     let color: Color

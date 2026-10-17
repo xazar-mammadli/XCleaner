@@ -6,6 +6,8 @@ import SwiftUI
 enum ReleaseSource {
     static let latest = URL(string: "https://api.github.com/repos/xazar-mammadli/XCleaner/releases/latest")!
     static let page = URL(string: "https://github.com/xazar-mammadli/XCleaner/releases")!
+    /// The project page, which lists the tools and how XCleaner keeps files safe.
+    static let help = URL(string: "https://github.com/xazar-mammadli/XCleaner#readme")!
 }
 
 /// Finds newer releases of XCleaner and installs them. A check asks GitHub for the latest release and sends nothing

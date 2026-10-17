@@ -50,34 +50,20 @@ private struct HeavyAppsView: View {
                         .frame(width: 280)
                 }
                 .fixedSize(horizontal: false, vertical: true)
-                HStack(spacing: 16) {
-                    Picker("Show", selection: $heavy.scope) {
-                        ForEach(HeavyAppsModel.Scope.allCases) { scope in
-                            Text(scope.label).tag(scope)
+                // One row when it fits; otherwise the column titles get a row of their own, over the list.
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: 16) {
+                        pickers(heavy)
+                        Spacer()
+                        columnTitles
+                    }
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack(spacing: 16) { pickers(heavy) }
+                        HStack {
+                            Spacer()
+                            columnTitles
                         }
                     }
-                    .fixedSize()
-                    Picker("Sort by", selection: $heavy.order) {
-                        ForEach(HeavyAppsModel.Order.allCases) { order in
-                            Text(order.label).tag(order)
-                        }
-                    }
-                    .fixedSize()
-                    Spacer()
-                    // Column titles over the rows' numbers: the same widths and spacing as HeavyAppRow.
-                    HStack(spacing: 12) {
-                        Text("CPU")
-                            .frame(width: 70, alignment: .trailing)
-                        Text("GPU")
-                            .frame(width: 56, alignment: .trailing)
-                        Text("Memory")
-                            .frame(width: 90, alignment: .trailing)
-                        Color.clear
-                            .frame(width: 64, height: 1)
-                    }
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .padding(.trailing, 14)
                 }
                 if heavy.hasSampled {
                     RowsCard(rows, scrolls: true) { group in
@@ -107,6 +93,40 @@ private struct HeavyAppsView: View {
         } message: {
             Text("The app closes right away, and changes it hasn't saved are lost.")
         }
+    }
+
+    @ViewBuilder
+    private func pickers(_ heavy: HeavyAppsModel) -> some View {
+        @Bindable var heavy = heavy
+        Picker("Show", selection: $heavy.scope) {
+            ForEach(HeavyAppsModel.Scope.allCases) { scope in
+                Text(scope.label).tag(scope)
+            }
+        }
+        .fixedSize()
+        Picker("Sort by", selection: $heavy.order) {
+            ForEach(HeavyAppsModel.Order.allCases) { order in
+                Text(order.label).tag(order)
+            }
+        }
+        .fixedSize()
+    }
+
+    /// Column titles over the rows' numbers: the same widths and spacing as HeavyAppRow.
+    private var columnTitles: some View {
+        HStack(spacing: 12) {
+            Text("CPU")
+                .frame(width: 70, alignment: .trailing)
+            Text("GPU")
+                .frame(width: 56, alignment: .trailing)
+            Text("Memory")
+                .frame(width: 90, alignment: .trailing)
+            Color.clear
+                .frame(width: HeavyAppRow.quitWidth, height: 1)
+        }
+        .font(.caption)
+        .foregroundStyle(.secondary)
+        .padding(.trailing, 14)
     }
 }
 
@@ -142,7 +162,7 @@ private struct MemoryCard: View {
                         .init(id: "compressed", value: Double(memory.compressedBytes), color: .purple),
                         .init(id: "free", value: Double(free), color: Color(nsColor: .quaternaryLabelColor)),
                     ])
-                    HStack(spacing: 18) {
+                    Legend {
                         LegendItem(color: .accentColor, title: "Apps", value: memory.appBytes.formattedMemory)
                             .help("Memory apps hold on to themselves.")
                         LegendItem(color: .orange, title: "Wired", value: memory.wiredBytes.formattedMemory)
@@ -236,6 +256,9 @@ private struct LoadRow: View {
 }
 
 private struct HeavyAppRow: View {
+    /// Room for the Quit button in every language XCleaner speaks.
+    static let quitWidth: CGFloat = 96
+
     let group: ProcessGroup
     let canQuit: Bool
     let quit: (_ force: Bool) -> Void
@@ -278,7 +301,7 @@ private struct HeavyAppRow: View {
                     Color.clear
                 }
             }
-            .frame(width: 64, height: 22)
+            .frame(width: Self.quitWidth, height: 22, alignment: .trailing)
         }
         .contextMenu {
             if canQuit {

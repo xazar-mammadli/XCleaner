@@ -54,7 +54,7 @@ private struct DiskUsageCard: View {
                     .init(id: "purgeable", value: Double(usage.purgeableBytes), color: purgeableColor),
                     .init(id: "free", value: Double(usage.freeBytes), color: freeColor),
                 ])
-                HStack(spacing: 22) {
+                Legend(spacing: 22) {
                     LegendItem(color: usedColor, title: "Used", value: format(usage.usedBytes))
                     LegendItem(color: purgeableColor, title: "Purgeable", value: format(usage.purgeableBytes))
                         .help("Space macOS frees on its own when it needs it, such as local snapshots and optimized iCloud copies.")
@@ -160,13 +160,14 @@ private struct SafetyPoint: View {
     let text: LocalizedStringResource
 
     var body: some View {
-        Label {
+        // The icons sit in a column of one width, so every line of text starts at the same place.
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Image(systemName: systemImage)
+                .foregroundStyle(.tint)
+                .frame(width: 20)
             Text(text)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
-        } icon: {
-            Image(systemName: systemImage)
-                .foregroundStyle(.tint)
         }
     }
 }

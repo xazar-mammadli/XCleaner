@@ -10,5 +10,5 @@
 
 - [ ] `swift test --package-path Packages/CleanerCore` passes, and the app builds.
 - [ ] Anything that removes or moves files goes through `Cleaner` and `SafetyGuard`, and comes with tests that use a sandbox.
-- [ ] New interface text is in `Localizable.xcstrings`, with an Azerbaijani translation or a note that one is needed.
+- [ ] New interface text is in `Localizable.xcstrings`, translated into Azerbaijani, Russian and Turkish, or with a note that translations are needed.
 - [ ] No new network requests, tracking or third-party services.

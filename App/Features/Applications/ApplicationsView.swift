@@ -73,18 +73,23 @@ private struct AppList: View {
                         Text("^[\(apps.count) app](inflect: true)")
                             .foregroundStyle(.secondary)
                             .monospacedDigit()
+                            .lineLimit(1)
+                            .fixedSize()
                         if uninstaller.isMeasuringSizes {
                             ProgressView()
                                 .controlSize(.mini)
                                 .help("Measuring app sizes…")
                         }
-                        Spacer()
+                        Spacer(minLength: 8)
+                        // The column is narrow, so the menu shows only the order, with the label as its tooltip.
                         Picker("Sort by", selection: $uninstaller.order) {
                             ForEach(UninstallerModel.Order.allCases) { order in
                                 Text(order.label).tag(order)
                             }
                         }
+                        .labelsHidden()
                         .fixedSize()
+                        .help("Sort by")
                     }
                     .font(.callout)
                     .padding(.horizontal, 12)
@@ -98,7 +103,7 @@ private struct AppList: View {
             if uninstaller.isLoading {
                 ProgressView()
             } else if uninstaller.hasLoaded, apps.isEmpty {
-                ContentUnavailableView.search(text: uninstaller.searchText)
+                NoSearchResults(text: uninstaller.searchText)
             }
         }
     }

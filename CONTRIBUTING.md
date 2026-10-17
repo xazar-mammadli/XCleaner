@@ -43,7 +43,7 @@ Match the style of the code around your change. The engine in `Packages/CleanerC
 
 ## Translations
 
-Every piece of interface text lives in `App/Resources/Localizable.xcstrings` and needs an Azerbaijani translation. If you can't write one, say so in the pull request, and the maintainer will add it.
+Every piece of interface text lives in `App/Resources/Localizable.xcstrings` and needs Azerbaijani, Russian and Turkish translations. If you can't write them, say so in the pull request, and the maintainer will add them.
 
 ## Pull requests
 

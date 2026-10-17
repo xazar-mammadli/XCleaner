@@ -100,42 +100,78 @@ struct LargeFilesView: View {
         }
     }
 
+    /// One row when it fits; in a narrow window or a wordier language, the button moves below the filters.
     private func controls(_ files: LargeFilesModel) -> some View {
-        @Bindable var files = files
-        return HStack(spacing: 16) {
-            Picker("Minimum size", selection: $files.minimumSize) {
-                ForEach(LargeFilesModel.sizeOptions, id: \.self) { size in
-                    Text(verbatim: size.formattedBytes).tag(size)
+        // One row when it fits. Otherwise the filters take the first row and the order shares the second with the
+        // scan button, as on the Duplicates page.
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 16) {
+                filters(files)
+                sortPicker
+                Spacer()
+                scanButton(files)
+            }
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 16) { filters(files) }
+                HStack(spacing: 16) {
+                    sortPicker
+                    Spacer()
+                    scanButton(files)
                 }
             }
-            .fixedSize()
-            Picker("Kind", selection: $files.kindFilter) {
-                Text("All Kinds").tag(FileKind?.none)
-                Divider()
-                ForEach(FileKind.allCases, id: \.self) { kind in
-                    Text(kind.label).tag(FileKind?.some(kind))
+            VStack(alignment: .leading, spacing: 10) {
+                filters(files)
+                HStack(spacing: 16) {
+                    sortPicker
+                    Spacer()
+                    scanButton(files)
                 }
-            }
-            .fixedSize()
-            Picker("Sort by", selection: $order) {
-                ForEach(Order.allCases) { order in
-                    Text(order.label).tag(order)
-                }
-            }
-            .fixedSize()
-            Spacer()
-            if files.phase == .scanning {
-                Button("Stop") { files.cancel() }
-            } else {
-                Button {
-                    files.scan(with: model.makeServices())
-                } label: {
-                    Label(files.phase == .idle ? "Scan" as LocalizedStringResource : "Scan Again", systemImage: "magnifyingglass")
-                }
-                .buttonStyle(.borderedProminent)
             }
         }
         .disabled(files.isRemoving)
+    }
+
+    @ViewBuilder
+    private func filters(_ files: LargeFilesModel) -> some View {
+        @Bindable var files = files
+        Picker("Minimum size", selection: $files.minimumSize) {
+            ForEach(LargeFilesModel.sizeOptions, id: \.self) { size in
+                Text(verbatim: size.formattedBytes).tag(size)
+            }
+        }
+        .fixedSize()
+        Picker("Kind", selection: $files.kindFilter) {
+            Text("All Kinds").tag(FileKind?.none)
+            Divider()
+            ForEach(FileKind.allCases, id: \.self) { kind in
+                Text(kind.label).tag(FileKind?.some(kind))
+            }
+        }
+        .fixedSize()
+    }
+
+    private var sortPicker: some View {
+        Picker("Sort by", selection: $order) {
+            ForEach(Order.allCases) { order in
+                Text(order.label).tag(order)
+            }
+        }
+        .fixedSize()
+    }
+
+    @ViewBuilder
+    private func scanButton(_ files: LargeFilesModel) -> some View {
+        if files.phase == .scanning {
+            Button("Stop") { files.cancel() }
+        } else {
+            Button {
+                files.scan(with: model.makeServices())
+            } label: {
+                Label(files.phase == .idle ? "Scan" as LocalizedStringResource : "Scan Again", systemImage: "magnifyingglass")
+            }
+            .buttonStyle(.borderedProminent)
+            .fixedSize()
+        }
     }
 
     private func footer(_ files: LargeFilesModel, rows: [CleanableItem]) -> some View {

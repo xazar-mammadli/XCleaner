@@ -87,7 +87,7 @@ struct HistoryView: View {
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {
-                        ContentUnavailableView.search(text: searchText)
+                        NoSearchResults(text: searchText)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
@@ -152,33 +152,59 @@ struct HistoryView: View {
         }
     }
 
+    /// One row when it fits; in a narrow window or a wordier language, the order and the count move to a second row.
     private func controls(_ rows: [AuditLog.Entry]) -> some View {
-        HStack(spacing: 16) {
-            Picker("Show", selection: $actionFilter) {
-                Text("All Actions").tag(AuditLog.Entry.Action?.none)
-                Divider()
-                ForEach(AuditLog.Entry.Action.allCases, id: \.self) { action in
-                    Text(action.label).tag(AuditLog.Entry.Action?.some(action))
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 16) {
+                filters
+                sortPicker
+                Spacer()
+                total(rows)
+            }
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 16) { filters }
+                HStack(spacing: 16) {
+                    sortPicker
+                    Spacer()
+                    total(rows)
                 }
             }
-            .fixedSize()
-            Picker("Date", selection: $period) {
-                ForEach(Period.allCases) { period in
-                    Text(period.label).tag(period)
-                }
-            }
-            .fixedSize()
-            Picker("Sort by", selection: $order) {
-                ForEach(Order.allCases) { order in
-                    Text(order.label).tag(order)
-                }
-            }
-            .fixedSize()
-            Spacer()
-            Text("^[\(rows.count) action](inflect: true), \(rows.reduce(Int64(0)) { $0 + $1.bytes }.formattedBytes)")
-                .foregroundStyle(.secondary)
-                .monospacedDigit()
         }
+    }
+
+    @ViewBuilder
+    private var filters: some View {
+        Picker("Show", selection: $actionFilter) {
+            Text("All Actions").tag(AuditLog.Entry.Action?.none)
+            Divider()
+            ForEach(AuditLog.Entry.Action.allCases, id: \.self) { action in
+                Text(action.label).tag(AuditLog.Entry.Action?.some(action))
+            }
+        }
+        .fixedSize()
+        Picker("Date", selection: $period) {
+            ForEach(Period.allCases) { period in
+                Text(period.label).tag(period)
+            }
+        }
+        .fixedSize()
+    }
+
+    private var sortPicker: some View {
+        Picker("Sort by", selection: $order) {
+            ForEach(Order.allCases) { order in
+                Text(order.label).tag(order)
+            }
+        }
+        .fixedSize()
+    }
+
+    private func total(_ rows: [AuditLog.Entry]) -> some View {
+        Text("^[\(rows.count) action](inflect: true), \(rows.reduce(Int64(0)) { $0 + $1.bytes }.formattedBytes)")
+            .foregroundStyle(.secondary)
+            .monospacedDigit()
+            .lineLimit(1)
+            .fixedSize()
     }
 }
 
@@ -193,7 +219,8 @@ private struct HistoryRow: View {
                 Image(systemName: entry.action.systemImage)
                     .foregroundStyle(.tint)
             }
-            .frame(width: 170, alignment: .leading)
+            // Wide enough to keep the longest action on one line in every language.
+            .frame(width: 190, alignment: .leading)
             Text(verbatim: (entry.path as NSString).abbreviatingWithTildeInPath)
                 .lineLimit(1)
                 .truncationMode(.middle)
