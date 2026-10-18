@@ -9,6 +9,11 @@
 </p>
 
 <p align="center">
+  <a href="https://xazar-mammadli.github.io/XCleaner/">Website</a> ·
+  <a href="https://github.com/xazar-mammadli/XCleaner/releases/latest">Download</a>
+</p>
+
+<p align="center">
   <a href="https://github.com/xazar-mammadli/XCleaner/releases/latest"><img src="https://img.shields.io/github/v/release/xazar-mammadli/XCleaner?label=release" alt="Latest release"></a>
   <a href="https://github.com/xazar-mammadli/XCleaner/actions/workflows/ci.yml"><img src="https://github.com/xazar-mammadli/XCleaner/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/macOS-14%2B-111111?logo=apple&logoColor=white" alt="macOS 14+">
