@@ -1,5 +1,6 @@
 import AppKit
 import CleanerCore
+import ServiceManagement
 import SwiftUI
 
 /// Every tab is a grouped form that reports its own height, so the window resizes to fit each tab
@@ -23,6 +24,7 @@ private struct GeneralSettings: View {
     @State private var language = AppLanguage.current
     @AppStorage(PreferenceKey.showsMenuBarMonitor) private var showsMenuBarMonitor = false
     @AppStorage(PreferenceKey.checksForUpdates) private var checksForUpdates = true
+    @State private var openAtLogin = OpenAtLogin()
 
     var body: some View {
         Form {
@@ -48,6 +50,21 @@ private struct GeneralSettings: View {
 
             Toggle("Show XCleaner in the menu bar", isOn: $showsMenuBarMonitor)
 
+            Toggle("Open XCleaner at login", isOn: Binding(get: { openAtLogin.isOn }, set: { openAtLogin.set($0) }))
+                .help("With XCleaner in the menu bar, it starts there without opening its window.")
+            if openAtLogin.needsApproval {
+                LabeledContent {
+                    Button("Login Items Settings…") { SMAppService.openSystemSettingsLoginItems() }
+                } label: {
+                    Text("Allow XCleaner in Login Items to open it at login.")
+                        .foregroundStyle(.secondary)
+                }
+            }
+            if let failure = openAtLogin.failure {
+                Text(verbatim: failure)
+                    .foregroundStyle(.secondary)
+            }
+
             Section {
                 Toggle("Check for updates automatically", isOn: $checksForUpdates)
                 LabeledContent {
@@ -62,6 +79,10 @@ private struct GeneralSettings: View {
             }
         }
         .settingsTabStyle()
+        // Login items can also change in System Settings while XCleaner runs.
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            openAtLogin.refresh()
+        }
     }
 }
 

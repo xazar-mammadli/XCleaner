@@ -53,6 +53,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         AppRelauncher.closePreviousCopy()
         MenuTranslator.shared.start()
+        // Opened at login with its menu bar item on, XCleaner waits in the menu bar instead of opening its window.
+        if OpenAtLogin.isLaunchingAtLogin, UserDefaults.standard.bool(forKey: PreferenceKey.showsMenuBarMonitor) {
+            NSApp.windows.first { $0.identifier?.rawValue == "main" }?.close()
+        }
     }
 
     /// With the menu bar monitor on, XCleaner stays in the menu bar after its window closes.

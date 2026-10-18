@@ -681,6 +681,28 @@
         }
       }
     },
+    "Allow XCleaner in Login Items to open it at login." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Girişdə açılması üçün Login Items-də XCleaner-ə icazə verin."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешите XCleaner в «Объектах входа», чтобы он открывался при входе."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oturum açılışında açılması için Giriş Öğeleri'nde XCleaner'a izin verin."
+          }
+        }
+      }
+    },
     "Allowed" : {
       "localizations" : {
         "az" : {
@@ -7929,6 +7951,28 @@
         }
       }
     },
+    "Open XCleaner at login" : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Girişdə XCleaner-i aç"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открывать XCleaner при входе"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oturum açılışında XCleaner'ı aç"
+          }
+        }
+      }
+    },
     "Open in System Settings" : {
       "localizations" : {
         "az" : {
@@ -12675,6 +12719,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sabit"
+          }
+        }
+      }
+    },
+    "With XCleaner in the menu bar, it starts there without opening its window." : {
+      "localizations" : {
+        "az" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner menyu zolağındadırsa, pəncərəsini açmadan orada başlayır."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если XCleaner показан в строке меню, он запускается там, не открывая окно."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XCleaner menü çubuğundaysa, penceresini açmadan orada başlar."
           }
         }
       }
