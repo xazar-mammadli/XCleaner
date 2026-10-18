@@ -4,6 +4,8 @@ on:
   pull_request:
   push:
     branches: [master]
+    # Website-only pushes skip the build. Pull requests always run it, because master requires this check.
+    paths-ignore: ['docs/**']
 
 permissions:
   contents: read
